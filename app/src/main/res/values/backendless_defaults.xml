@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- for Backendless -->
+	<string name="backendless_AppId">D6AE86B2-B106-D646-FFE9-70904650E800</string>
+	<string name="backendless_ApiKey">EADFB1BB-F998-45CC-B0F0-B421DDCDC89B</string>
+	<string name="backendless_ApiHost">https://eu-api.backendless.com</string>
+</resources>
+		

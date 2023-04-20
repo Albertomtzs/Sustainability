@@ -1,0 +1,36 @@
+{
+  "project_info":
+  {
+    "project_number": "1",
+    "project_id": "backendlessregis-1679784684633"
+  },
+  "client": [
+    {
+      "client_info":
+      {
+        "mobilesdk_app_id": "1:1:android:1556016075905",
+        "android_client_info":
+        {
+          "package_name": "com.ams.sustainability"
+        }
+      },
+      "oauth_client":
+      [
+        {
+          "client_id": "460207532188-n7i1ro57aj8jue4ibph7ngjm30h30o11.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.examples.registration_and_login.login",
+            "certificate_hash": "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"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "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"
+        }
+      ]
+    }
+  ],
+  "configuration_version": "1"
+}
