@@ -12,9 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-
 import com.ams.sustainability.R;
 import com.ams.sustainability.form.PostLogin;
 import com.backendless.Backendless;
@@ -25,7 +23,6 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.Scopes;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
@@ -35,10 +32,8 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeToken
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
-
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 
 public class MainLogin extends Activity {
 
@@ -49,10 +44,9 @@ public class MainLogin extends Activity {
     // backendless
     private TextView registerLink, restoreLink;
     private EditText identityField, passwordField;
-    private Button login;
+    private Button login, loginGooglePlusButton;
 
     // google
-    private SignInButton loginGooglePlusButton;
     private final int RC_SIGN_IN = 112233; // arbitrary number
     private GoogleApiClient mGoogleApiClient;
     private String gpAccessToken = null;
@@ -95,8 +89,8 @@ public class MainLogin extends Activity {
     }
 
     private void initUI() {
-        rememberLoginBox = (CheckBox) findViewById(R.id.rememberLoginBox);
 
+        rememberLoginBox = (CheckBox) findViewById(R.id.rememberLoginBox);
 
         // backendless
         registerLink = (TextView) findViewById(R.id.registerLink);
@@ -106,7 +100,7 @@ public class MainLogin extends Activity {
         login = (Button) findViewById(R.id.btnLogin);
 
         // google
-        loginGooglePlusButton = (SignInButton) findViewById(R.id.button_googlePlusLogin);
+        loginGooglePlusButton = (Button) findViewById(R.id.button_googlePlusLogin);
 
     }
 
@@ -179,19 +173,16 @@ public class MainLogin extends Activity {
             return;
         }
 
-        if (!isLoggedInBackendless) {
+        /*if (!isLoggedInBackendless) {
             Toast.makeText(this, "Please login first", Toast.LENGTH_SHORT).show();
             return;
-        }
+        }*/
 
         Backendless.UserService.login(identity, password, new DefaultCallback<BackendlessUser>(MainLogin.this) {
             public void handleResponse(BackendlessUser backendlessUser) {
                 super.handleResponse(backendlessUser);
                 isLoggedInBackendless = true;
                 startLoginResult(backendlessUser);}
-
-
-
 
             @Override
             public void handleFault(BackendlessFault fault) {

@@ -29,7 +29,7 @@
     <string name="login_prompt">Login:</string>
     <string name="password_prompt">Password:</string>
     <string name="password_recovery_page_name">Password Recovery</string>
-    <string name="remember_login_text">Remember me</string>
+    <string name="remember_login_text">Recuérdame</string>
 
     <string name="ownerId_field_prompt">OwnerId:</string>
     <string name="email_field_prompt">Email:</string>
@@ -42,10 +42,10 @@
     <string name="registration_success">Registered successfully!</string>
     <string name="registration_error">Registration error!</string>
 
-    <string name="restore_password_page_name">Password Restoration</string>
-    <string name="password_recovered_message">We sent an email to your email address with a link to a password change page. Please check your email and follow the link for further instructions.</string>
-    <string name="registration_page_name">Registration</string>
-    <string name="registration_success_message">Thank you for registering with the %1$s.</string>
+    <string name="restore_password_page_name">Restauración de contraseña</string>
+    <string name="password_recovered_message">Enviamos un correo electrónico a su dirección de correo electrónico con un enlace a una página de cambio de contraseña. Por favor, revise su correo electrónico y siga el enlace para obtener más instrucciones..</string>
+    <string name="registration_page_name">Inscripción</string>
+    <string name="registration_success_message">¡Gracias por registrarte con el %1$s!.</string>
 
 
     <!-- __________ change this credentials and configure your applications __________ -->
