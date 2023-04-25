@@ -12,10 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.ams.sustainability.MainActivity;
+
 import com.ams.sustainability.R;
-import com.ams.sustainability.form.PostLogin;
-import com.ams.sustainability.ui.NavigationActivity;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;

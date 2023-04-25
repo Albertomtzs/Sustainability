@@ -47,6 +47,79 @@
     <string name="registration_page_name">Inscripción</string>
     <string name="registration_success_message">¡Gracias por registrarte con el %1$s!.</string>
 
+    <string name="bienvenido">¡Bienvenido!</string>
+    <string name="inicio_post_login">Calcula tu huella</string>
+    <string name="observacion_post_login">Puedes ver tu huella de carbono en la esquina superior izquierda, crecerá o disminuirá en función de tus respuestas</string>
+    <string name="calcular">Calcular tu huella</string>
+
+    <!-- Unidades de medida -->
+
+    <string name="kwh">kWh</string>
+    <string name="litros">Litros</string>
+    <string name="kg">Kg</string>
+    <string name="docenas">Docenas</string>
+
+    <!-- Preguntas relacionadas con la sección vivienda -->
+
+    <string name="allQuestion">Por favor, complete todas las preguntas antes de avanzar.</string>
+    <string name="vivienda">Vivienda</string>
+    <string name="pregunta_generica_vivienda">Indica el consumo anual de las siguientes energias:</string>
+    <string name="pregunta_vivienda1">La electricidad de tu casa, ¿es solo de fuentes renovables?</string>
+    <string name="pregunta_vivienda2">Indica cuántas personas viven en tu domicilio.</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="pregunta_vivienda3">Electricidad</string>
+    <string name="pregunta_vivienda4">Gas natural</string>
+    <string name="pregunta_vivienda5">Gasoil</string>
+    <string name="pregunta_vivienda6">Gas butano</string>
+    <string name="pregunta_vivienda7">Gas propano</string>
+    <string name="pregunta_vivienda8">Carbón</string>
+    <string name="pregunta_vivienda9">Pellets de madera</string>
+
+
+    <!-- Preguntas relacionadas con la sección alimentación -->
+
+    <string name="alimentacion">Alimentación</string>
+    <string name="pregunta_generica_alimentacion">Indica la cantidad de los siguientes alimentos que consumes a la semana:</string>
+    <string name="pregunta_alimentacion1">Hortalizas y legumbres</string>
+    <string name="pregunta_alimentacion2">Frutas frescas</string>
+    <string name="pregunta_alimentacion3">Cereales desayuno</string>
+    <string name="pregunta_alimentacion4">Leche de vaca</string>
+    <string name="pregunta_alimentacion5">Huevos</string>
+    <string name="pregunta_alimentacion6">Frutos secos</string>
+    <string name="pregunta_alimentacion7">Dulces</string>
+    <string name="pregunta_alimentacion8">Pescados</string>
+    <string name="pregunta_alimentacion9">Mariscos</string>
+    <string name="pregunta_alimentacion10">Aceites</string>
+    <string name="pregunta_alimentacion11">Carne de pavo</string>
+    <string name="pregunta_alimentacion12">Carne pollo</string>
+    <string name="pregunta_alimentacion13">Carne cerdo</string>
+    <string name="pregunta_alimentacion14">Carne vaca-ternera</string>
+    <string name="pregunta_alimentacion15">Cerveza</string>
+    <string name="pregunta_alimentacion16">Refrescos</string>
+    <string name="pregunta_alimentacion17">Licores</string>
+    <string name="pregunta_alimentacion18">Vino</string>
+
+    <!-- Preguntas relacionadas con la sección ropa -->
+
+    <string name="ropa">Ropa</string>
+    <string name="pregunta_ropa1">Pantalón vaquero</string>
+    <string name="pregunta_ropa2">Otros pantalones</string>
+    <string name="pregunta_ropa3">Camisas</string>
+    <string name="pregunta_ropa4">Camisetas</string>
+    <string name="pregunta_ropa5">Vestidos</string>
+    <string name="pregunta_ropa6">Calcetines</string>
+    <string name="pregunta_ropa7">Chaquetas</string>
+    <string name="pregunta_ropa8">Abrigos</string>
+    <string name="pregunta_ropa9">Jerseys</string>
+    <string name="pregunta_ropa10">Zapatos</string>
+    <string name="pregunta_ropa11">Zapatillas deportivas</string>
+    <string name="pregunta_ropa12">Ropa interior</string>
+
+    <!-- Preguntas relacionadas con la sección transporte -->
+
+    <string name="transporte">Transporte</string>
+
 
     <!-- __________ change this credentials and configure your applications __________ -->
     <!-- You also need to set android debug key in Facebook and Google apps -->

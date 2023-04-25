@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import com.ams.sustainability.R;
-import com.ams.sustainability.form.PostLogin;
+import com.ams.sustainability.PostLogin;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;

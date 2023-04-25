@@ -15,7 +15,13 @@
         android:theme="@style/Theme.Sustainability"
         tools:targetApi="31">
         <activity
-            android:name=".form.PostLogin"
+            android:name=".ResultsPage"
+            android:exported="false" />
+        <activity
+            android:name=".model.InputData"
+            android:exported="false" />
+        <activity
+            android:name=".PostLogin"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
