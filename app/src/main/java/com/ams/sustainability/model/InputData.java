@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.ams.sustainability.MainActivity;
 import com.ams.sustainability.R;
-import com.ams.sustainability.ui.ResultsPage;
+import com.ams.sustainability.ResultsPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +56,16 @@ public class InputData extends AppCompatActivity {
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_ropa, null));
                 break;
             case 3:
-                title.setText(R.string.ropa);
-                //layout.addView(getLayoutInflater().inflate(R.layout.preguntas_transporte,null));
+                title.setText(R.string.transporte);
+                layout.addView(getLayoutInflater().inflate(R.layout.preguntas_transporte,null));
+                break;
+            case 4:
+                title.setText(R.string.otros_transportes);
+                layout.addView(getLayoutInflater().inflate(R.layout.preguntas_otros_transportes,null));
+                break;
+            case 5:
+                title.setText(R.string.tecnologia);
+                layout.addView(getLayoutInflater().inflate(R.layout.preguntas_tecnologia,null));
                 break;
         }
     }
@@ -85,7 +93,7 @@ public class InputData extends AppCompatActivity {
 
         stage++;
         Intent next;
-        if(stage == 4){next = new Intent(this, ResultsPage.class);}
+        if(stage == 6){next = new Intent(this, ResultsPage.class);}
         else {next = new Intent(this, InputData.class);
             next.putExtra("NEXT_STAGE", stage);
         }

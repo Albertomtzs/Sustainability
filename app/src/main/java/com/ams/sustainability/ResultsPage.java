@@ -1,4 +1,4 @@
-package com.ams.sustainability.ui;
+package com.ams.sustainability;
 
 import androidx.appcompat.app.AppCompatActivity;
 

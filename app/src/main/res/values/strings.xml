@@ -119,6 +119,60 @@
     <!-- Preguntas relacionadas con la sección transporte -->
 
     <string name="transporte">Transporte</string>
+    <string name="pregunta_generica_transporte1">¿Tienes automóvil en propiedad?</string>
+    <string name="repuestas_rb_transporte1">Sí</string>
+    <string name="repuestas_rb_transporte2">No</string>
+    <string name="pregunta_generica_transporte2">¿Qué tipo de automóvil utilizas?</string>
+    <string name="repuestas_rb_transporte3">Utilitario</string>
+    <string name="repuestas_rb_transporte4">Familiar</string>
+    <string name="repuestas_rb_transporte6">Berlina</string>
+    <string name="repuestas_rb_transporte7">Monovolumen pequeño</string>
+    <string name="repuestas_rb_transporte8">Monovolumen Familiar</string>
+    <string name="repuestas_rb_transporte9">SUV pequeño</string>
+    <string name="repuestas_rb_transporte10">SUV grande</string>
+    <string name="pregunta_generica_transporte3">¿Qué tipo combustible utiliza?</string>
+    <string name="repuestas_rb_transporte11">Gasolina</string>
+    <string name="repuestas_rb_transporte12">Gasoil</string>
+    <string name="repuestas_rb_transporte13">Gas natural</string>
+    <string name="repuestas_rb_transporte14">Eléctrico</string>
+    <string name="pregunta_generica_transporte4">Indica el consumo medio:</string>
+    <string name="pregunta_generica_transporte5">¿Tienes una motocicleta en propiedad?</string>
+    <string name="repuestas_rb_transporte15">Sí</string>
+    <string name="repuestas_rb_transporte16">No</string>
+    <string name="pregunta_generica_transporte6">Indica la cilindrada:</string>
+    <string name="repuestas_rb_transporte17">inferior a 125cc</string>
+    <string name="repuestas_rb_transporte18">125 - 500cc</string>
+    <string name="repuestas_rb_transporte19">> 500cc</string>
+    <string name="repuestas_rb_transporte20">Eléctrica (5KW)</string>
+    <string name="pregunta_generica_transporte7">¿Qué tipo combustible utiliza?</string>
+    <string name="repuestas_rb_transporte21">Gasolina</string>
+    <string name="repuestas_rb_transporte22">Eléctrico</string>
+    <string name="pregunta_generica_transporte8">Indica el consumo medio</string>
+    <string name="pregunta_generica_transporte10">Indica los kilometros que realizas anualmente:</string>
+
+
+    <string name="otros_transportes">Otros transportes</string>
+    <string name="pregunta_generica_transporte11">Indica los kilometros que realizas anualmente en los siguientes transportes:</string>
+    <string name="pregunta_transporte1">AVE</string>
+    <string name="pregunta_transporte2">Tren larga distancia</string>
+    <string name="pregunta_transporte3">Cercanías</string>
+    <string name="pregunta_transporte4">Autobús urbano</string>
+    <string name="pregunta_transporte5">Autocar</string>
+    <string name="pregunta_transporte6">Metro</string>
+    <string name="pregunta_transporte7">Vuelos (inferior a 850km)</string>
+    <string name="pregunta_transporte8">Vuelos (851-3000km)</string>
+    <string name="pregunta_transporte9">Vuelos (> 3000km)</string>
+
+    <!-- Preguntas relacionadas con la sección tecnologia -->
+
+    <string name="tecnologia">Tecnología</string>
+    <string name="pregunta_generica_tecnologa1">Indica el número de unidades y años que posees de las siguientes tecnologías:</string>
+    <string name="pregunta_tecnologia1">PC sobremesa</string>
+    <string name="pregunta_tecnologia2">Portátil</string>
+    <string name="pregunta_tecnologia3">Tablets</string>
+    <string name="pregunta_tecnologia4">Móviles</string>
+    <string name="pregunta_tecnologia5">Router</string>
+    <string name="pregunta_generica_tecnologa2">Indica el número de años de uso de cada una de ellas (solo las que tengas en propiedad actualmente):</string>
 
 
     <!-- __________ change this credentials and configure your applications __________ -->

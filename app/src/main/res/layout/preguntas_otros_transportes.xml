@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/pregunta_generica_transporte11"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/otros_transportes1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="0dp"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes1"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.992"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/otros_transportes2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte2"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otros_transportes1"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="58dp" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes2"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes2"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes1" />
+
+            <TextView
+                android:id="@+id/otros_transportes3"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte3"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otros_transportes2"
+                tools:layout_editor_absoluteX="12dp" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes3"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes3"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes2" />
+
+            <TextView
+                android:id="@+id/otros_transportes4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte4"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otros_transportes3" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes4"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes4"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes3" />
+
+            <TextView
+                android:id="@+id/otros_transportes5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte5"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otros_transportes4" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes5"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes5"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes4" />
+
+            <TextView
+                android:id="@+id/otros_transportes6"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte6"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otros_transportes5" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes6"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes6"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes5" />
+
+            <TextView
+                android:id="@+id/otros_transportes7"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte7"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otros_transportes6" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes7"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes7"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes6" />
+
+            <TextView
+                android:id="@+id/otros_transportes8"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte9"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextOtrosTransportes8"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes7"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

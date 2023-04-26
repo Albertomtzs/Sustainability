@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/pregunta_generica_tecnologa1"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tecnologia1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_tecnologia1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="0dp"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/editTextTecnologia1"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Uds."
+                android:textColorHint="@color/white"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.752"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTecnologiaAño1"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Años"
+                android:textColorHint="@color/white"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.992"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tecnologia2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_tecnologia2"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tecnologia1"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="58dp" />
+
+            <EditText
+                android:id="@+id/editTextTecnologia2"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:hint="Uds."
+                android:textColorHint="@color/white"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextTecnologia3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.677"
+                app:layout_constraintStart_toEndOf="@+id/tecnologia2"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia1" />
+
+            <EditText
+                android:id="@+id/editTextTecnologiaAño2"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Años"
+                android:textColorHint="@color/white"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tecnologia3"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_tecnologia3"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tecnologia2"
+                tools:layout_editor_absoluteX="12dp" />
+
+            <EditText
+                android:id="@+id/editTextTecnologia3"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:hint="Uds."
+                android:textColorHint="@color/white"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextTecnologia4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.676"
+                app:layout_constraintStart_toEndOf="@+id/tecnologia3"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia2" />
+
+            <EditText
+                android:id="@+id/editTextTecnologiaAño3"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="129dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Años"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tecnologia4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_tecnologia4"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tecnologia3" />
+
+            <EditText
+                android:id="@+id/editTextTecnologia4"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:hint="Uds."
+                android:textColorHint="@color/white"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/editTextTecnologia5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.673"
+                app:layout_constraintStart_toEndOf="@+id/tecnologia4"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia3" />
+
+            <EditText
+                android:id="@+id/editTextTecnologiaAño4"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="195dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Años"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tecnologia5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_tecnologia5"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTecnologia5"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:hint="Uds."
+                android:textColorHint="@color/white"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.69"
+                app:layout_constraintStart_toEndOf="@+id/tecnologia5"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia4" />
+
+            <EditText
+                android:id="@+id/editTextTecnologiaAño5"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="261dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Años"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
