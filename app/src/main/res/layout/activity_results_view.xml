@@ -1,6 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bbcopia2"
+    tools:context=".view.ResultsView">
 
+    <ScrollView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/weeklyButton"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/btn_bg"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:onClick="weeklyResults"
+                    android:text="@string/emissionWeekly" />
+
+                <Button
+                    android:id="@+id/monthlyButton"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/btn_bg"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:onClick="monthlyResults"
+                    android:text="@string/emissionMonthly" />
+
+                <Button
+                    android:id="@+id/annualButton"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/btn_bg"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:onClick="annualResults"
+                    android:text="@string/emissionAnnual" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textResult"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:textColor="@color/pastelGreen"
+                android:textSize="24sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                app:layout_constraintBottom_toTopOf="@+id/resultsSummary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textResult"
+                app:layout_constraintVertical_bias="0.49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textTotal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_width="285dp"
+                        android:layout_height="285dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="65dp"
+                        android:layout_marginRight="55dp"
+                        android:background="@drawable/results_border"
+                        android:gravity="center"
+                        android:textColor="@color/pastelGreen"
+                        android:textSize="36sp" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pieChart"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <ScrollView
+                android:id="@+id/resultsSummary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layoutInstructions"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:id="@+id/textInstructions"
+                            app:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"
+                            android:text="@string/infoResults"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layoutInstructions"
+                        android:layout_width="310dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginLeft="55dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/container"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/textAverage"
+                            app:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="25dp"
+                            android:gravity="center"
+                            android:text="@string/textAverage"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:id="@+id/textAverageFigure"
+                            app:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="25dp"
+                            android:text="5,5 t"
+                            android:textColor="@color/pastelGreen"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textGoal"
+                            app:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="25dp"
+                            android:gravity="center"
+                            android:text="@string/textGoal"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:id="@+id/textGoalFigure"
+                            app:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"
+                            android:text="2,1 t"
+                            android:textColor="@color/pastelGreen"
+                            android:textSize="24sp" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/buttonLayout"
+                        android:layout_width="310dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="55dp"
+                        android:layout_marginBottom="30dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/nextButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginTop="20dp"
+                            android:onClick="onBacktoHome"
+                            android:background="@drawable/btn_bg"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="8dp"
+                            android:text="@string/home"
+                            android:textSize="16sp" />
+
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

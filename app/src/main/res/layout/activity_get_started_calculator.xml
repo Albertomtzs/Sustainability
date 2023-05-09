@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bbcopia2"
-    tools:context=".view.GetStartedCarbonFootprint">
+    tools:context=".view.GetStartedCalculator">
 
     <TextView
     android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="150dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/bienvenido"
         android:textAlignment="center"
@@ -56,11 +56,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="90dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/observacion_post_login"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#DCE8DD"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="270dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/poppins_semibold"
         android:padding="8dp"

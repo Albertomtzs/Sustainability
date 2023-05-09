@@ -1,5 +1,5 @@
 
-package com.ams.sustainability.login;
+package com.ams.sustainability.model.usecases;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ams.sustainability.R;
+import com.ams.sustainability.view.MainLogin;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
@@ -127,7 +128,7 @@ public class RegisterActivity extends Activity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(RegisterActivity.this, LoginResult.class);
+                        Intent intent = new Intent(RegisterActivity.this, MainLogin.class);
                         startActivity(intent);
                         finish();
                     }

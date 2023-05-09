@@ -1,6 +1,4 @@
-package com.ams.myapplication;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.ams.sustainability.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,138 +7,149 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ams.myapplication.data.ResultadosDAO;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.ams.sustainability.R;
+import com.ams.sustainability.data.repository.BackendLessDAO;
+import com.ams.sustainability.model.graph.ChartBuilder;
+import com.ams.sustainability.ui.navigation.NavigationFragment;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 
 import java.util.LinkedHashMap;
 
-public class ResultsPage extends AppCompatActivity {
+public class ResultsView extends AppCompatActivity {
 
-    private TextView label;
-    private TextView top;
-    private TextView ukAvgText;
-    private TextView ukAvgFig;
-    private TextView goalText;
+    private TextView top, label, avgText, avgFig, goalText;
     private TextView goalFig;
-
-    private String seccionesTotal;
     private double emissiomResult;
+
+    private int screenheight, screenwidth;
+
+    private BarChart barChart;
+    private PieChart pieChart;
 
     private float hogarf, comidaf, transportef, ropaf, tecnologiaf, otrosTransportef;
     static private LinkedHashMap<String, Float> emissiontable;
-
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results_page);
+        setContentView(R.layout.activity_results_view);
 
         label = findViewById(R.id.textTotal);
         top = findViewById(R.id.textResult);
-        ukAvgFig = findViewById(R.id.textAverageFigure);
-        ukAvgText = findViewById(R.id.textAverage);
+        avgFig = findViewById(R.id.textAverageFigure);
+        avgText = findViewById(R.id.textAverage);
         goalText = findViewById(R.id.textGoal);
         goalFig = findViewById(R.id.textGoalFigure);
 
-        emissiomResult = Double.parseDouble(getIntent().getStringExtra("RESULT_ALL"));
-        hogarf = Float.parseFloat(getIntent().getStringExtra("RESULT_HOUSE"));
-        comidaf = Float.parseFloat(getIntent().getStringExtra("RESULT_FOOD"));
-        transportef = Float.parseFloat(getIntent().getStringExtra("RESULT_TRANSPORT"));
-        otrosTransportef = Float.parseFloat(getIntent().getStringExtra("RESULT_TRANSPORT_OTHER"));
-        ropaf = Float.parseFloat(getIntent().getStringExtra("RESULT_CLOTHES"));
-        tecnologiaf = Float.parseFloat(getIntent().getStringExtra("RESULT_Technology"));
+        barChart = findViewById(R.id.barChart);
+        pieChart = findViewById(R.id.pieChart);
 
-        ResultadosDAO resultadosDAO = new ResultadosDAO(this);
-        resultadosDAO.insertRecordCarbon(hogarf,comidaf,ropaf,tecnologiaf,(Math.round((transportef + otrosTransportef) * 10.0) / 10.0));
+        /*emissiomResult = 6;
+        hogarf = 1f;
+        comidaf = 1f;
+        transportef = 1f;
+        ropaf = 1f;
+        tecnologiaf = 1f;
+        otrosTransportef = 1f;*/
 
-        BarChart barChart = findViewById(R.id.barChart);
-        PieChart pieChart = findViewById(R.id.pieChart);
+
+         emissiomResult = Double.parseDouble(getIntent().getStringExtra("RESULT_ALL"));
+         hogarf = Float.parseFloat(getIntent().getStringExtra("RESULT_HOUSE"));
+         comidaf = Float.parseFloat(getIntent().getStringExtra("RESULT_FOOD"));
+         transportef = Float.parseFloat(getIntent().getStringExtra("RESULT_TRANSPORT"));
+         otrosTransportef = Float.parseFloat(getIntent().getStringExtra("RESULT_TRANSPORT_OTHER"));
+         ropaf = Float.parseFloat(getIntent().getStringExtra("RESULT_CLOTHES"));
+         tecnologiaf = Float.parseFloat(getIntent().getStringExtra("RESULT_Technology"));
+
+        addTotal(emissiomResult);
+
+        BackendLessDAO resultadosDAO = new BackendLessDAO(this);
+        resultadosDAO.insertRecordCarbon(hogarf, comidaf, ropaf, tecnologiaf, (Math.round((transportef + otrosTransportef) * 10.0) / 10.0));
 
         emissiontable = new LinkedHashMap<>();
 
         emissiontable.put("Vivienda", hogarf);
-        emissiontable.put("Comida",comidaf);
+        emissiontable.put("Comida", comidaf);
         emissiontable.put("Transporte", (float) (Math.round((transportef + otrosTransportef) * 10.0) / 10.0));
-        emissiontable.put("ropa",ropaf);
-        emissiontable.put("Tecnología",tecnologiaf);
+        emissiontable.put("ropa", ropaf);
+        emissiontable.put("Tecnología", tecnologiaf);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int screenheight = displayMetrics.heightPixels;
-        int screenwidth = displayMetrics.widthPixels;
+        screenheight = displayMetrics.heightPixels;
+        screenwidth = displayMetrics.widthPixels;
 
-        ChartBuilder2.buildBarChart7(barChart,this,screenwidth,screenheight, emissiontable);
-        ChartBuilder2.buildPieChart2(pieChart,this,screenwidth,screenheight, emissiontable);
+        ChartBuilder.buildBarChart(barChart, this, screenwidth, screenheight, emissiontable);
+        ChartBuilder.buildPieChart(pieChart, this, screenwidth, screenheight, emissiontable, String.valueOf(emissiomResult));
 
-        addTotal(emissiomResult);
     }
 
-    public void backToStart(View view) {
-        Intent back = new Intent(this, MainActivity.class);
+
+    public void onBacktoHome(View view) {
+        Intent back = new Intent(this, NavigationFragment.class);
         startActivity(back);
         finish();
     }
 
-    public void backTips (View view) {
-        Intent tips = new Intent(this, Education.class);
-        startActivity(tips);
-    }
-
+    @SuppressLint("SetTextI18n")
     private void addTotal(double emissiomResult) {
 
-        top.setText("Your annual C02 Emissions:");
-        label.setText(emissiomResult + "t");
+        top.setText("Emisiones anuales de CO2:");
+        label.setText(String.valueOf(emissiomResult).replace(".",",") + "t");
     }
 
-    public void sendResults(View view){
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "My total weekly CO2 emissions is " + emissiomResult + "kg. Try the CARBN app to find out yours!");
-        sendIntent.setType("text/plain");
+    @SuppressLint("SetTextI18n")
+    public void weeklyResults(View v) {
+        double m = Math.round((emissiomResult / 52) * 10000) * 10d / 100d;
 
-        Intent shareIntent = Intent.createChooser(sendIntent, null);
-        startActivity(shareIntent);
+        top.setText("Emisiones semanales de CO2:");
+        label.setText(String.valueOf(m).replace(".",",") + " Kg");
+
+        avgText.setText("El promedio de emisiones semanal de CO2 en España son:");
+        avgFig.setText("106,2 kg");
+
+        goalText.setText("Tu objetivo semanal sostenible de emisiones de CO2 debería ser:");
+        goalFig.setText("40,4 kg");
+
+        ChartBuilder.buildBarChart(barChart, this, screenwidth, screenheight, emissiontable);
+        ChartBuilder.buildPieChart(pieChart, this, screenwidth, screenheight, emissiontable, String.valueOf(emissiomResult));
     }
 
-    public void weeklyResults (View v){
-        emissiomResult = Double.parseDouble(seccionesTotal)/52;
+    @SuppressLint("SetTextI18n")
+    public void monthlyResults(View v) {
+        double m = Math.round((emissiomResult / 12) * 10000) * 10d / 100d;
+        top.setText("Emisiones mensuales de CO2:");
+        label.setText(String.valueOf(m).replace(".",",") + " t");
 
-        top.setText("Your Weekly C02 Emissions:");
-        label.setText(emissiomResult + " t");
+        avgText.setText("El promedio de emisiones mensual de CO2 en España son:");
+        avgFig.setText("0,46 t");
 
-        ukAvgText.setText("UK average weekly CO2 emissions:");
-        ukAvgFig.setText("190kg");
+        goalText.setText("Tu objetivo mensual sostenible de CO2 sostenible debería ser:");
+        goalFig.setText("0,18 t");
 
-        goalText.setText("Your weekly CO2 emissions goal should be:") ;
-        goalFig.setText("50kg");
+        ChartBuilder.buildBarChart(barChart, this, screenwidth, screenheight, emissiontable);
+        ChartBuilder.buildPieChart(pieChart, this, screenwidth, screenheight, emissiontable, String.valueOf(emissiomResult));
     }
 
-    public void monthlyResults (View v){
-        double m = emissiomResult / 4;
-        top.setText("Your Monthly C02 Emissions:");
-        label.setText(m + " t");
+    @SuppressLint("SetTextI18n")
+    public void annualResults(View v) {
 
-        ukAvgText.setText("UK average monthly CO2 emissions:");
-        ukAvgFig.setText("825kg");
+        double m = emissiomResult;
+        top.setText("Emisiones anuales de CO2:");
+        label.setText(String.valueOf(m).replace(".",","));
 
-        goalText.setText("Your monthly CO2 emissions goal should be:") ;
-        goalFig.setText("600kg");
-    }
+        avgText.setText("El promedio de emisiones anual de CO2 en España son:");
+        avgFig.setText("5,5 t");
 
-    public void annualResults (View v){
-        emissiomResult = Double.parseDouble(seccionesTotal);
+        goalText.setText("Tu objetivo anual sostenible de CO2 sostenible debería ser:");
+        goalFig.setText("2,1 t");
 
-        double o = emissiomResult;
-        top.setText("Your Annual C02 Emissions:");
-        label.setText(o + " t");
-
-        ukAvgText.setText("UK average yearly CO2 emissions:");
-        ukAvgFig.setText("9,880kg");
-
-        goalText.setText("Your yearly CO2 emissions goal should be:") ;
-        goalFig.setText("7,000kg");
+        ChartBuilder.buildBarChart(barChart, this, screenwidth, screenheight, emissiontable);
+        ChartBuilder.buildPieChart(pieChart, this, screenwidth, screenheight, emissiontable, String.valueOf(emissiomResult));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ams.sustainability.model;
+package com.ams.sustainability.model.repository;
 
 public class Transport {
 
@@ -226,10 +226,10 @@ public class Transport {
         }
 
 
-        return Math.round(emissionTransportCar/1000*10.0)/10.0;
+        return Math.round(emissionTransportCar / 1000 * 10.0) / 10.0;
     }
 
-    public double TransportCalculatorMoto(){
+    public double TransportCalculatorMoto() {
 
         double emissionTransportMoto = 0;
 
@@ -278,7 +278,7 @@ public class Transport {
         }
 
 
-        return Math.round(emissionTransportMoto/1000*10.0)/10.0;
+        return Math.round(emissionTransportMoto / 1000 * 10.0) / 10.0;
     }
 }
 

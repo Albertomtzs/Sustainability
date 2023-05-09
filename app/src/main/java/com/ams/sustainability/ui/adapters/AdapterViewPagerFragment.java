@@ -1,4 +1,4 @@
-package com.ams.myapplication.adapter;
+package com.ams.sustainability.ui.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -7,11 +7,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
 
-public class AdapterViewPager extends FragmentStateAdapter {
+public class AdapterViewPagerFragment extends FragmentStateAdapter {
 
     ArrayList<Fragment> fragment;
 
-    public AdapterViewPager(@NonNull FragmentActivity fragmentActivity, ArrayList<Fragment> fragment) {
+    public AdapterViewPagerFragment(@NonNull FragmentActivity fragmentActivity, ArrayList<Fragment> fragment) {
         super(fragmentActivity);
         this.fragment = fragment;
     }

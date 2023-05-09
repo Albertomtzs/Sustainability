@@ -13,12 +13,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:layout_gravity="center"
             android:fontFamily="@font/poppins_semibold"
-            android:text="@string/pregunta_generica_vivienda"
+            android:text="@string/pregunta_generica_ropa"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -40,11 +40,11 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="0dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="0dp" />
 
             <EditText
-                android:id="@+id/editTextRopa1"
+                android:id="@+id/etPantalon"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
@@ -77,7 +77,7 @@
                 tools:layout_editor_absoluteY="58dp" />
 
             <EditText
-                android:id="@+id/editTextRopa2"
+                android:id="@+id/etOtrosPantalones"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -88,11 +88,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa3"
+                app:layout_constraintBottom_toTopOf="@id/etCamisas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa2"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa1" />
+                app:layout_constraintTop_toBottomOf="@+id/etPantalon" />
 
             <TextView
                 android:id="@+id/ropa3"
@@ -111,7 +111,7 @@
                 tools:layout_editor_absoluteX="12dp" />
 
             <EditText
-                android:id="@+id/editTextRopa3"
+                android:id="@+id/etCamisas"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -122,11 +122,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa4"
+                app:layout_constraintBottom_toTopOf="@id/etCamisetas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa3"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa2" />
+                app:layout_constraintTop_toBottomOf="@+id/etOtrosPantalones" />
 
             <TextView
                 android:id="@+id/ropa4"
@@ -145,7 +145,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa3" />
 
             <EditText
-                android:id="@+id/editTextRopa4"
+                android:id="@+id/etCamisetas"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -156,11 +156,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa5"
+                app:layout_constraintBottom_toTopOf="@id/etVestidos"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa4"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa3" />
+                app:layout_constraintTop_toBottomOf="@+id/etCamisas" />
 
             <TextView
                 android:id="@+id/ropa5"
@@ -179,7 +179,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa4" />
 
             <EditText
-                android:id="@+id/editTextRopa5"
+                android:id="@+id/etVestidos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -190,11 +190,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa6"
+                app:layout_constraintBottom_toTopOf="@id/etCalcetines"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa5"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa4" />
+                app:layout_constraintTop_toBottomOf="@+id/etCamisetas" />
 
             <TextView
                 android:id="@+id/ropa6"
@@ -213,7 +213,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa5" />
 
             <EditText
-                android:id="@+id/editTextRopa6"
+                android:id="@+id/etCalcetines"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -224,11 +224,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa7"
+                app:layout_constraintBottom_toTopOf="@id/etChaquetas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa6"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa5" />
+                app:layout_constraintTop_toBottomOf="@+id/etVestidos" />
 
             <TextView
                 android:id="@+id/ropa7"
@@ -247,7 +247,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa6" />
 
             <EditText
-                android:id="@+id/editTextRopa7"
+                android:id="@+id/etChaquetas"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -258,11 +258,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa8"
+                app:layout_constraintBottom_toTopOf="@id/etAbrigos"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa7"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa6" />
+                app:layout_constraintTop_toBottomOf="@+id/etCalcetines" />
 
             <TextView
                 android:id="@+id/ropa8"
@@ -273,7 +273,7 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
-                android:text="@string/pregunta_ropa7"
+                android:text="@string/pregunta_ropa8"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -281,7 +281,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa7" />
 
             <EditText
-                android:id="@+id/editTextRopa8"
+                android:id="@+id/etAbrigos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -292,11 +292,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa9"
+                app:layout_constraintBottom_toTopOf="@id/etJerseys"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa8"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa7" />
+                app:layout_constraintTop_toBottomOf="@+id/etChaquetas" />
 
             <TextView
                 android:id="@+id/ropa9"
@@ -315,7 +315,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa8" />
 
             <EditText
-                android:id="@+id/editTextRopa9"
+                android:id="@+id/etJerseys"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -326,11 +326,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa10"
+                app:layout_constraintBottom_toTopOf="@id/etZapatos"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa9"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa8" />
+                app:layout_constraintTop_toBottomOf="@+id/etAbrigos" />
 
             <TextView
                 android:id="@+id/ropa10"
@@ -349,7 +349,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa9" />
 
             <EditText
-                android:id="@+id/editTextRopa10"
+                android:id="@+id/etZapatos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -360,11 +360,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa11"
+                app:layout_constraintBottom_toTopOf="@id/etZapatillasDeportivas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa10"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa9" />
+                app:layout_constraintTop_toBottomOf="@+id/etJerseys" />
 
             <TextView
                 android:id="@+id/ropa11"
@@ -383,7 +383,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ropa10" />
 
             <EditText
-                android:id="@+id/editTextRopa11"
+                android:id="@+id/etZapatillasDeportivas"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -394,11 +394,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextRopa12"
+                app:layout_constraintBottom_toTopOf="@id/etRopaInterior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa11"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa10" />
+                app:layout_constraintTop_toBottomOf="@+id/etZapatos" />
 
 
             <TextView
@@ -417,7 +417,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextRopa12"
+                android:id="@+id/etRopaInterior"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -433,7 +433,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/ropa12"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRopa11" />
+                app:layout_constraintTop_toBottomOf="@+id/etZapatillasDeportivas" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

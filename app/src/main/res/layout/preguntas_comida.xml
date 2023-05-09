@@ -13,10 +13,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:layout_gravity="center"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/pregunta_generica_alimentacion"
             android:textColor="@color/white"
@@ -38,19 +38,19 @@
                 android:text="@string/pregunta_alimentacion1"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/editTextAlimentacion1"
+                app:layout_constraintEnd_toStartOf="@+id/etHortalizas"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion1"
+                android:id="@+id/etHortalizas"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -78,7 +78,7 @@
                 tools:layout_editor_absoluteY="58dp" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion2"
+                android:id="@+id/etFruta"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -86,16 +86,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion3"
+                app:layout_constraintBottom_toTopOf="@id/etCereales"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion2"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion1" />
+                app:layout_constraintTop_toBottomOf="@+id/etHortalizas" />
 
             <TextView
                 android:id="@+id/alimentacion3"
@@ -114,7 +114,7 @@
                 tools:layout_editor_absoluteX="12dp" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion3"
+                android:id="@+id/etCereales"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -122,16 +122,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion4"
+                app:layout_constraintBottom_toTopOf="@id/etLeche"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion3"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion2" />
+                app:layout_constraintTop_toBottomOf="@+id/etFruta" />
 
             <TextView
                 android:id="@+id/alimentacion4"
@@ -150,7 +150,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion3" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion4"
+                android:id="@+id/etLeche"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -158,16 +158,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/litros"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion5"
+                app:layout_constraintBottom_toTopOf="@id/etHuevos"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion4"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion3" />
+                app:layout_constraintTop_toBottomOf="@+id/etCereales" />
 
             <TextView
                 android:id="@+id/alimentacion5"
@@ -186,7 +186,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion4" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion5"
+                android:id="@+id/etHuevos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -194,16 +194,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="Docenas"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion6"
+                app:layout_constraintBottom_toTopOf="@id/etFrutosSecos"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion5"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion4" />
+                app:layout_constraintTop_toBottomOf="@+id/etLeche" />
 
             <TextView
                 android:id="@+id/alimentacion6"
@@ -222,7 +222,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion5" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion6"
+                android:id="@+id/etFrutosSecos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -230,16 +230,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion7"
+                app:layout_constraintBottom_toTopOf="@id/etDulces"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion6"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion5" />
+                app:layout_constraintTop_toBottomOf="@+id/etHuevos" />
 
             <TextView
                 android:id="@+id/alimentacion7"
@@ -258,7 +258,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion6" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion7"
+                android:id="@+id/etDulces"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -266,16 +266,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion8"
+                app:layout_constraintBottom_toTopOf="@id/etPescado"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion7"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion6" />
+                app:layout_constraintTop_toBottomOf="@+id/etFrutosSecos" />
 
             <TextView
                 android:id="@+id/alimentacion8"
@@ -294,7 +294,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion7" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion8"
+                android:id="@+id/etPescado"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -302,16 +302,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion9"
+                app:layout_constraintBottom_toTopOf="@id/etMarisco"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion8"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion7" />
+                app:layout_constraintTop_toBottomOf="@+id/etDulces" />
 
             <TextView
                 android:id="@+id/alimentacion9"
@@ -330,7 +330,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion8" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion9"
+                android:id="@+id/etMarisco"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -338,16 +338,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion10"
+                app:layout_constraintBottom_toTopOf="@id/etAceite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion9"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion8" />
+                app:layout_constraintTop_toBottomOf="@+id/etPescado" />
 
             <TextView
                 android:id="@+id/alimentacion10"
@@ -366,7 +366,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion9" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion10"
+                android:id="@+id/etAceite"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -374,16 +374,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/litros"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion11"
+                app:layout_constraintBottom_toTopOf="@id/etPavo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion10"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion9" />
+                app:layout_constraintTop_toBottomOf="@+id/etMarisco" />
 
             <TextView
                 android:id="@+id/alimentacion11"
@@ -402,7 +402,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion10" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion11"
+                android:id="@+id/etPavo"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -410,16 +410,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion12"
+                app:layout_constraintBottom_toTopOf="@id/etPollo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion11"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion10" />
+                app:layout_constraintTop_toBottomOf="@+id/etAceite" />
 
             <TextView
                 android:id="@+id/alimentacion12"
@@ -438,7 +438,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion11" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion12"
+                android:id="@+id/etPollo"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -446,16 +446,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion13"
+                app:layout_constraintBottom_toTopOf="@id/etCerdo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion12"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion11" />
+                app:layout_constraintTop_toBottomOf="@+id/etPavo" />
 
             <TextView
                 android:id="@+id/alimentacion13"
@@ -474,7 +474,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion12" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion13"
+                android:id="@+id/etCerdo"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -482,16 +482,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion14"
+                app:layout_constraintBottom_toTopOf="@id/etTernera"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion13"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion12" />
+                app:layout_constraintTop_toBottomOf="@+id/etPollo" />
 
             <TextView
                 android:id="@+id/alimentacion14"
@@ -510,7 +510,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion13" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion14"
+                android:id="@+id/etTernera"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -518,16 +518,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/kg"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion15"
+                app:layout_constraintBottom_toTopOf="@id/etCerveza"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion14"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion13" />
+                app:layout_constraintTop_toBottomOf="@+id/etCerdo" />
 
             <TextView
                 android:id="@+id/alimentacion15"
@@ -546,7 +546,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion14" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion15"
+                android:id="@+id/etCerveza"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -554,16 +554,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/litros"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion16"
+                app:layout_constraintBottom_toTopOf="@id/etRefrescos"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion15"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion14" />
+                app:layout_constraintTop_toBottomOf="@+id/etTernera" />
 
             <TextView
                 android:id="@+id/alimentacion16"
@@ -582,7 +582,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion15" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion16"
+                android:id="@+id/etRefrescos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -590,16 +590,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/litros"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion17"
+                app:layout_constraintBottom_toTopOf="@id/etLicores"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion16"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion15" />
+                app:layout_constraintTop_toBottomOf="@+id/etCerveza" />
 
             <TextView
                 android:id="@+id/alimentacion17"
@@ -619,7 +619,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/alimentacion16" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion17"
+                android:id="@+id/etLicores"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -627,16 +627,16 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/litros"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextAlimentacion18"
+                app:layout_constraintBottom_toTopOf="@id/etVino"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion17"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion16" />
+                app:layout_constraintTop_toBottomOf="@+id/etRefrescos" />
 
             <TextView
                 android:id="@+id/alimentacion18"
@@ -654,7 +654,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextAlimentacion18"
+                android:id="@+id/etVino"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -662,7 +662,7 @@
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/litros"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -671,7 +671,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/alimentacion18"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAlimentacion17" />
+                app:layout_constraintTop_toBottomOf="@+id/etLicores" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

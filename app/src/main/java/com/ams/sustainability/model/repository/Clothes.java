@@ -1,4 +1,4 @@
-package com.ams.sustainability.model;
+package com.ams.sustainability.model.repository;
 
 public class Clothes {
 
@@ -131,9 +131,9 @@ public class Clothes {
 
     public double ClothesCalculator() {
 
-        return Math.round((getPantalonVaquero()*21.60 + getOtroPantalon()*10.64 + getCamisas()*11.04 + getCamisetas()*4.75
-                + getVestidos()*49.10 + getCalcetines()*0.30 + getChaquetas()*26.97 + getAbrigos()*62.25 + getJerseys()*24.30
-                + getZapatos()*10 + getZapatillasDeporte()*14 + getRopaInterior()*1.37)/1000 * 10.0) / 10.0;
+        return Math.round((getPantalonVaquero() * 21.60 + getOtroPantalon() * 10.64 + getCamisas() * 11.04 + getCamisetas() * 4.75
+                + getVestidos() * 49.10 + getCalcetines() * 0.30 + getChaquetas() * 26.97 + getAbrigos() * 62.25 + getJerseys() * 24.30
+                + getZapatos() * 10 + getZapatillasDeporte() * 14 + getRopaInterior() * 1.37) / 1000 * 10.0) / 10.0;
 
     }
 }

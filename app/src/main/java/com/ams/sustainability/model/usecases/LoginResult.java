@@ -1,5 +1,5 @@
 
-package com.ams.sustainability.login;
+package com.ams.sustainability.model.usecases;
 
 
 import android.app.Activity;

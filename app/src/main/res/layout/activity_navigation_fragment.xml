@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.navigation.NavigationFragment">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerPostLogin"
@@ -26,11 +26,11 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/grey_100"
             android:layout_alignParentBottom="true"
-            app:backgroundTint="@color/white"
-            app:itemIconTint="@color/color_item_nav"
-            app:itemTextColor="@color/color_item_nav"
-            app:menu="@menu/menu_nav" />
+            app:itemIconTint="@color/color_item_navigation_fragment"
+            app:itemTextColor="@color/color_item_navigation_fragment"
+            app:menu="@menu/menu_navigation_fragment" />
 
     </androidx.cardview.widget.CardView>
 

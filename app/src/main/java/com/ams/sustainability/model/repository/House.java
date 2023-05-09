@@ -1,4 +1,4 @@
-package com.ams.sustainability.model;
+package com.ams.sustainability.model.repository;
 
 public class House {
 
@@ -104,10 +104,10 @@ public class House {
         if (getRenovables().equals("Sí")) {
 
             return Math.round(((getGasNatural() * 0.203 + getGasoil() * 2.868 + getButano() * 2.964 + getPropano() * 1.498 + getCarbon() * 2.444
-                    + getPellets() * 0.073)/getNumPersonas())/1000 * 10.0)/10.0;
+                    + getPellets() * 0.073) / getNumPersonas()) / 1000 * 10.0) / 10.0;
         } else {
             return Math.round(((getElectricidad() * 0.2460 + getGasNatural() * 0.203 + getGasoil() * 2.868 + getButano() * 2.964
-                    + getPropano() * 1.498 + getCarbon() * 2.444 + getPellets() * 0.073)/getNumPersonas())/1000 * 10.0)/10.0;
+                    + getPropano() * 1.498 + getCarbon() * 2.444 + getPellets() * 0.073) / getNumPersonas()) / 1000 * 10.0) / 10.0;
         }
     }
 }

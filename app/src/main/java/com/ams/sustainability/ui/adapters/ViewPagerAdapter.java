@@ -1,4 +1,4 @@
-package com.ams.sustainability.ui;
+package com.ams.sustainability.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

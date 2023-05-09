@@ -1,5 +1,5 @@
 
-package com.ams.sustainability.login;
+package com.ams.sustainability.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.ams.sustainability.R;
-import com.ams.sustainability.view.GetStartedCalculator;
+import com.ams.sustainability.model.usecases.RegisterActivity;
+import com.ams.sustainability.model.usecases.RestorePasswordActivity;
 import com.ams.sustainability.data.common.DefaultCallback;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;

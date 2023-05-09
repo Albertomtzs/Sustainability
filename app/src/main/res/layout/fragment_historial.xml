@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bbcopia2"
-    tools:context=".ResultsPage">
+    tools:context=".ui.fragment.FragmentHistorial">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -18,259 +18,37 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
-
-                <Button
-                    android:id="@+id/weeklyButton"
-                    android:layout_width="65dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_border_blue"
-                    android:onClick="weeklyResults"
-                    android:text="@string/weeklyButton"
-                    android:textColor="@color/pastelBlue"
-                    android:textSize="10dp" />
-
-                <Button
-                    android:id="@+id/monthlyButton"
-                    android:layout_width="65dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_border_blue"
-                    android:onClick="monthlyResults"
-                    android:text="@string/monthlyTitle"
-                    android:textColor="@color/pastelBlue"
-                    android:textSize="10dp" />
-
-                <Button
-                    android:id="@+id/annualButton"
-                    android:layout_width="65dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_border_blue"
-                    android:onClick="annualResults"
-                    android:text="@string/annualTitle"
-                    android:textColor="@color/pastelBlue"
-                    android:textSize="10dp" />
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/textResult"
-                android:layout_width="320dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
-                android:textColor="@color/pastelGreen"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/yourHistorial"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <HorizontalScrollView
-                android:id="@+id/horizontalScrollView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:fillViewport="true"
-                app:layout_constraintBottom_toTopOf="@+id/resultsSummary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textResult"
-                app:layout_constraintVertical_bias="0.49">
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1" />
 
-                <LinearLayout
-                    android:id="@+id/layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textTotal"
-                        android:layout_width="285dp"
-                        android:layout_height="285dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="65dp"
-                        android:layout_marginRight="55dp"
-                        android:background="@drawable/results_border"
-                        android:gravity="center"
-                        android:textColor="@color/pastelGreen"
-                        android:textSize="36sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barChart"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        />
-
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/lineChart"
-                        android:layout_width="350dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        />
-
-                </LinearLayout>
-
-
-            </HorizontalScrollView>
-
-            <ScrollView
-                android:id="@+id/resultsSummary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
+                android:layout_width="0dp"
                 android:layout_marginTop="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/layoutInstructions"
-                        android:layout_width="310dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="55dp"
-                        android:layout_marginLeft="55dp"
-                        android:layout_marginBottom="20dp"
-                        android:orientation="vertical"
-                        android:paddingLeft="10dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView">
-
-                        <TextView
-                            android:id="@+id/textInstructions"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="15dp"
-                            android:text="Swipe left to see your results in more detail..."
-                            android:textColor="#ffffff"
-                            android:textSize="18sp"
-                            app:fontFamily="@font/poppins_semibold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="310dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="55dp"
-                        android:layout_marginLeft="55dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@drawable/container"
-                        android:orientation="vertical"
-                        android:padding="10dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layoutInstructions">
-
-                        <TextView
-                            android:id="@+id/textAverage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="25dp"
-                            android:gravity="center"
-                            android:text="@string/textAverage"
-                            android:textColor="#ffffff"
-                            android:textSize="18sp"
-                            android:textStyle="italic"
-                            app:fontFamily="@font/poppins_semibold" />
-
-                        <TextView
-                            android:id="@+id/textAverageFigure"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="25dp"
-                            android:text="190kg"
-                            android:textColor="@color/pastelGreen"
-                            android:textSize="24sp"
-                            app:fontFamily="@font/poppins_semibold" />
-
-                        <TextView
-                            android:id="@+id/textGoal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="25dp"
-                            android:gravity="center"
-                            android:text="@string/textGoal"
-                            android:textColor="#ffffff"
-                            android:textSize="18sp"
-                            android:textStyle="italic"
-                            app:fontFamily="@font/poppins_semibold" />
-
-                        <TextView
-                            android:id="@+id/textGoalFigure"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="15dp"
-                            android:text="50kg"
-                            android:textColor="@color/pastelGreen"
-                            android:textSize="24sp"
-                            app:fontFamily="@font/poppins_semibold" />
-                    </LinearLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/buttonLayout"
-                        android:layout_width="310dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="55dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="55dp"
-                        android:layout_marginBottom="30dp"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/nextButton"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="20dp"
-                            android:background="@drawable/small_green_button"
-                            android:onClick="backToStart"
-                            android:text="@string/home"
-                            android:textColor="@color/pastelGreen"
-                            android:textSize="14dp" />
-
-                        <Button
-                            android:id="@+id/shareButton"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="122dp"
-                            android:background="@drawable/button_border_blue"
-                            android:onClick="sendResults"
-                            android:text="Share"
-                            android:textColor="@color/pastelBlue"
-                            android:textSize="14dp" />
-
-                        <Button
-                            android:id="@+id/tipButton"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="20dp"
-                            android:background="@drawable/small_pink_button"
-                            android:onClick="backTips"
-                            android:text="@string/tips"
-                            android:textColor="@color/pastelPink"
-                            android:textSize="14dp" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </ScrollView>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="100dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
     </ScrollView>

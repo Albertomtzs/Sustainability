@@ -6,22 +6,21 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.ams.sustainability.R;
-import com.ams.sustainability.login.MainLogin;
 
-public class GetStarted extends AppCompatActivity {
+public class GetStartedCarbonFootprint extends AppCompatActivity {
 
     Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_started);
+        setContentView(R.layout.activity_get_started_carbon_footprint);
 
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(GetStarted.this, MainLogin.class);
+                Intent i = new Intent(GetStartedCarbonFootprint.this, MainLogin.class);
                 startActivity(i);
                 finish();
             }

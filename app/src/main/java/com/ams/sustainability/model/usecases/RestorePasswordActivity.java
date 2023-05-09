@@ -1,5 +1,5 @@
 
-package com.ams.sustainability.login;
+package com.ams.sustainability.model.usecases;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.common.DefaultCallback;
+import com.ams.sustainability.view.MainLogin;
 import com.backendless.Backendless;
 
 public class RestorePasswordActivity extends Activity {

@@ -11,4 +11,19 @@
     <color name="grey">#808080</color>
     <color name="grey_100">#303841</color>
     <color name="celeste">#86F7EE</color>
+    <color name="pastelGreen">#7DCEA0</color>
+    <color name="pastelPeach">#E6B0AA</color>
+
+    <color name="pastelPink">#F5B7B1</color>
+    <color name="pastelPurple">#D2B4DE</color>
+    <color name="pastelBlue">#A9CCE3</color>
+    <color name="pastelRed">#FFCDD2</color>
+    <color name="pastelYellow">#F9E79F</color>
+    <color name="pastelOrange">#E59866</color>
+    <color name="pastelTurquoise">#73C6B6</color>
+    <color name="pastelTeal">#76D7C4</color>
+    <color name="chart_color">#FF4081</color>
+    <color name="background_color">#FFFFFF</color>
+    <color name="chart_grid">#CCCCCC</color>
+
 </resources>

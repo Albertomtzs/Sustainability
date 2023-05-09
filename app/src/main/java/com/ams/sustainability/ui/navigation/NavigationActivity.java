@@ -1,4 +1,4 @@
-package com.ams.sustainability.ui;
+package com.ams.sustainability.ui.navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.ams.sustainability.R;
+import com.ams.sustainability.view.GetStartedCarbonFootprint;
 import com.ams.sustainability.ui.adapters.ViewPagerAdapter;
 
 public class NavigationActivity extends AppCompatActivity {
 
     ViewPager slideViewPager;
     LinearLayout dotIndicator;
-    Button backButton, nextButton, skipButton;
+    Button btnBack, btnNext, btnSkip;
     TextView[] dots;
     ViewPagerAdapter viewPagerAdapter;
 
@@ -32,14 +33,16 @@ public class NavigationActivity extends AppCompatActivity {
         public void onPageSelected(int position) {
             setDotIndicator(position);
             if (position > 0) {
-                backButton.setVisibility(View.VISIBLE);
+                btnBack.setVisibility(View.VISIBLE);
             } else {
-                backButton.setVisibility(View.INVISIBLE);
+                btnBack.setVisibility(View.INVISIBLE);
             }
             if (position == 3) {
-                nextButton.setText("Comenzar");
+                btnSkip.setVisibility(View.INVISIBLE);
+                btnNext.setText("Comenzar");
             } else {
-                nextButton.setText("Siguiente");
+                btnSkip.setVisibility(View.VISIBLE);
+                btnNext.setText("Siguiente");
             }
         }
 
@@ -52,10 +55,10 @@ public class NavigationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-        backButton = findViewById(R.id.backButton);
-        nextButton = findViewById(R.id.nextButton);
-        skipButton = findViewById(R.id.skipButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        btnBack = findViewById(R.id.backButton);
+        btnNext = findViewById(R.id.nextButton);
+        btnSkip = findViewById(R.id.skipButton);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getItem(0) > 0) {
@@ -63,22 +66,22 @@ public class NavigationActivity extends AppCompatActivity {
                 }
             }
         });
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getItem(0) < 3)
                     slideViewPager.setCurrentItem(getItem(1), true);
                 else {
-                    Intent i = new Intent(NavigationActivity.this, GetStarted.class);
+                    Intent i = new Intent(NavigationActivity.this, GetStartedCarbonFootprint.class);
                     startActivity(i);
                     finish();
                 }
             }
         });
-        skipButton.setOnClickListener(new View.OnClickListener() {
+        btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(NavigationActivity.this, GetStarted.class);
+                Intent i = new Intent(NavigationActivity.this, GetStartedCarbonFootprint.class);
                 startActivity(i);
                 finish();
             }
@@ -101,7 +104,7 @@ public class NavigationActivity extends AppCompatActivity {
             dots[i].setTextColor(getResources().getColor(R.color.grey, getApplicationContext().getTheme()));
             dotIndicator.addView(dots[i]);
         }
-        dots[position].setTextColor(getResources().getColor(R.color.lavender, getApplicationContext().getTheme()));
+        dots[position].setTextColor(getResources().getColor(R.color.pastelGreen, getApplicationContext().getTheme()));
     }
 
     private int getItem(int i) {

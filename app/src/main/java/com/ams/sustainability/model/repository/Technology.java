@@ -1,4 +1,4 @@
-package com.ams.sustainability.model;
+package com.ams.sustainability.model.repository;
 
 public class Technology {
 

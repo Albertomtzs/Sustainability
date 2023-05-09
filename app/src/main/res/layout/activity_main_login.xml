@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bbcopia2"
-    tools:context=".login.MainLogin">
+    tools:context=".view.MainLogin">
 
     <LinearLayout
         android:layout_width="match_parent"

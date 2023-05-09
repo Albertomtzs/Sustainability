@@ -38,40 +38,10 @@
         android:layout_marginStart="221dp"
         android:text="2"/>
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/vivienda"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/completeText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/allQuestion"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -80,9 +50,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/vivienda"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-
+            <TextView
+                android:id="@+id/completeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/allQuestion"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/scrollLayout"
@@ -104,26 +99,26 @@
                     android:id="@+id/btnNext"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/btn_bg"
                     android:fontFamily="@font/poppins_semibold"
                     android:onClick="onNextClicked"
-                    android:text="Siguiente"
+                    android:text="@string/next"
                     android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btnBack"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_alignParentStart="true"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_alignParentStart="true"
                     android:background="@drawable/btn_bg"
                     android:fontFamily="@font/poppins_semibold"
                     android:onClick="onBackClicked"
-                    android:text="Atrás"
+                    android:text="@string/back"
                     android:textColor="@color/white" />
 
             </RelativeLayout>

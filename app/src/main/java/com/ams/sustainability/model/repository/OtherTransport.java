@@ -1,4 +1,4 @@
-package com.ams.sustainability.model;
+package com.ams.sustainability.model.repository;
 
 public class OtherTransport {
 
@@ -102,8 +102,8 @@ public class OtherTransport {
 
     public double OtherTransportCalculator() {
 
-        return Math.round((getAve()*0.00313 + getLargaDistancia()*0.0033 + getCercanias()*0.0047 + getAutobusUrbano()*0.0081 + getAutocar()*0.0028
-                + getMetro()*0.00501 + getVueloCortaDistancia()*0.1578 + getVueloMediaDistancia()*0.1624 + getVueloLargaDistancia()*0.1628)/1000*10.0)/10.0;
+        return Math.round((getAve() * 0.00313 + getLargaDistancia() * 0.0033 + getCercanias() * 0.0047 + getAutobusUrbano() * 0.0081 + getAutocar() * 0.0028
+                + getMetro() * 0.00501 + getVueloCortaDistancia() * 0.1578 + getVueloMediaDistancia() * 0.1624 + getVueloLargaDistancia() * 0.1628) / 1000 * 10.0) / 10.0;
 
     }
 }

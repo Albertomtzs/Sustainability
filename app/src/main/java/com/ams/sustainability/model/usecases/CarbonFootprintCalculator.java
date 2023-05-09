@@ -1,4 +1,4 @@
-package com.ams.sustainability.model;
+package com.ams.sustainability.model.usecases;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,9 +15,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ams.sustainability.PostLogin;
+import com.ams.sustainability.view.GetStartedCalculator;
 import com.ams.sustainability.R;
 import com.ams.sustainability.model.repository.Clothes;
 import com.ams.sustainability.model.repository.Food;
@@ -84,7 +85,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_carbon_footprint);
+        setContentView(R.layout.activity_carbon_footprint_calculator);
 
         LinearLayout layout = findViewById(R.id.scrollLayout);
         title = (TextView) findViewById(R.id.title);
@@ -105,31 +106,31 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
             case 1:
                 title.setText(R.string.alimentacion);
                 house = getIntent().getStringExtra("RESULT_HOUSE");
-                resultInput.setText(house);
+                resultInput.setText(house.replace(".", ","));
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_comida, null));
                 break;
             case 2:
                 title.setText(R.string.ropa);
                 food = getIntent().getStringExtra("RESULT_HOUSE_FOOD");
-                resultInput.setText(food);
+                resultInput.setText(food.replace(".", ","));
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_ropa, null));
                 break;
             case 3:
                 title.setText(R.string.transporte);
                 clothes = getIntent().getStringExtra("RESULT_HOUSE_FOOD_CLOTHES");
-                resultInput.setText(clothes);
+                resultInput.setText(clothes.replace(".", ","));
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_transporte, null));
                 break;
             case 4:
                 title.setText(R.string.otros_transportes);
                 transport = getIntent().getStringExtra("RESULT_HOUSE_FOOD_CLOTHES_TRANSPORT");
-                resultInput.setText(transport);
+                resultInput.setText(transport.replace(".", ","));
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_otros_transportes, null));
                 break;
             case 5:
                 title.setText(R.string.tecnologia);
                 otherTransport = getIntent().getStringExtra("RESULT_HOUSE_FOOD_CLOTHES_TRANSPORT_TRANSPORT_OTHER");
-                resultInput.setText(otherTransport);
+                resultInput.setText(otherTransport.replace(".", ","));
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_tecnologia, null));
                 break;
 
@@ -140,7 +141,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         Intent back;
         if (stage == 0) {
-            back = new Intent(this, PostLogin.class);
+            back = new Intent(this, GetStartedCalculator.class);
         } else {
             back = new Intent(this, CarbonFootprintCalculator.class);
             stage--;
@@ -214,7 +215,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         House house = new House(getRadioGroupSelectedText(radioGroupHouse), numPersonas, electricidad, gasNatural, gasoil, butano, propano, carbon, pellets);
 
-        resultInput.setText(String.valueOf(house.HouseCalculator()));
+        resultInput.setText(String.valueOf(house.HouseCalculator()).replace(".", ","));
         System.out.println("*******Prueba resultado vivienda: " + house.HouseCalculator());
 
         Intent intentHouse = new Intent(this, CarbonFootprintCalculator.class);
@@ -253,7 +254,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         Food food = new Food(hortalizas, fruta, frutos_secos, pescado, mariscos, pavo, pollo, cerdo, ternera, huevos, cereales, dulces, aceites, refrescos, cerveza, vino, licores, leche);
 
         sumCarbonFootprint = Double.parseDouble(resultadoHouseDouble) + food.FoodCalculator();
-        resultInput.setText(String.valueOf(sumCarbonFootprint));
+        resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
         System.out.println("Prueba resultado: " + food.FoodCalculator());
         System.out.println("Prueba resultado suma secciones Vivienda y alimentacion: " + sumCarbonFootprint);
@@ -290,7 +291,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         Clothes clothes = new Clothes(pantalonVaquero, otroPantalon, camisas, camisetas, vestidos, calcetines, chaquetas, abrigos, jerseys, zapatos, zapatillasDeporte, ropaInterior);
 
         sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + clothes.ClothesCalculator()) * 10d) / 10d;
-        resultInput.setText(String.valueOf(sumCarbonFootprint));
+        resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
         System.out.println("********Prueba resultado: " + clothes.ClothesCalculator());
         System.out.println("********Prueba resultado suma secciones Vivienda, alimentacion y ropa: " + sumCarbonFootprint);
@@ -346,7 +347,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
             sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + transporteCar.TransportCalculatorCar()) * 10d) / 10d;
             System.out.println("********Prueba resultado: " + transporteCar.TransportCalculatorCar());
-            resultInput.setText(String.valueOf(sumCarbonFootprint));
+            resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
             System.out.println("********Prueba resultado suma secciones Vivienda, alimentacion y ropa: " + sumCarbonFootprint);
 
@@ -369,7 +370,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
             sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + transportMoto.TransportCalculatorMoto()) * 10d) / 10d;
             System.out.println("********Prueba resultado: " + transportMoto.TransportCalculatorMoto());
-            resultInput.setText(String.valueOf(sumCarbonFootprint));
+            resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
             System.out.println("********Prueba resultado suma secciones Vivienda, alimentacion y ropa: " + String.valueOf(sumCarbonFootprint));
 
@@ -390,7 +391,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
             sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + transporteCarMoto.TransportCalculatorCar() + transporteCarMoto.TransportCalculatorMoto()) * 10d) / 10d;
             System.out.println("********Prueba resultado: " + Double.parseDouble(resultadoTransportDoubleCar) + Double.parseDouble(resultadoTransportDoubleMoto));
-            resultInput.setText(String.valueOf(sumCarbonFootprint));
+            resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
             resultadoTransportDouble = String.valueOf(transporteCarMoto.TransportCalculatorCar() + transporteCarMoto.TransportCalculatorMoto());
 
             System.out.println("********Prueba resultado suma secciones Vivienda, alimentacion y ropa: " + sumSecciones);
@@ -441,7 +442,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         OtherTransport otherTransport = new OtherTransport(AVE, trenL, cercanias, busUrbano, autocar, metro, vuelosCortos, vuelosMedios, vuelosLargos);
 
         sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + otherTransport.OtherTransportCalculator()) * 10d) / 10d;
-        resultInput.setText(String.valueOf(sumCarbonFootprint));
+        resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
         System.out.println("*********************Prueba resultado OTROS TRANSPORTES: " + otherTransport.OtherTransportCalculator());
 
 
@@ -468,26 +469,26 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         resultadoTransportDouble = getIntent().getStringExtra("RESULT_TRANSPORT");
 
         udsPC = getTextFromEditTextInt(R.id.etUdsPC);
-        yearPC = getTextFromEditTextInt(R.id.etYearPC);
+        yearPC = getTextFromEditTextDouble(R.id.etYearPC);
         udsLaptop = getTextFromEditTextInt(R.id.etUdsLaptop);
-        yearLaptop = getTextFromEditTextInt(R.id.etYearLaptop);
+        yearLaptop = getTextFromEditTextDouble(R.id.etYearLaptop);
         udsTablet = getTextFromEditTextInt(R.id.etUdsTablets);
-        yearTablet = getTextFromEditTextInt(R.id.etYearTablets);
+        yearTablet = getTextFromEditTextDouble(R.id.etYearTablets);
         udsSmartphone = getTextFromEditTextInt(R.id.etUdsMobile);
-        yearSmartphone = getTextFromEditTextInt(R.id.etUdsMobile);
+        yearSmartphone = getTextFromEditTextDouble(R.id.etUdsMobile);
         udsRouter = getTextFromEditTextInt(R.id.etUdsRouter);
-        yearRouter = getTextFromEditTextInt(R.id.etYearRouter);
+        yearRouter = getTextFromEditTextDouble(R.id.etYearRouter);
 
         Technology technology = new Technology(udsPC, yearPC, udsLaptop, yearLaptop, udsTablet, yearTablet, udsSmartphone, yearSmartphone, udsRouter, yearRouter);
 
         sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + technology.TechnologyCalculator()) * 10d) / 10d;
-        resultInput.setText(String.valueOf(sumCarbonFootprint));
+        resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
         System.out.println("*********************Prueba resultado: " + technology.TechnologyCalculator());
         System.out.println("*********************Prueba resultado final: " + String.valueOf(sumCarbonFootprint));
 
         Intent intentTechnology = new Intent(this, ResultsView.class);
-        intentTechnology.putExtra("RESULT_Technology",  String.valueOf(technology.TechnologyCalculator()));
+        intentTechnology.putExtra("RESULT_Technology", String.valueOf(technology.TechnologyCalculator()));
         intentTechnology.putExtra("RESULT_HOUSE", resultadoHouseDouble);
         intentTechnology.putExtra("RESULT_FOOD", resultadoFoodDouble);
         intentTechnology.putExtra("RESULT_CLOTHES", resultadoClothesDouble);
