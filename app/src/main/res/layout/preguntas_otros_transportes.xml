@@ -13,10 +13,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:layout_gravity="center"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/pregunta_generica_transporte11"
             android:textColor="@color/white"
@@ -40,17 +40,17 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="0dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="0dp" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes1"
+                android:id="@+id/etAVE"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -77,22 +77,22 @@
                 tools:layout_editor_absoluteY="58dp" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes2"
+                android:id="@+id/etTrenL"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes3"
+                app:layout_constraintBottom_toTopOf="@id/etCercanias"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/otros_transportes2"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes1" />
+                app:layout_constraintTop_toBottomOf="@+id/etAVE" />
 
             <TextView
                 android:id="@+id/otros_transportes3"
@@ -111,22 +111,22 @@
                 tools:layout_editor_absoluteX="12dp" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes3"
+                android:id="@+id/etCercanias"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes4"
+                app:layout_constraintBottom_toTopOf="@id/etBusUrbano"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/otros_transportes3"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes2" />
+                app:layout_constraintTop_toBottomOf="@+id/etTrenL" />
 
             <TextView
                 android:id="@+id/otros_transportes4"
@@ -145,22 +145,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/otros_transportes3" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes4"
+                android:id="@+id/etBusUrbano"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes5"
+                app:layout_constraintBottom_toTopOf="@id/etAutocar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/otros_transportes4"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes3" />
+                app:layout_constraintTop_toBottomOf="@+id/etCercanias" />
 
             <TextView
                 android:id="@+id/otros_transportes5"
@@ -179,22 +179,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/otros_transportes4" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes5"
+                android:id="@+id/etAutocar"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes6"
+                app:layout_constraintBottom_toTopOf="@id/etMetro"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/otros_transportes5"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes4" />
+                app:layout_constraintTop_toBottomOf="@+id/etBusUrbano" />
 
             <TextView
                 android:id="@+id/otros_transportes6"
@@ -213,22 +213,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/otros_transportes5" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes6"
+                android:id="@+id/etMetro"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes7"
+                app:layout_constraintBottom_toTopOf="@id/etVuelosCortos"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/otros_transportes6"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes5" />
+                app:layout_constraintTop_toBottomOf="@+id/etAutocar" />
 
             <TextView
                 android:id="@+id/otros_transportes7"
@@ -247,25 +247,61 @@
                 app:layout_constraintTop_toBottomOf="@+id/otros_transportes6" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes7"
+                android:id="@+id/etVuelosCortos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextOtrosTransportes8"
+                app:layout_constraintBottom_toTopOf="@id/etVuelosMedios"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/otros_transportes7"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes6" />
+                app:layout_constraintTop_toBottomOf="@+id/etMetro" />
 
             <TextView
                 android:id="@+id/otros_transportes8"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/pregunta_transporte8"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:tooltipText="Hola ke ase"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otros_transportes7" />
+
+            <EditText
+                android:id="@+id/etVuelosMedios"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_semibold"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:tooltipText="Hola ke ase"
+                app:layout_constraintBottom_toTopOf="@id/etVuelosLargos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes8"
+                app:layout_constraintTop_toBottomOf="@+id/etVuelosCortos" />
+
+            <TextView
+                android:id="@+id/otros_transportes9"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
@@ -280,14 +316,14 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextOtrosTransportes8"
+                android:id="@+id/etVuelosLargos"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -295,8 +331,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/otros_transportes7"
-                app:layout_constraintTop_toBottomOf="@+id/editTextOtrosTransportes7" />
+                app:layout_constraintStart_toEndOf="@+id/otros_transportes9"
+                app:layout_constraintTop_toBottomOf="@+id/etVuelosMedios" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

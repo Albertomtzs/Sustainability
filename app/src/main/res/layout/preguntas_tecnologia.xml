@@ -13,10 +13,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:layout_gravity="center"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/pregunta_generica_tecnologa1"
             android:textColor="@color/white"
@@ -40,39 +40,39 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="0dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="0dp" />
 
             <EditText
-                android:id="@+id/editTextTecnologia1"
-                android:layout_width="70dp"
+                android:id="@+id/etUdsPC"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="Uds."
-                android:textColorHint="@color/white"
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.752"
+                app:layout_constraintHorizontal_bias="0.621"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTecnologiaAño1"
-                android:layout_width="70dp"
+                android:id="@+id/etYearPC"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="Años"
-                android:textColorHint="@color/white"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.992"
@@ -97,38 +97,38 @@
                 tools:layout_editor_absoluteY="58dp" />
 
             <EditText
-                android:id="@+id/editTextTecnologia2"
-                android:layout_width="70dp"
+                android:id="@+id/etUdsLaptop"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
-                android:hint="Uds."
-                android:textColorHint="@color/white"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
+                android:hint="Uds."
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextTecnologia3"
+                app:layout_constraintBottom_toTopOf="@id/etUdsTablets"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.677"
+                app:layout_constraintHorizontal_bias="0.486"
                 app:layout_constraintStart_toEndOf="@+id/tecnologia2"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia1" />
+                app:layout_constraintTop_toBottomOf="@+id/etUdsPC" />
 
             <EditText
-                android:id="@+id/editTextTecnologiaAño2"
-                android:layout_width="70dp"
+                android:id="@+id/etYearLaptop"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="Años"
-                android:textColorHint="@color/white"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -152,35 +152,35 @@
                 tools:layout_editor_absoluteX="12dp" />
 
             <EditText
-                android:id="@+id/editTextTecnologia3"
-                android:layout_width="70dp"
+                android:id="@+id/etUdsTablets"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
-                android:hint="Uds."
-                android:textColorHint="@color/white"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
+                android:hint="Uds."
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextTecnologia4"
+                app:layout_constraintBottom_toTopOf="@id/etUdsMobile"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.676"
+                app:layout_constraintHorizontal_bias="0.483"
                 app:layout_constraintStart_toEndOf="@+id/tecnologia3"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia2" />
+                app:layout_constraintTop_toBottomOf="@+id/etUdsLaptop" />
 
             <EditText
-                android:id="@+id/editTextTecnologiaAño3"
-                android:layout_width="70dp"
+                android:id="@+id/etYearTablets"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="129dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="Años"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -207,35 +207,35 @@
                 app:layout_constraintTop_toBottomOf="@+id/tecnologia3" />
 
             <EditText
-                android:id="@+id/editTextTecnologia4"
-                android:layout_width="70dp"
+                android:id="@+id/etUdsMobile"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
-                android:hint="Uds."
-                android:textColorHint="@color/white"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
+                android:hint="Uds."
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/editTextTecnologia5"
+                app:layout_constraintBottom_toTopOf="@id/etUdsRouter"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.673"
+                app:layout_constraintHorizontal_bias="0.479"
                 app:layout_constraintStart_toEndOf="@+id/tecnologia4"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia3" />
+                app:layout_constraintTop_toBottomOf="@+id/etUdsTablets" />
 
             <EditText
-                android:id="@+id/editTextTecnologiaAño4"
-                android:layout_width="70dp"
+                android:id="@+id/etYearMobile"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="195dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="Años"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -261,35 +261,34 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTecnologia5"
-                android:layout_width="70dp"
+                android:id="@+id/etUdsRouter"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="12dp"
-                android:hint="Uds."
-                android:textColorHint="@color/white"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
+                android:hint="Uds."
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.69"
                 app:layout_constraintStart_toEndOf="@+id/tecnologia5"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTecnologia4" />
+                app:layout_constraintTop_toBottomOf="@+id/etUdsMobile" />
 
             <EditText
-                android:id="@+id/editTextTecnologiaAño5"
-                android:layout_width="70dp"
+                android:id="@+id/etYearRouter"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="261dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/input"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="Años"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -301,10 +300,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     </LinearLayout>
-
 
 
 </RelativeLayout>

@@ -28,7 +28,7 @@
     <string name="restore_link">Restore</string>
     <string name="login_prompt">Login:</string>
     <string name="password_prompt">Password:</string>
-    <string name="password_recovery_page_name">Password Recovery</string>
+    <string name="password_recovery_page_name">Recuperación de contraseña</string>
     <string name="remember_login_text">Recuérdame</string>
 
     <string name="ownerId_field_prompt">OwnerId:</string>
@@ -39,8 +39,8 @@
     <string name="updated_field_prompt">Updated:</string>
     <string name="name_field_prompt">Name:</string>
     <string name="file_field_prompt">File:</string>
-    <string name="registration_success">Registered successfully!</string>
-    <string name="registration_error">Registration error!</string>
+    <string name="registration_success">¡Registrado correctamente!</string>
+    <string name="registration_error">¡Error de registro!</string>
 
     <string name="restore_password_page_name">Restauración de contraseña</string>
     <string name="password_recovered_message">Enviamos un correo electrónico a su dirección de correo electrónico con un enlace a una página de cambio de contraseña. Por favor, revise su correo electrónico y siga el enlace para obtener más instrucciones..</string>
@@ -51,6 +51,13 @@
     <string name="inicio_post_login">Calcula tu huella</string>
     <string name="observacion_post_login">Puedes ver tu huella de carbono en la esquina superior izquierda, crecerá o disminuirá en función de tus respuestas</string>
     <string name="calcular">Calcular tu huella</string>
+
+    <string name="back">Atrás</string>
+    <string name="next">Siguiente</string>
+    <string name="finish">Finalizar</string>
+    <string name="start">Comenzar</string>
+    <string name="union">¡Únete a la comunidad!</string>
+    <string name="skip">Omitir</string>
 
     <!-- Unidades de medida -->
 
@@ -103,6 +110,7 @@
     <!-- Preguntas relacionadas con la sección ropa -->
 
     <string name="ropa">Ropa</string>
+    <string name="pregunta_generica_ropa">Indica la cantidad de prendas adquiridas durante el transcurso de un año:</string>
     <string name="pregunta_ropa1">Pantalón vaquero</string>
     <string name="pregunta_ropa2">Otros pantalones</string>
     <string name="pregunta_ropa3">Camisas</string>
@@ -173,6 +181,23 @@
     <string name="pregunta_tecnologia4">Móviles</string>
     <string name="pregunta_tecnologia5">Router</string>
     <string name="pregunta_generica_tecnologa2">Indica el número de años de uso de cada una de ellas (solo las que tengas en propiedad actualmente):</string>
+
+    <string name="emissionWeekly">Semanal</string>
+    <string name="emissionMonthly">Mensual</string>
+    <string name="emissionAnnual">Anual</string>
+    <string name="results">Results</string>
+    <string name="home">Finalizar</string>
+    <string name="yourHistorial">Tu historial</string>
+    <string name="yourCarbonFootprint">Tu huella</string>
+
+
+
+    <string name="textGoal">Tu objetivo anual sostenible de emisiones de CO2 debería ser: </string>
+    <string name="textAverage">El promedio de emisiones anual de CO2 en España es: </string>
+    <string name="infoResults">Desliza hacia la izquierda para ver tus resultados con más detalle...</string>
+
+    <string name="tipsInfo">¿Le gustaría aprender más acerca de cómo reducir su huella de carbono? ¡Haga clic a continuación y descubra cómo puede contribuir al salvamento del planeta!</string>
+    <string name="tips">Tips</string>
 
 
     <!-- __________ change this credentials and configure your applications __________ -->

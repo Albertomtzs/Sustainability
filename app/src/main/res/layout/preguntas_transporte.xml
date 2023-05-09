@@ -21,16 +21,17 @@
             android:textSize="18sp" />
 
         <RadioGroup
-
+            android:id="@+id/radioGroupPropCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
-            android:category="type_car"
-            android:tag="type_car">
+            android:category="owned_car"
+            android:tag="owned_car">
 
             <RadioButton
+                android:id="@+id/rbYesCar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -42,6 +43,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbNoCar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -65,7 +67,7 @@
             android:textSize="18sp" />
 
         <RadioGroup
-
+            android:id="@+id/radioGroupTipoCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -75,6 +77,7 @@
             android:tag="type_car">
 
             <RadioButton
+                android:id="@+id/rbUtilitario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -86,6 +89,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbFamiliar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -96,6 +100,7 @@
                 android:textSize="18sp" />
 
             <RadioButton
+                android:id="@+id/rbBerlina"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -107,6 +112,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbMonovolumenP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -117,6 +123,7 @@
                 android:textSize="18sp" />
 
             <RadioButton
+                android:id="@+id/rbMonovolumenG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -128,6 +135,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbSUV_M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -138,6 +146,7 @@
                 android:textSize="18sp" />
 
             <RadioButton
+                android:id="@+id/rbSUV_G"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -161,7 +170,7 @@
             android:textSize="18sp" />
 
         <RadioGroup
-
+            android:id="@+id/radioGroupTipoCombustibleCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -171,6 +180,7 @@
             android:tag="type_car">
 
             <RadioButton
+                android:id="@+id/rbGasolinaCar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -182,6 +192,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbDieselCar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -192,6 +203,7 @@
                 android:textSize="18sp" />
 
             <RadioButton
+                android:id="@+id/rbGasNaturalCar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -203,6 +215,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbElectricoCar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -226,7 +239,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editConsumoLitrosCar"
+            android:id="@+id/etConsumoLitrosCar"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -234,7 +247,7 @@
             android:background="@drawable/input"
             android:ems="100"
             android:fontFamily="@font/poppins_semibold"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -251,7 +264,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editCantidadKmCar"
+            android:id="@+id/etCantidadKmCar"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -259,7 +272,7 @@
             android:background="@drawable/input"
             android:ems="100"
             android:fontFamily="@font/poppins_semibold"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -276,16 +289,17 @@
             android:textSize="18sp" />
 
         <RadioGroup
-
+            android:id="@+id/radioGroupPropMoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
-            android:category="type_car"
-            android:tag="type_car">
+            android:category="owned_moto"
+            android:tag="owned_moto">
 
             <RadioButton
+                android:id="@+id/rbYesMoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -297,6 +311,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbNoMoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -320,7 +335,7 @@
             android:textSize="18sp" />
 
         <RadioGroup
-
+            android:id="@+id/radioGroupCC_Moto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -330,6 +345,7 @@
             android:tag="type_car">
 
             <RadioButton
+                android:id="@+id/rbCCmenos125"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -341,6 +357,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbCC125_500"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -351,6 +368,7 @@
                 android:textSize="18sp" />
 
             <RadioButton
+                android:id="@+id/rbCCmayor500"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -362,6 +380,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbCCelectrica5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -385,7 +404,7 @@
             android:textSize="18sp" />
 
         <RadioGroup
-
+            android:id="@+id/radioGroupTipoCombustibleMoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -395,6 +414,7 @@
             android:tag="type_car">
 
             <RadioButton
+                android:id="@+id/rbGasolinaMoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -406,6 +426,7 @@
                 android:value="false" />
 
             <RadioButton
+                android:id="@+id/rbElectricoMoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/grey_100"
@@ -429,7 +450,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editConsumoLitrosMoto"
+            android:id="@+id/etConsumoLitrosMoto"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -437,7 +458,7 @@
             android:background="@drawable/input"
             android:ems="100"
             android:fontFamily="@font/poppins_semibold"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -454,7 +475,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editCantidadKmMoto"
+            android:id="@+id/etCantidadKmMoto"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -462,7 +483,7 @@
             android:background="@drawable/input"
             android:ems="100"
             android:fontFamily="@font/poppins_semibold"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp" />
