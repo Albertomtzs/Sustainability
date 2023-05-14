@@ -1,66 +1,98 @@
 package com.ams.sustainability.ui.fragment;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.ams.sustainability.R;
+import com.ams.sustainability.view.MainLogin;
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentAccount#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentAccount extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    static final String userInfo_key = "BackendlessUserInfo";
+    static final String logoutButtonState_key = "LogoutButtonState";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView user;
 
-    public FragmentAccount() {
-        // Required empty public constructor
-    }
+    private EditText backendlessUserInfo;
+    private Button bkndlsLogoutButton;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentAccount.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentAccount newInstance(String param1, String param2) {
-        FragmentAccount fragment = new FragmentAccount();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private String userInfo;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        user = view.findViewById(R.id.userinfo_name);
+
+        BackendlessUser currentUser = Backendless.UserService.CurrentUser();
+
+        if (currentUser != null) {
+            String userId = currentUser.getObjectId();
+            String email = currentUser.getEmail();
+            user.setText((String) currentUser.getProperty("name"));
+            Log.e("****MainActivity", "*********User ID: " + userId);
+            Log.e("****MainActivity", "*********Email: " + email);
+            //Log.e("****MainActivity", "*********Name: " + nombre);
+        } else {
+            Log.e("****MainActivity", "*****No user is currently logged in.");
         }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        bkndlsLogoutButton = view.findViewById(R.id.button_bkndlsBackendlessLogout);
+
+        bkndlsLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Backendless.UserService.logout(new AsyncCallback<Void>() {
+                    @Override
+                    public void handleResponse(Void response) {
+                        Intent intent = new Intent(getActivity(), MainLogin.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void handleFault(BackendlessFault fault) {
+                        // Se ha producido un error al cerrar la sesión
+                    }
+                });
+            }
+        });
+
+        return view;
     }
 }
+
+    /*private void logoutFromBackendless(){
+        Backendless.UserService.logout(new AsyncCallback<Void>() {
+            @Override
+            public void handleResponse(Void response) {
+                backendlessUserInfo.setTextColor(ResourcesCompat.getColor(getResources(), android.R.color.black, null));
+                backendlessUserInfo.setText("");
+                bkndlsLogoutButton.setVisibility(View.INVISIBLE);
+                //onDestroy();
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                backendlessUserInfo.setTextColor(ResourcesCompat.getColor(getResources(), android.R.color.holo_red_dark, null));
+                backendlessUserInfo.setText(fault.toString());
+            }
+        });
+    }}*/
+

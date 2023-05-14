@@ -14,12 +14,12 @@ public class DefaultCallback<T> extends BackendlessCallback<T> {
 
     public DefaultCallback(Context context) {
         this.context = context;
-        progressDialog = ProgressDialog.show(context, "", "Loading...", true);
+        progressDialog = ProgressDialog.show(context, "", "Cargando...", true);
     }
 
     public DefaultCallback(Context context, String message) {
         this.context = context;
-        progressDialog = ProgressDialog.show(context, "", message, true);
+        progressDialog = ProgressDialog.show(context, "",message, true);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class DefaultCallback<T> extends BackendlessCallback<T> {
     @Override
     public void handleFault(BackendlessFault fault) {
         progressDialog.cancel();
-        Toast.makeText(context, fault.getMessage(), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "El usuario o contraseña introducidos son erróneos", Toast.LENGTH_LONG).show();
     }
 }
 

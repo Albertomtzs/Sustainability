@@ -194,7 +194,7 @@ public class Food {
         return Math.round((getHortalizas() * 32.55 + getFruta() * 47.48 + getFrutos_secos() * 65.31 + getPescado() * 323.86
                 + getMariscos() * 544.75 + getPavo() * 314.08 + getPollo() * 203.32 + getCerdo() * 297.96 + getTernera() * 1409.72
                 + getHuevos() * 78 + getCereales() * 137.28 + getDulces() * 129.74 + getAceites() * 47.94 + getRefrescos() * 17.06
-                + getCerveza() * 73.32 + getVino() * 83.20 + getLicores() * 154.44 + getLeche() * 69.68) / 1000 * 10.0) / 10.0;
+                + getCerveza() * 73.32 + getVino() * 83.20 + getLicores() * 154.44 + getLeche() * 69.68) / 1000 * 10d) / 10d;
     }
 
 }

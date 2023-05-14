@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -56,52 +57,61 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
     @Override
     public void onHistoryRecords(List<Resultados> resultados) {
 
-        LinkedHashMap<String, Float> emissiontable = new LinkedHashMap<>();
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-        ArrayList<String> labels = new ArrayList<>();
+        try {
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int screenHeight = displayMetrics.heightPixels;
-        int screenWidth = displayMetrics.widthPixels;
 
-        for (int i = 0; i < resultados.size(); i++) {
-            String inputDate = String.valueOf(resultados.get(i).getCreated());
-            String outputDate = convertStringFormat(inputDate);
-            double hogar = resultados.get(i).getHogar();
-            double alimentacion = resultados.get(i).getAlimentacion();
-            double ropa = resultados.get(i).getRopa();
-            double transporte = resultados.get(i).getTransporte();
-            double tecnologia = resultados.get(i).getTecnologia();
+            LinkedHashMap<String, Float> emissiontable = new LinkedHashMap<>();
+            ArrayList<BarEntry> barEntries = new ArrayList<>();
+            ArrayList<String> labels = new ArrayList<>();
 
-            Log.e("****MainActivity", "Fecha entrada: " + inputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
-            Log.e("****MainActivity", "Fecha salida: " + outputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int screenHeight = displayMetrics.heightPixels;
+            int screenWidth = displayMetrics.widthPixels;
 
-            BarEntry entry = new BarEntry(i, new float[]{(float) hogar, (float) alimentacion, (float) ropa, (float) transporte, (float) tecnologia});
-            barEntries.add(entry);
-            labels.add(outputDate);
+            for (int i = 0; i < resultados.size(); i++) {
+                String inputDate = String.valueOf(resultados.get(i).getCreated());
+                String outputDate = convertStringFormat(inputDate);
+                double hogar = resultados.get(i).getHogar();
+                double alimentacion = resultados.get(i).getAlimentacion();
+                double ropa = resultados.get(i).getRopa();
+                double transporte = resultados.get(i).getTransporte();
+                double tecnologia = resultados.get(i).getTecnologia();
 
-        }
+                Log.e("****MainActivity", "Fecha entrada: " + inputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
+                Log.e("****MainActivity", "Fecha salida: " + outputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
 
-        ArrayList<ChartBuilder.DateValueEntry> entries = new ArrayList<>();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+                BarEntry entry = new BarEntry(i, new float[]{(float) hogar, (float) alimentacion, (float) ropa, (float) transporte, (float) tecnologia});
+                barEntries.add(entry);
+                labels.add(outputDate);
 
-        for (int j = 0; j < resultados.size(); j++) {
-            String inDate = String.valueOf(resultados.get(j).getCreated());
-            Date outDate;
-            try {
-                outDate = dateFormat.parse(convertStringFormat(inDate));
-            } catch (ParseException e) {
-                Log.e(TAG, "Error parsing date", e);
-                continue;
             }
-            float valor = resultados.get(j).getHuella().floatValue();
-            entries.add(new ChartBuilder.DateValueEntry(outDate, valor));
+
+            ArrayList<ChartBuilder.DateValueEntry> entries = new ArrayList<>();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+
+            for (int j = 0; j < resultados.size(); j++) {
+                String inDate = String.valueOf(resultados.get(j).getCreated());
+                Date outDate;
+                try {
+                    outDate = dateFormat.parse(convertStringFormat(inDate));
+                } catch (ParseException e) {
+                    Log.e(TAG, "Error parsing date", e);
+                    continue;
+                }
+                float valor = resultados.get(j).getHuella().floatValue();
+                entries.add(new ChartBuilder.DateValueEntry(outDate, valor));
+            }
+
+            ChartBuilder.buildStackedBarChart(barChart, getContext(), screenWidth, screenHeight, entries, barEntries);
+            ChartBuilder.buildLineChart(lineChart, getContext(), screenWidth, screenHeight, entries);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (getContext() != null) {
+                Toast.makeText(getContext(), "No fue posible cargar los registros", Toast.LENGTH_SHORT).show();
+            }
+
         }
-
-        ChartBuilder.buildStackedBarChart(barChart, getContext(), screenWidth, screenHeight, entries, barEntries);
-        ChartBuilder.buildLineChart(lineChart, getContext(), screenWidth, screenHeight, entries);
-
     }
 
     private static String convertStringFormat(String dateString) {

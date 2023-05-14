@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bbcopia2"
+    android:background="@drawable/main_background"
     app:flow_horizontalAlign="center">
 
     <ImageView
@@ -46,6 +46,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
         android:padding="8dp"
         android:text="@string/start"
         android:textSize="16sp"/>

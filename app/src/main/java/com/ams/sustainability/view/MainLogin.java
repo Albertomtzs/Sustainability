@@ -45,7 +45,6 @@ public class MainLogin extends Activity {
     private boolean isLoggedInBackendless = false;
     private CheckBox rememberLoginBox;
 
-
     // backendless
     private TextView registerLink, restoreLink;
     private EditText identityField, passwordField;
@@ -160,24 +159,31 @@ public class MainLogin extends Activity {
     }
 
     private void startLoginResult(String msg, boolean logoutButtonState) {
-        Intent i = new Intent(this, GetStartedCalculator.class);
+
+        if (logoutButtonState) {
+            Intent i = new Intent(this, GetStartedCalculator.class);
+            startActivity(i);
+        }
+
 		/*intent.putExtra(LoginResult.userInfo_key, msg);
 		intent.putExtra(LoginResult.logoutButtonState_key, logoutButtonState);*/
-        startActivity(i);
+
 
     }
 
 
     private void onLoginWithBackendlessButtonClicked() {
+
+        BackendlessUser currentUser = Backendless.UserService.CurrentUser();
+
         String identity = identityField.getText().toString();
         String password = passwordField.getText().toString();
         boolean rememberLogin = rememberLoginBox.isChecked();
 
         if (identity.equals("") || password.equals("")) {
-            Toast.makeText(this, "Please enter your email and password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor, introduce tu email y contraseña", Toast.LENGTH_SHORT).show();
             return;
         }
-
         /*if (!isLoggedInBackendless) {
             Toast.makeText(this, "Please login first", Toast.LENGTH_SHORT).show();
             return;
@@ -188,6 +194,7 @@ public class MainLogin extends Activity {
                 super.handleResponse(backendlessUser);
                 isLoggedInBackendless = true;
                 startLoginResult(backendlessUser);
+
             }
 
             @Override

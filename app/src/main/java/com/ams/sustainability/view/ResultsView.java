@@ -99,7 +99,7 @@ public class ResultsView extends AppCompatActivity {
     private void addTotal(double emissiomResult) {
 
         top.setText("Emisiones anuales de CO2:");
-        label.setText(String.valueOf(emissiomResult).replace(".",",") + "t");
+        label.setText(String.valueOf(emissiomResult).replace(".",",") + " t");
     }
 
     @SuppressLint("SetTextI18n")

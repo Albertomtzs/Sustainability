@@ -1,23 +1,18 @@
 package com.ams.sustainability.model.graph;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.ams.sustainability.R;
-import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
@@ -44,13 +39,8 @@ import com.github.mikephil.charting.data.RadarEntry;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IPieDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
-import com.github.mikephil.charting.listener.ChartTouchListener;
-import com.github.mikephil.charting.listener.OnChartGestureListener;
-import com.github.mikephil.charting.renderer.PieChartRenderer;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -262,48 +252,47 @@ public class ChartBuilder {
             }
         });
 
-        int visibleRange = 10;
+        //int visibleRange = 10;
 
-        lineChart.setVisibleXRangeMaximum(visibleRange);
-        lineChart.setVisibleXRangeMinimum(visibleRange);
-        lineChart.setDragEnabled(true);
-        lineChart.setScaleEnabled(false);
 
-        lineChart.setOnChartGestureListener(new OnChartGestureListener() {
-            @Override
-            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {}
 
-            @Override
-            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {}
+//        lineChart.setOnChartGestureListener(new OnChartGestureListener() {
+//            @Override
+//            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {}
+//
+//            @Override
+//            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {}
+//
+//            @Override
+//            public void onChartLongPressed(MotionEvent me) {}
+//
+//            @Override
+//            public void onChartDoubleTapped(MotionEvent me) {}
+//
+//            @Override
+//            public void onChartSingleTapped(MotionEvent me) {}
+//
+//            @Override
+//            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
+//
+//            @Override
+//            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {}
+//
+//            @Override
+//            public void onChartTranslate(MotionEvent me, float dX, float dY) {
+//                // Actualizar los límites de la vista cuando el usuario desplaza el gráfico
+//                float maxVisibleRange = lineChart.getXChartMax();
+//                float minVisibleRange = lineChart.getLowestVisibleX();
+//                if (maxVisibleRange - minVisibleRange < visibleRange) {
+//                    float newMin = Math.max(0, maxVisibleRange - visibleRange);
+//                    lineChart.setVisibleXRangeMaximum(visibleRange);
+//                    lineChart.setVisibleXRangeMinimum(visibleRange);
+//                    lineChart.moveViewToX(newMin);
+//                }
+//            }
+//        });
 
-            @Override
-            public void onChartLongPressed(MotionEvent me) {}
 
-            @Override
-            public void onChartDoubleTapped(MotionEvent me) {}
-
-            @Override
-            public void onChartSingleTapped(MotionEvent me) {}
-
-            @Override
-            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
-
-            @Override
-            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {}
-
-            @Override
-            public void onChartTranslate(MotionEvent me, float dX, float dY) {
-                // Actualizar los límites de la vista cuando el usuario desplaza el gráfico
-                float maxVisibleRange = lineChart.getXChartMax();
-                float minVisibleRange = lineChart.getLowestVisibleX();
-                if (maxVisibleRange - minVisibleRange < visibleRange) {
-                    float newMin = Math.max(0, maxVisibleRange - visibleRange);
-                    lineChart.setVisibleXRangeMaximum(visibleRange);
-                    lineChart.setVisibleXRangeMinimum(visibleRange);
-                    lineChart.moveViewToX(newMin);
-                }
-            }
-        });
 
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
@@ -396,6 +385,11 @@ public class ChartBuilder {
         lineChart.setDragDecelerationFrictionCoef(0.95f);
         lineChart.getLegend().setFormSize(11f); // Establecer el tamaño de la leyenda
 
+        lineChart.setDragEnabled(true); // habilitar el arrastre del gráfico
+        lineChart.setVisibleXRangeMaximum(10); // establecer el número máximo de valores visibles en el eje X
+        lineChart.moveViewToX(entries.size() - 10); // establecer el desplazamiento inicial del gráfico
+        lineChart.setScaleEnabled(false);
+
         lineChart.invalidate();
 
         // Redimensionar el tamaño del gráfico para ajustarse a las dimensiones de la pantalla
@@ -468,7 +462,7 @@ public class ChartBuilder {
         setAvergareSpain.setDrawHighlightIndicators(false);
 
         // Define los datasets del gráfico
-        RadarDataSet lastRecordDataSet = new RadarDataSet(lastRecordValues, "Tú huella");
+        RadarDataSet lastRecordDataSet = new RadarDataSet(lastRecordValues, "Tu huella");
         lastRecordDataSet.setColor(Color.rgb(135, 206, 235));
         lastRecordDataSet.setFillColor(Color.rgb(135, 206, 235));
         lastRecordDataSet.setDrawFilled(true);
@@ -541,7 +535,7 @@ public class ChartBuilder {
         });
 
         BarData barData = new BarData(barDataSet2);
-        barData.setBarWidth(0.3f);
+        barData.setBarWidth(0.4f);
 
         MarketViewStacked mv = new MarketViewStacked(barChart.getContext(), R.layout.marker_view);
         mv.setChartView(barChart); // For bounds control
@@ -692,12 +686,21 @@ public class ChartBuilder {
     @NonNull
     private static SpannableString generateCenterText(String total) {
         SpannableString s = new SpannableString(total.replace(".",",") + " t" + "\nCO2/año");
-        s.setSpan(new RelativeSizeSpan(2.7f), 0, 5, 0);
-        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 5, 0);
-        ;
-        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 13, s.length(), 0);
-        s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 13, 0);
-        ;
+
+        if (total.length() == 3) {
+
+            s.setSpan(new RelativeSizeSpan(2.7f), 0, 5, 0);
+            s.setSpan(new StyleSpan(Typeface.BOLD), 0, 5, 0);
+            s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 13, s.length(), 0);
+            s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 13, 0);
+
+        }else{
+            s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
+            s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
+            s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 14, s.length(), 0);
+            s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 14, 0);
+        }
+
         return s;
     }
 
