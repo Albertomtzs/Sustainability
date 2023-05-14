@@ -11,8 +11,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.ams.sustainability.ui.adapters.AdapterViewPagerFragment;
 import com.ams.sustainability.ui.fragment.FragmentAccount;
 import com.ams.sustainability.R;
+import com.ams.sustainability.ui.fragment.FragmentEntries;
 import com.ams.sustainability.ui.fragment.FragmentHistorial;
 import com.ams.sustainability.ui.fragment.FragmentHome;
+import com.ams.sustainability.ui.fragment.FragmentTips;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -34,6 +36,8 @@ public class NavigationFragment extends AppCompatActivity {
 
         fragmentList.add(new FragmentHome());
         fragmentList.add(new FragmentHistorial());
+        fragmentList.add(new FragmentEntries());
+        fragmentList.add(new FragmentTips());
         fragmentList.add(new FragmentAccount());
 
         AdapterViewPagerFragment adapterViewPager = new AdapterViewPagerFragment(this, fragmentList);
@@ -47,11 +51,16 @@ public class NavigationFragment extends AppCompatActivity {
                         btnNav.setSelectedItemId(R.id.home);
                         break;
                     case 1:
-                        btnNav.setSelectedItemId(R.id.social);
+                        btnNav.setSelectedItemId(R.id.historial);
                         break;
                     case 2:
+                        btnNav.setSelectedItemId(R.id.entries);
+                        break;
+                    case 3:
+                        btnNav.setSelectedItemId(R.id.tips);
+                        break;
+                    case 4:
                         btnNav.setSelectedItemId(R.id.account);
-
                         break;
                 }
                 super.onPageSelected(position);
@@ -66,11 +75,17 @@ public class NavigationFragment extends AppCompatActivity {
                     case R.id.home:
                         viewPager.setCurrentItem(0);
                         break;
-                    case R.id.social:
+                    case R.id.historial:
                         viewPager.setCurrentItem(1);
                         break;
-                    case R.id.account:
+                    case R.id.entries:
                         viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.tips:
+                        viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.account:
+                        viewPager.setCurrentItem(4);
                         break;
                 }
                 return true;

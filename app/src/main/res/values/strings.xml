@@ -191,13 +191,15 @@
     <string name="yourCarbonFootprint">Tu huella</string>
 
 
-
     <string name="textGoal">Tu objetivo anual sostenible de emisiones de CO2 debería ser: </string>
     <string name="textAverage">El promedio de emisiones anual de CO2 en España es: </string>
     <string name="infoResults">Desliza hacia la izquierda para ver tus resultados con más detalle...</string>
 
     <string name="tipsInfo">¿Le gustaría aprender más acerca de cómo reducir su huella de carbono? ¡Haga clic a continuación y descubra cómo puede contribuir al salvamento del planeta!</string>
-    <string name="tips">Tips</string>
+    <string name="tips">Consejos</string>
+
+    <string name="userinfo_profile_content_description">User profile picture</string>
+
 
 
     <!-- __________ change this credentials and configure your applications __________ -->
@@ -212,6 +214,9 @@
     <!-- https://developers.google.com/identity/sign-in/android/start-integrating -->
     <string name="gp_WebApp_ClientId">460207532188-n7i1ro57aj8jue4ibph7ngjm30h30o11.apps.googleusercontent.com</string>
     <string name="gp_WebApp_ClientSecret">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</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
     <!-- __________ end __________ -->
 
 </resources>

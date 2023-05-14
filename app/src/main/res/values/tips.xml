@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tips">
+        <item>
+            <string>While the AC is on, shut the windows to save energy.</string>
+        </item>
+        <item>
+            <string>While the AC is on, shut the windows to save energy.</string>
+        </item>
+    </array>
+</resources>

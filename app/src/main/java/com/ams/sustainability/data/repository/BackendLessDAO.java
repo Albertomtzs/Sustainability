@@ -6,11 +6,12 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ams.sustainability.data.common.Defaults;
 import com.ams.sustainability.data.common.HistoryResults;
 import com.ams.sustainability.data.common.ResultadosListener;
-import com.ams.sustainability.data.common.Defaults;
 import com.ams.sustainability.model.entities.Resultados;
 import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
@@ -24,6 +25,8 @@ public class BackendLessDAO {
     private static final String TABLE_NAME = "Resultados";
     private static final String TAG = BackendLessDAO.class.getSimpleName();
 
+    private BackendlessUser currentUser;
+
     @SuppressLint("StaticFieldLeak")
     private Context context;
 
@@ -31,19 +34,18 @@ public class BackendLessDAO {
 
     static private LinkedHashMap<String, Float> emissiontable = new LinkedHashMap<>();
 
-
     private Resultados resultados;
 
     //Bundle bundle;
-
 
     public BackendLessDAO(Context context) {
         this.context = context;
         initUI();
     }
 
-
     public void insertRecordCarbon(double hogar, double alimentacion, double ropa, double tecnologia, double transporte) {
+
+        currentUser = Backendless.UserService.CurrentUser();
 
         resultados = new Resultados();
         resultados.setHogar(hogar);
@@ -51,6 +53,7 @@ public class BackendLessDAO {
         resultados.setRopa(ropa);
         resultados.setTecnologia(tecnologia);
         resultados.setTransporte(transporte);
+        resultados.setOwnerId(currentUser.getObjectId());
 
         resultados.saveAsync(new AsyncCallback<Resultados>() {
             @Override
@@ -74,14 +77,19 @@ public class BackendLessDAO {
                 Toast.makeText(context, fault.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
-
         });
 
 
     }
 
     public void getLastRecord(ResultadosListener listener) {
-        Backendless.Data.of(Resultados.class).find(new AsyncCallback<List<Resultados>>() {
+
+        currentUser = Backendless.UserService.CurrentUser();
+
+        DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+        queryBuilder.setWhereClause("ownerId = '" + currentUser.getObjectId() + "'");
+        queryBuilder.setPageSize(100);
+        Backendless.Data.of(Resultados.class).find(queryBuilder,new AsyncCallback<List<Resultados>>() {
             @Override
             public void handleResponse(List<Resultados> response) {
                 Resultados lastRecord = null;
@@ -105,8 +113,42 @@ public class BackendLessDAO {
         });
     }
 
-    public void getHistoryResults(HistoryResults listener) {
+    public void findLastRecord() {
         DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+        queryBuilder.setPageSize(100);
+        Backendless.Data.of(Resultados.class).find(queryBuilder,new AsyncCallback<List<Resultados>>() {
+            @Override
+            public void handleResponse(List<Resultados> response) {
+                Resultados lastRecord = null;
+                for (Resultados record : response) {
+                    if (lastRecord == null || record.getCreated().getTime() > lastRecord.getCreated().getTime()) {
+                        lastRecord = record;
+                    }
+                }
+                if (lastRecord != null) {
+
+                    float hogar = lastRecord.getHogar().floatValue();
+                    float ropa = lastRecord.getRopa().floatValue();
+                    float alimentacion = lastRecord.getAlimentacion().floatValue();
+                    float tecnologia = lastRecord.getTecnologia().floatValue();
+                    float transporte = lastRecord.getTransporte().floatValue();
+
+                } else {
+                }
+            } @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.e(TAG, "Error al cargar el último registro: " + fault.getMessage());
+            }
+        });
+
+    }
+
+    public void getHistoryResults(HistoryResults listener) {
+        currentUser = Backendless.UserService.CurrentUser();
+
+        DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+        queryBuilder.setWhereClause("ownerId = '" + currentUser.getObjectId() + "'");
+        queryBuilder.setPageSize(100);
         queryBuilder.setSortBy("created ASC");
 
         Backendless.Data.of(Resultados.class).find(queryBuilder, new AsyncCallback<List<Resultados>>() {
@@ -118,6 +160,62 @@ public class BackendLessDAO {
             @Override
             public void handleFault(BackendlessFault fault) {
                 listener.onError(fault);
+            }
+        });
+    }
+
+
+    /*public void remove() {
+
+        currentUser = Backendless.UserService.CurrentUser();
+
+        DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+        queryBuilder.setWhereClause("ownerId = '" + currentUser.getObjectId() + "'");
+
+        Backendless.Data.of(Resultados.class).find(queryBuilder, new AsyncCallback<List<Resultados>>() {
+            @Override
+            public void handleResponse(List<Resultados> response) {
+                if (response != null && response.size() > 0) {
+                    Backendless.Data.of(Resultados.class).remove("objectId != 'non-existent-objectId'", new AsyncCallback<Integer>() {
+                        @Override
+                        public void handleResponse(Integer response) {
+                            // Éxito: se han eliminado todos los registros de la tabla
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+                            // Error: no se pudieron eliminar todos los registros de la tabla
+                        }
+                    });
+                } else {
+                    // No hay registros que coincidan con la condición de eliminación
+                }
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                // Error: no se pudo realizar la consulta
+            }
+        });
+    }*/
+
+    public void remove() {
+
+        Resultados resultados = new Resultados();
+
+        currentUser = Backendless.UserService.CurrentUser();
+        String whereClause = "ownerId = '"+currentUser.getObjectId()+"'"; // condición para eliminar todo
+
+        Log.e("********whereClause: ", whereClause);
+        Backendless.Data.of(Resultados.class).remove(whereClause, new AsyncCallback<Integer>() {
+            @Override
+            public void handleResponse(Integer response) {
+                // Éxito: se han eliminado todos los registros de la tabla
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                // Error: no se pudieron eliminar todos los registros de la tabla
             }
         });
     }
@@ -235,8 +333,7 @@ public class BackendLessDAO {
         return emissiontable;
     }
 
-    public static void addRecordBackendless(Float hogarf, Float comidaf, Float
-            transportef, Float ropaf, Float tecnologiaf) {
+    public static void addRecordBackendless(Float hogarf, Float comidaf, Float transportef, Float ropaf, Float tecnologiaf) {
         emissiontable.put("Vivienda", hogarf);
         emissiontable.put("Comida", comidaf);
         emissiontable.put("Transporte", transportef);

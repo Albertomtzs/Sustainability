@@ -27,7 +27,6 @@ import com.ams.sustainability.model.repository.OtherTransport;
 import com.ams.sustainability.model.repository.Technology;
 import com.ams.sustainability.model.repository.Transport;
 import com.ams.sustainability.view.ResultsView;
-//import com.ams.sustainability.ui.home.FragmentHome;
 
 public class CarbonFootprintCalculator extends AppCompatActivity {
 
@@ -253,7 +252,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         Food food = new Food(hortalizas, fruta, frutos_secos, pescado, mariscos, pavo, pollo, cerdo, ternera, huevos, cereales, dulces, aceites, refrescos, cerveza, vino, licores, leche);
 
-        sumCarbonFootprint = Double.parseDouble(resultadoHouseDouble) + food.FoodCalculator();
+        sumCarbonFootprint = Math.round((Double.parseDouble(resultadoHouseDouble) + food.FoodCalculator())*10d)/10d;
         resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
         System.out.println("Prueba resultado: " + food.FoodCalculator());

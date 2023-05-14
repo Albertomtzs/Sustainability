@@ -26,6 +26,8 @@ public class Resultados {
         return ownerId;
     }
 
+    public void setOwnerId(String ownerId) {this.ownerId = ownerId;}
+
     public Double getTransporte() {
         return transporte;
     }

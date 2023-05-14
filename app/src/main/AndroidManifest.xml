@@ -16,32 +16,39 @@
         tools:targetApi="31">
         <activity
             android:name=".view.ResultsView"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".view.GetStartedCalculator"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".view.SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".model.usecases.CarbonFootprintCalculator"
+            android:screenOrientation="portrait"
             android:exported="true"/>
         <activity
             android:name=".ui.navigation.NavigationActivity"
             android:exported="true" />
         <activity
             android:name=".view.GetStartedCarbonFootprint"
+            android:screenOrientation="portrait"
             android:exported="true" />
-        <activity android:name=".ui.navigation.NavigationFragment" />
-        <activity android:name=".view.MainLogin" />
-        <activity android:name="com.ams.sustainability.model.usecases.RestorePasswordActivity" />
-        <activity android:name="com.ams.sustainability.model.usecases.RegisterActivity" />
-        <activity android:name="com.ams.sustainability.model.usecases.LoginResult" />
+        <activity android:name=".ui.navigation.NavigationFragment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.MainLogin"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ams.sustainability.model.usecases.RestorePasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ams.sustainability.model.usecases.RegisterActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"

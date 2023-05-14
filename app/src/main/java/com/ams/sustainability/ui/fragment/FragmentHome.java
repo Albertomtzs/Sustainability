@@ -63,29 +63,38 @@ public class FragmentHome extends Fragment implements ResultadosListener {
 
     @Override
     public void onLastRecordLoaded(Resultados lastRecord) {
-        String huellaTotal = String.valueOf(lastRecord.getHuella());
-        float hogar = lastRecord.getHogar().floatValue();
-        float ropa = lastRecord.getRopa().floatValue();
-        float alimentacion = lastRecord.getAlimentacion().floatValue();
-        float tecnologia = lastRecord.getTecnologia().floatValue();
-        float transporte = lastRecord.getTransporte().floatValue();
 
-        LinkedHashMap<String, Float> emissiontable = new LinkedHashMap<>();
-        emissiontable.put("Vivienda", hogar);
-        emissiontable.put("Comida", alimentacion);
-        emissiontable.put("Transporte", transporte);
-        emissiontable.put("ropa", ropa);
-        emissiontable.put("Tecnología", tecnologia);
+        try {
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int screenheight = displayMetrics.heightPixels;
-        int screenwidth = displayMetrics.widthPixels;
+            String huellaTotal = String.valueOf(lastRecord.getHuella());
+            float hogar = lastRecord.getHogar().floatValue();
+            float ropa = lastRecord.getRopa().floatValue();
+            float alimentacion = lastRecord.getAlimentacion().floatValue();
+            float tecnologia = lastRecord.getTecnologia().floatValue();
+            float transporte = lastRecord.getTransporte().floatValue();
+
+            LinkedHashMap<String, Float> emissiontable = new LinkedHashMap<>();
+            emissiontable.put("Vivienda", hogar);
+            emissiontable.put("Comida", alimentacion);
+            emissiontable.put("Transporte", transporte);
+            emissiontable.put("ropa", ropa);
+            emissiontable.put("Tecnología", tecnologia);
 
 
-        ChartBuilder.buildBarChart(barChart, getContext(), screenwidth, screenheight, emissiontable);
-        ChartBuilder.buildPieChart(pieChart, getContext(), screenwidth, screenheight, emissiontable, huellaTotal);
-        ChartBuilder.BuildRadarChart(radarChart, screenwidth, screenheight, emissiontable);
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int screenheight = displayMetrics.heightPixels;
+            int screenwidth = displayMetrics.widthPixels;
+
+            ChartBuilder.buildBarChart(barChart, getContext(), screenwidth, screenheight, emissiontable);
+            ChartBuilder.buildPieChart(pieChart, getContext(), screenwidth, screenheight, emissiontable, huellaTotal);
+            ChartBuilder.BuildRadarChart(radarChart, screenwidth, screenheight, emissiontable);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "No fue posible cargar los registros", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
