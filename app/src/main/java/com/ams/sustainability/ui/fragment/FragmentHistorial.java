@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.common.HistoryResults;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Resultados;
+import com.ams.sustainability.model.entities.Results;
 import com.ams.sustainability.model.graph.ChartBuilder;
 import com.backendless.exceptions.BackendlessFault;
 import com.github.mikephil.charting.charts.BarChart;
@@ -55,7 +55,7 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
     }
 
     @Override
-    public void onHistoryRecords(List<Resultados> resultados) {
+    public void onHistoryRecords(List<Results> resultados) {
 
         try {
 
@@ -72,11 +72,11 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
             for (int i = 0; i < resultados.size(); i++) {
                 String inputDate = String.valueOf(resultados.get(i).getCreated());
                 String outputDate = convertStringFormat(inputDate);
-                double hogar = resultados.get(i).getHogar();
-                double alimentacion = resultados.get(i).getAlimentacion();
-                double ropa = resultados.get(i).getRopa();
-                double transporte = resultados.get(i).getTransporte();
-                double tecnologia = resultados.get(i).getTecnologia();
+                double hogar = resultados.get(i).getHouse();
+                double alimentacion = resultados.get(i).getFood();
+                double ropa = resultados.get(i).getClothes();
+                double transporte = resultados.get(i).getTransport();
+                double tecnologia = resultados.get(i).getTechonology();
 
                 Log.e("****MainActivity", "Fecha entrada: " + inputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
                 Log.e("****MainActivity", "Fecha salida: " + outputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
@@ -99,7 +99,7 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
                     Log.e(TAG, "Error parsing date", e);
                     continue;
                 }
-                float valor = resultados.get(j).getHuella().floatValue();
+                float valor = resultados.get(j).getCarbon_footprint().floatValue();
                 entries.add(new ChartBuilder.DateValueEntry(outDate, valor));
             }
 

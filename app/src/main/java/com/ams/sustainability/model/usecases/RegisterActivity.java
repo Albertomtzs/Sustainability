@@ -32,7 +32,7 @@ public class RegisterActivity extends Activity {
 
     private BackendlessUser user;
 
-    public static int SPLASH_TIMER = 2000;
+    public static int SPLASH_TIMER = 4000;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -19,7 +19,7 @@ public class DefaultCallback<T> extends BackendlessCallback<T> {
 
     public DefaultCallback(Context context, String message) {
         this.context = context;
-        progressDialog = ProgressDialog.show(context, "",message, true);
+        progressDialog = ProgressDialog.show(context, "", message, true);
     }
 
     @Override

@@ -43,9 +43,9 @@
     <string name="registration_error">¡Error de registro!</string>
 
     <string name="restore_password_page_name">Restauración de contraseña</string>
-    <string name="password_recovered_message">Enviamos un correo electrónico a su dirección de correo electrónico con un enlace a una página de cambio de contraseña. Por favor, revise su correo electrónico y siga el enlace para obtener más instrucciones..</string>
+    <string name="password_recovered_message">Enviamos un correo electrónico a su dirección de correo electrónico con un enlace a una página de cambio de contraseña.</string>
     <string name="registration_page_name">Inscripción</string>
-    <string name="registration_success_message">¡Gracias por registrarte con el %1$s!.</string>
+    <string name="registration_success_message">¡Gracias por registrarte en %1$s!.</string>
 
     <string name="bienvenido">¡Bienvenido!</string>
     <string name="inicio_post_login">Calcula tu huella</string>
@@ -148,8 +148,8 @@
     <string name="repuestas_rb_transporte15">Sí</string>
     <string name="repuestas_rb_transporte16">No</string>
     <string name="pregunta_generica_transporte6">Indica la cilindrada:</string>
-    <string name="repuestas_rb_transporte17">inferior a 125cc</string>
-    <string name="repuestas_rb_transporte18">125 - 500cc</string>
+    <string name="repuestas_rb_transporte17">Inferior a 125cc</string>
+    <string name="repuestas_rb_transporte18">125 – 500cc</string>
     <string name="repuestas_rb_transporte19">> 500cc</string>
     <string name="repuestas_rb_transporte20">Eléctrica (5KW)</string>
     <string name="pregunta_generica_transporte7">¿Qué tipo combustible utiliza?</string>
@@ -180,7 +180,6 @@
     <string name="pregunta_tecnologia3">Tablets</string>
     <string name="pregunta_tecnologia4">Móviles</string>
     <string name="pregunta_tecnologia5">Router</string>
-    <string name="pregunta_generica_tecnologa2">Indica el número de años de uso de cada una de ellas (solo las que tengas en propiedad actualmente):</string>
 
     <string name="emissionWeekly">Semanal</string>
     <string name="emissionMonthly">Mensual</string>
@@ -198,25 +197,6 @@
     <string name="tipsInfo">¿Le gustaría aprender más acerca de cómo reducir su huella de carbono? ¡Haga clic a continuación y descubra cómo puede contribuir al salvamento del planeta!</string>
     <string name="tips">Consejos</string>
 
-    <string name="userinfo_profile_content_description">User profile picture</string>
-
-
-
-    <!-- __________ change this credentials and configure your applications __________ -->
-    <!-- You also need to set android debug key in Facebook and Google apps -->
-
-    <!-- for Facebook -->
-    <!-- https://developers.facebook.com/docs/facebook-login/android -->
-    <string name="facebook_app_id"></string>
-    <string name="fb_login_protocol_scheme">fb...</string>
-
-    <!-- for Google -->
-    <!-- https://developers.google.com/identity/sign-in/android/start-integrating -->
-    <string name="gp_WebApp_ClientId">460207532188-n7i1ro57aj8jue4ibph7ngjm30h30o11.apps.googleusercontent.com</string>
-    <string name="gp_WebApp_ClientSecret">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</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
-    <!-- __________ end __________ -->
 
 </resources>

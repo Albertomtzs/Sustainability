@@ -1,5 +1,6 @@
 package com.ams.sustainability.ui.navigation;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -69,6 +70,7 @@ public class NavigationFragment extends AppCompatActivity {
 
         });
         btnNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

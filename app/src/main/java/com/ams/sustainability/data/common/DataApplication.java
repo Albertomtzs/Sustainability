@@ -12,4 +12,5 @@ public class DataApplication extends Application {
 
     public void setChosenTable(String chosenTable) {
         this.chosenTable = chosenTable;
-    }}
+    }
+}

@@ -68,7 +68,7 @@ public class ChartBuilder {
                 ContextCompat.getColor(context, android.R.color.holo_purple),
                 ContextCompat.getColor(context, android.R.color.holo_blue_light),
                 ContextCompat.getColor(context, android.R.color.holo_orange_light),
-                ContextCompat.getColor(context, R.color.teal_700)};
+                ContextCompat.getColor(context, R.color.grey_100)};
         barDataSet.setColors(colors);
 
         // Crear leyenda para cada color
@@ -90,7 +90,7 @@ public class ChartBuilder {
         barDataSet.setValueFormatter(new DefaultValueFormatter(1) {
             @Override
             public String getFormattedValue(float value) {
-                return super.getFormattedValue(value).replace(".", ",")+" t";
+                return super.getFormattedValue(value).replace(".", ",") + " t";
             }
         });
 
@@ -168,7 +168,7 @@ public class ChartBuilder {
         dataSet.setValueFormatter(new DefaultValueFormatter(1) {
             @Override
             public String getFormattedValue(float value) {
-                return super.getFormattedValue(value).replace(".", ",")+" t";
+                return super.getFormattedValue(value).replace(".", ",") + " t";
             }
         });
 
@@ -252,48 +252,6 @@ public class ChartBuilder {
             }
         });
 
-        //int visibleRange = 10;
-
-
-
-//        lineChart.setOnChartGestureListener(new OnChartGestureListener() {
-//            @Override
-//            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {}
-//
-//            @Override
-//            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {}
-//
-//            @Override
-//            public void onChartLongPressed(MotionEvent me) {}
-//
-//            @Override
-//            public void onChartDoubleTapped(MotionEvent me) {}
-//
-//            @Override
-//            public void onChartSingleTapped(MotionEvent me) {}
-//
-//            @Override
-//            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
-//
-//            @Override
-//            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {}
-//
-//            @Override
-//            public void onChartTranslate(MotionEvent me, float dX, float dY) {
-//                // Actualizar los límites de la vista cuando el usuario desplaza el gráfico
-//                float maxVisibleRange = lineChart.getXChartMax();
-//                float minVisibleRange = lineChart.getLowestVisibleX();
-//                if (maxVisibleRange - minVisibleRange < visibleRange) {
-//                    float newMin = Math.max(0, maxVisibleRange - visibleRange);
-//                    lineChart.setVisibleXRangeMaximum(visibleRange);
-//                    lineChart.setVisibleXRangeMinimum(visibleRange);
-//                    lineChart.moveViewToX(newMin);
-//                }
-//            }
-//        });
-
-
-
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
@@ -333,7 +291,7 @@ public class ChartBuilder {
         leftAxis.setTextColor(ContextCompat.getColor(context, R.color.white));
         leftAxis.setAxisLineColor(Color.WHITE);
         leftAxis.setGridColor(Color.WHITE);
-       //leftAxis.setAxisMinimum(0f);
+        //leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawLabels(true);
         leftAxis.setDrawAxisLine(false);
         leftAxis.setDrawGridLines(false);
@@ -685,7 +643,7 @@ public class ChartBuilder {
 
     @NonNull
     private static SpannableString generateCenterText(String total) {
-        SpannableString s = new SpannableString(total.replace(".",",") + " t" + "\nCO2/año");
+        SpannableString s = new SpannableString(total.replace(".", ",") + " t" + "\nCO2/año");
 
         if (total.length() == 3) {
 
@@ -694,7 +652,7 @@ public class ChartBuilder {
             s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 13, s.length(), 0);
             s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 13, 0);
 
-        }else{
+        } else {
             s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
             s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
             s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 14, s.length(), 0);

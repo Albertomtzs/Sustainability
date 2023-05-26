@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Resultados;
+import com.ams.sustainability.model.entities.Results;
 import com.ams.sustainability.model.repository.tips;
 import com.ams.sustainability.ui.adapters.AdapterRecyclerViewTips;
 import com.backendless.Backendless;
@@ -32,7 +32,7 @@ public class FragmentTips extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_tips, container, false);
 
         BackendLessDAO backendLessDAO = new BackendLessDAO(getContext());
@@ -47,22 +47,22 @@ public class FragmentTips extends Fragment {
         queryBuilder.setWhereClause("ownerId = '" + currentUser.getObjectId() + "'");
 
         queryBuilder.setPageSize(100);
-        Backendless.Data.of(Resultados.class).find(queryBuilder, new AsyncCallback<List<Resultados>>() {
+        Backendless.Data.of(Results.class).find(queryBuilder, new AsyncCallback<List<Results>>() {
             @Override
-            public void handleResponse(List<Resultados> response) {
-                Resultados lastRecord = null;
-                for (Resultados record : response) {
+            public void handleResponse(List<Results> response) {
+                Results lastRecord = null;
+                for (Results record : response) {
                     if (lastRecord == null || record.getCreated().getTime() > lastRecord.getCreated().getTime()) {
                         lastRecord = record;
                     }
                 }
                 if (lastRecord != null) {
 
-                    float home = lastRecord.getHogar().floatValue();
-                    float clothes = lastRecord.getRopa().floatValue();
-                    float food = lastRecord.getAlimentacion().floatValue();
-                    float technology = lastRecord.getTecnologia().floatValue();
-                    float transport = lastRecord.getTransporte().floatValue();
+                    float home = lastRecord.getHouse().floatValue();
+                    float clothes = lastRecord.getClothes().floatValue();
+                    float food = lastRecord.getFood().floatValue();
+                    float technology = lastRecord.getTechonology().floatValue();
+                    float transport = lastRecord.getTransport().floatValue();
 
                     if (home > 0.4 && clothes > 0.5 && food > 2.3 && technology > 0.4 && transport > 1.9) {
                         AdapterRecyclerViewTips adapter = new AdapterRecyclerViewTips(tips.getTipsAll());
@@ -194,11 +194,8 @@ public class FragmentTips extends Fragment {
             }
         });
 
-
         return view;
 
-
     }
-
 
 }

@@ -1,7 +1,6 @@
 package com.ams.sustainability.ui.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,7 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Resultados;
+import com.ams.sustainability.model.entities.Results;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
@@ -41,9 +40,6 @@ public class FragmentEntries extends Fragment {
 
     private BackendLessDAO resultadosDAO;
     private BackendlessUser currentUser;
-    Context context;
-    //RecyclerView recyclerView;
-    DataQueryBuilder queryBuilder = DataQueryBuilder.create();
     LinearLayout linearLayoutRecords;
 
     @SuppressLint("MissingInflatedId")
@@ -55,8 +51,6 @@ public class FragmentEntries extends Fragment {
 
         // Inflar el diseño del fragment
         View view = inflater.inflate(R.layout.fragment_entries, container, false);
-
-        //recyclerView = view.findViewById(R.id.recyclerview);
 
         linearLayoutRecords = view.findViewById(R.id.ll_entries);
 
@@ -96,7 +90,6 @@ public class FragmentEntries extends Fragment {
     private void readRecords(View view) {
 
         linearLayoutRecords.removeAllViews();
-        //linearLayoutRecords.setPadding(10,20,0,10);
 
         currentUser = Backendless.UserService.CurrentUser();
 
@@ -106,16 +99,16 @@ public class FragmentEntries extends Fragment {
         queryBuilder.setSortBy("created ASC");
 
 
-        Backendless.Data.of(Resultados.class).find(queryBuilder, new AsyncCallback<List<Resultados>>() {
+        Backendless.Data.of(Results.class).find(queryBuilder, new AsyncCallback<List<Results>>() {
             @Override
-            public void handleResponse(List<Resultados> response) {
+            public void handleResponse(List<Results> response) {
                 List<Map<String, Object>> data = new ArrayList<>();
 
                 for (int i = 0; i < response.size(); i++) {
                     String inputDate = String.valueOf(response.get(i).getCreated());
                     String outputDate = convertStringFormat(inputDate);
-                    double huella = response.get(i).getHuella();
-                    double transporte = response.get(i).getTransporte();
+                    double huella = response.get(i).getCarbon_footprint();
+                    double transporte = response.get(i).getTransport();
                     String id = response.get(i).getObjectId();
 
                     Log.e("****MainActivity", "Fecha entrada: " + inputDate + " Valores: " + transporte);
@@ -132,7 +125,6 @@ public class FragmentEntries extends Fragment {
                     dateText.setPadding(120, 50, 0, 5);
                     dateText.setText(outputDate);
                     dateText.setTextColor(Color.WHITE);
-                    //dateText.setTag(Integer.toString(id));
                     dateText.setTextSize(12);
 
                     linearLayoutRecords.addView(dateText);
@@ -141,7 +133,6 @@ public class FragmentEntries extends Fragment {
                     lbCO2Text.setPadding(100, 0, 0, 10);
                     lbCO2Text.setText(String.valueOf(huella).replace(".", ",") + " toneladas de CO2 producida");
                     lbCO2Text.setTextColor(Color.WHITE);
-                    //lbCO2Text.setTag(Integer.toString(id));
                     lbCO2Text.setTextSize(18);
 
                     linearLayoutRecords.addView(lbCO2Text);
@@ -150,6 +141,7 @@ public class FragmentEntries extends Fragment {
 
                     delete.setPadding(140, 0, 0, 0);
                     delete.setText("BORRAR");
+                    delete.setTextColor(Color.WHITE);
                     delete.setBackground(null);
                     delete.setGravity(Gravity.NO_GRAVITY);
 
@@ -159,17 +151,17 @@ public class FragmentEntries extends Fragment {
                         @Override
                         public void onClick(View view) {
 
-                            Backendless.Data.of(Resultados.class).findById(id, new AsyncCallback<Resultados>() {
+                            Backendless.Data.of(Results.class).findById(id, new AsyncCallback<Results>() {
 
                                 @Override
-                                public void handleResponse(Resultados response) {
+                                public void handleResponse(Results response) {
                                     if (response != null) {
-                                        Backendless.Data.of(Resultados.class).remove(response, new AsyncCallback<Long>() {
+                                        Backendless.Data.of(Results.class).remove(response, new AsyncCallback<Long>() {
                                             @Override
                                             public void handleResponse(Long response) {
                                                 Toast.makeText(getContext(), "Registro borrado", Toast.LENGTH_LONG).show();
 
-                                                Log.i("Backendless", "Registro eliminado con éxito");
+                                                Log.i("******Backendless", "Registro eliminado con éxito");
                                                 readRecords(view);
                                             }
 

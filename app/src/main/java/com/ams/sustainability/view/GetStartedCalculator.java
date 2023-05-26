@@ -25,16 +25,13 @@ public class GetStartedCalculator extends AppCompatActivity {
 
         CALCULAR = (Button) findViewById(R.id.btnCalcular);
 
-        // Obtener instancia de SharedPreferences
         sharedPreferences = getSharedPreferences("MyPreferencesGetStartedCalculator", MODE_PRIVATE);
 
         boolean isBtnNextClicked = sharedPreferences.getBoolean("btnNextClicked", false);
 
-        // Verificar el estado del botón
         if (isBtnNextClicked) {
-            // Si el botón ya ha sido pulsado, iniciar la nueva actividad directamente
             startActivity(new Intent(this, NavigationFragment.class));
-            finish(); // Finalizar la actividad actual
+            finish();
         }
 
         CALCULAR.setOnClickListener(new View.OnClickListener() {

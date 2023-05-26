@@ -21,18 +21,6 @@ public class GetStartedCarbonFootprint extends AppCompatActivity {
 
         startButton = findViewById(R.id.startButton);
 
-       /* // Obtener instancia de SharedPreferences
-        sharedPreferences = getSharedPreferences("MyPreferencesGetStartedCarbonFootprint", MODE_PRIVATE);
-
-        boolean isBtnNextClicked = sharedPreferences.getBoolean("btnNextClicked", false);
-
-        // Verificar el estado del botón
-        if (isBtnNextClicked) {
-            // Si el botón ya ha sido pulsado, iniciar la nueva actividad directamente
-            startActivity(new Intent(this, MainLogin.class));
-            finish(); // Finalizar la actividad actual
-        }*/
-
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,9 +1,9 @@
 package com.ams.sustainability.data.common;
 
-import com.ams.sustainability.model.entities.Resultados;
+import com.ams.sustainability.model.entities.Results;
 
 public interface ResultadosListener {
-    void onLastRecordLoaded(Resultados lastRecord);
+    void onLastRecordLoaded(Results lastRecord);
 
     void onError(String errorMessage);
 }

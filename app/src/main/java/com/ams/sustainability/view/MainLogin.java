@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.ams.sustainability.R;
+import com.ams.sustainability.data.common.Defaults;
 import com.ams.sustainability.model.usecases.RegisterActivity;
 import com.ams.sustainability.model.usecases.RestorePasswordActivity;
 import com.ams.sustainability.data.common.DefaultCallback;
@@ -42,7 +43,6 @@ import java.util.concurrent.TimeUnit;
 
 public class MainLogin extends Activity {
 
-    private boolean isLoggedInBackendless = false;
     private CheckBox rememberLoginBox;
 
     // backendless
@@ -62,8 +62,8 @@ public class MainLogin extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
 
-        Backendless.initApp(this, getString(R.string.backendless_AppId), getString(R.string.backendless_ApiKey));
-        Backendless.setUrl(getString(R.string.backendless_ApiHost));
+        Backendless.initApp(this, Defaults.APPLICATION_ID, Defaults.API_KEY);
+        Backendless.setUrl(Defaults.SERVER_URL);
 
         initUI();
         initUIBehaviour();
@@ -80,7 +80,6 @@ public class MainLogin extends Activity {
                             @Override
                             public void handleResponse(BackendlessUser currentUser) {
                                 super.handleResponse(currentUser);
-                                isLoggedInBackendless = true;
                                 Backendless.UserService.setCurrentUser(currentUser);
                                 startLoginResult(currentUser);
                             }
@@ -149,12 +148,8 @@ public class MainLogin extends Activity {
         for (Map.Entry<String, Object> entry : user.getProperties().entrySet())
             msg += entry.getKey() + " : " + entry.getValue() + "\n";
 
-
         Intent i = new Intent(this, GetStartedCalculator.class);
         startActivity(i);
-
-		/*intent.putExtra(LoginResult.userInfo_key, msg);
-		intent.putExtra(LoginResult.logoutButtonState_key, true);*/
 
     }
 
@@ -164,10 +159,6 @@ public class MainLogin extends Activity {
             Intent i = new Intent(this, GetStartedCalculator.class);
             startActivity(i);
         }
-
-		/*intent.putExtra(LoginResult.userInfo_key, msg);
-		intent.putExtra(LoginResult.logoutButtonState_key, logoutButtonState);*/
-
 
     }
 
@@ -184,15 +175,10 @@ public class MainLogin extends Activity {
             Toast.makeText(this, "Por favor, introduce tu email y contraseña", Toast.LENGTH_SHORT).show();
             return;
         }
-        /*if (!isLoggedInBackendless) {
-            Toast.makeText(this, "Please login first", Toast.LENGTH_SHORT).show();
-            return;
-        }*/
 
         Backendless.UserService.login(identity, password, new DefaultCallback<BackendlessUser>(MainLogin.this) {
             public void handleResponse(BackendlessUser backendlessUser) {
                 super.handleResponse(backendlessUser);
-                isLoggedInBackendless = true;
                 startLoginResult(backendlessUser);
 
             }
@@ -215,13 +201,13 @@ public class MainLogin extends Activity {
         startActivity(new Intent(this, RestorePasswordActivity.class));
     }
 
-    // ------------------------------ google ------------------------------
+    // ------------------------------ google ------------------------------ //
+
     private void loginToBackendlessWithGoogle() {
         boolean rememberLogin = rememberLoginBox.isChecked();
         Backendless.UserService.loginWithGooglePlusSdk(gpAccessToken, new AsyncCallback<BackendlessUser>() {
             @Override
             public void handleResponse(BackendlessUser backendlessUser) {
-                isLoggedInBackendless = true;
                 startLoginResult(backendlessUser);
             }
 
@@ -236,18 +222,14 @@ public class MainLogin extends Activity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestScopes(new Scope(Scopes.PROFILE), new Scope(Scopes.PLUS_ME))
                 .requestId()
-                .requestIdToken(getString(R.string.gp_WebApp_ClientId))
-                .requestServerAuthCode(getString(R.string.gp_WebApp_ClientId), false)
+                .requestIdToken(Defaults.gp_WebApp_ClientId)
+                .requestServerAuthCode(Defaults.gp_WebApp_ClientId, false)
                 .requestEmail()
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                //.enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                //.addOnConnectionFailedListener(this)
                 .addApi(Auth.CREDENTIALS_API)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-//				.addScope(new Scope(Scopes.PROFILE))
-//				.addScope(new Scope(Scopes.PLUS_ME))
                 .build();
 
         loginGooglePlusButton.setOnClickListener(new View.OnClickListener() {
@@ -260,40 +242,30 @@ public class MainLogin extends Activity {
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        //Log.d(TAG, "handleSignInResult:" + result.isSuccess());
+
         if (result.isSuccess()) {
             isLoggedInGoogle = true;
 
-            //this is old approach to get google access token:
-            //final String scopes = "oauth2:" + Scopes.PLUS_LOGIN + " " + Scopes.PLUS_ME + " " + Scopes.PROFILE + " " + Scopes.EMAIL;
-            //gpAccessToken = GoogleAuthUtil.getToken(LoginWithGooglePlusSDKActivity.this, result.getSignInAccount().getEmail(), scopes);
-
             final String gpAuthToken = result.getSignInAccount().getServerAuthCode();
             if (gpAuthToken == null) {
-                Toast.makeText(MainLogin.this, "Google didn't return AuthToken.", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainLogin.this, "Google no devolvió AuthToken.", Toast.LENGTH_LONG).show();
                 return;
             }
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     exchangeAuthTokenOnAccessToken(gpAuthToken);
-
-                    /***********************************************************************
-                     * Now that the login to Google has completed successfully, the code
-                     * will login to Backendless by "exchanging" Google's access token
-                     * for BackendlessUser. This is done in the loginToBackendlessWithGoogle() method.
-                     ***********************************************************************/
                     loginToBackendlessWithGoogle();
                 }
             });
             t.setDaemon(true);
             t.start();
-            //updateUI(true);
+
         } else {
-            // Signed out, show unauthenticated UI.
+
             gpAccessToken = null;
             isLoggedInGoogle = false;
-            String msg = "Unsuccessful Google login.\nStatus message:\n" + result.getStatus().getStatusMessage();
+            String msg = "Inicio de sesión fallido en Google.\nMensaje de estado:\n" + result.getStatus().getStatusMessage();
             Toast.makeText(MainLogin.this, msg, Toast.LENGTH_LONG).show();
         }
     }
@@ -305,16 +277,15 @@ public class MainLogin extends Activity {
                     new NetHttpTransport(),
                     JacksonFactory.getDefaultInstance(),
                     "https://www.googleapis.com/oauth2/v4/token",
-                    getString(R.string.gp_WebApp_ClientId),
-                    getString(R.string.gp_WebApp_ClientSecret),
+                    Defaults.gp_WebApp_ClientId,
+                    Defaults.gp_WebApp_ClientSecret,
                     gpAuthToken,
-                    "")  // Specify the same redirect URI that you use with your web
-                    // app. If you don't have a web version of your app, you can
-                    // specify an empty string.
+                    "")
+
                     .execute();
         } catch (Exception e) {
             Log.e("LoginWithGooglePlus", e.getMessage(), e);
-            Toast.makeText(MainLogin.this, "Google didn't exchange AuthToken on AccessToken.\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(MainLogin.this, "Google no intercambió AuthToken en AccessToken.\n" + e.getMessage(), Toast.LENGTH_LONG).show();
             return null;
         }
 
@@ -328,7 +299,7 @@ public class MainLogin extends Activity {
             public void run() {
                 mGoogleApiClient.blockingConnect(10, TimeUnit.SECONDS);
                 if (!mGoogleApiClient.isConnected()) {
-                    Toast.makeText(MainLogin.this, "Can not sign out from Google plus. No connection. Try later.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainLogin.this, "No se puede cerrar sesión en Google plus. Sin conexión. Intenta más tarde.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -346,16 +317,13 @@ public class MainLogin extends Activity {
             }
         });
     }
-    // ------------------------------ end google ------------------------------
 
+    // ------------------------------ end google ------------------------------ //
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
-        // google
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);

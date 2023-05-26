@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.common.ResultadosListener;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Resultados;
+import com.ams.sustainability.model.entities.Results;
 import com.ams.sustainability.model.graph.ChartBuilder;
 import com.ams.sustainability.model.usecases.CarbonFootprintCalculator;
 import com.github.mikephil.charting.charts.BarChart;
@@ -32,7 +32,6 @@ public class FragmentHome extends Fragment implements ResultadosListener {
     private RadarChart radarChart;
     private BackendLessDAO backendLessDAO;
     private Context context;
-
     private Button btnReCalculate;
 
 
@@ -62,16 +61,16 @@ public class FragmentHome extends Fragment implements ResultadosListener {
     }
 
     @Override
-    public void onLastRecordLoaded(Resultados lastRecord) {
+    public void onLastRecordLoaded(Results lastRecord) {
 
         try {
 
-            String huellaTotal = String.valueOf(lastRecord.getHuella());
-            float hogar = lastRecord.getHogar().floatValue();
-            float ropa = lastRecord.getRopa().floatValue();
-            float alimentacion = lastRecord.getAlimentacion().floatValue();
-            float tecnologia = lastRecord.getTecnologia().floatValue();
-            float transporte = lastRecord.getTransporte().floatValue();
+            String huellaTotal = String.valueOf(lastRecord.getCarbon_footprint());
+            float hogar = lastRecord.getHouse().floatValue();
+            float ropa = lastRecord.getClothes().floatValue();
+            float alimentacion = lastRecord.getFood().floatValue();
+            float tecnologia = lastRecord.getTechonology().floatValue();
+            float transporte = lastRecord.getTransport().floatValue();
 
             LinkedHashMap<String, Float> emissiontable = new LinkedHashMap<>();
             emissiontable.put("Vivienda", hogar);
@@ -94,7 +93,6 @@ public class FragmentHome extends Fragment implements ResultadosListener {
             e.printStackTrace();
             Toast.makeText(getContext(), "No fue posible cargar los registros", Toast.LENGTH_SHORT).show();
         }
-
 
     }
 

@@ -31,12 +31,12 @@ public class MarketViewLineRadar extends MarkerView {
 
             CandleEntry ce = (CandleEntry) e;
 
-            tvContent.setText(Utils.formatNumber(ce.getHigh(), 1, true)+" t");
+            tvContent.setText(Utils.formatNumber(ce.getHigh(), 1, true) + " t");
 
 
         } else {
 
-            tvContent.setText(Utils.formatNumber(e.getY(), 1, true)+" t");
+            tvContent.setText(Utils.formatNumber(e.getY(), 1, true) + " t");
         }
 
         super.refreshContent(e, highlight);

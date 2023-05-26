@@ -6,7 +6,6 @@ import android.widget.TextView;
 import com.ams.sustainability.R;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
@@ -25,13 +24,13 @@ public class MarketViewStacked extends MarkerView {
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
 
-       if (e instanceof BarEntry) {
+        if (e instanceof BarEntry) {
 
             BarEntry be = (BarEntry) e;
 
             float value = be.getYVals()[highlight.getStackIndex()];
 
-            tvContent.setText(Utils.formatNumber(value, 1, true)+" t");
+            tvContent.setText(Utils.formatNumber(value, 1, true) + " t");
         }
 
         super.refreshContent(e, highlight);
