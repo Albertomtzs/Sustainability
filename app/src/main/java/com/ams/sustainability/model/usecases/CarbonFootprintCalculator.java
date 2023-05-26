@@ -31,7 +31,7 @@ import com.ams.sustainability.view.ResultsView;
 public class CarbonFootprintCalculator extends AppCompatActivity {
 
     private String sumSecciones, resultadoHouseDouble, resultadoFoodDouble, resultadoClothesDouble, resultadoTransportDouble;
-    private int stage, backlines;
+    private int stage;
     private double sumCarbonFootprint;
     private TextView resultInput;
 
@@ -44,18 +44,15 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         LinearLayout layout = findViewById(R.id.scrollLayout);
         TextView title = findViewById(R.id.title);
-        Button back = findViewById(R.id.btnBack);
         Button next = findViewById(R.id.btnNext);
         resultInput = findViewById(R.id.resultInput);
 
         Intent intent = getIntent();
         stage = intent.getIntExtra("NEXT_STAGE", 0);
-        backlines = intent.getIntExtra("BACK_LINES", 0);
 
         switch (stage) {
             case 0:
                 title.setText(R.string.vivienda);
-                back.setVisibility(View.INVISIBLE);
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_vivienda, null));
                 break;
             case 1:
@@ -90,23 +87,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
     private void setResultInputText(String extraKey) {
         String value = getIntent().getStringExtra(extraKey);
         resultInput.setText((value != null) ? value.replace(".", ",") : "0,0");
-    }
-
-
-    public void onBackClicked(View view) {
-
-        Intent backIntent;
-        if (stage == 0) {
-            backIntent = new Intent(this, GetStartedCalculator.class);
-        } else {
-            backIntent = new Intent(this, CarbonFootprintCalculator.class);
-            stage--;
-            backIntent.putExtra("NEXT_STAGE", stage);
-            startActivity(backIntent);
-            finish();
-
-        }
-
     }
 
     public void onNextClicked(View view) {
@@ -176,7 +156,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         intentHouse.putExtra("RESULT_HOUSE", String.valueOf(house.HouseCalculator()));
         intentHouse.putExtra("NEXT_STAGE", 1);
-        intentHouse.putExtra("BACK_LINES", backlines);
         startActivity(intentHouse);
         finish();
     }
@@ -219,7 +198,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         intentFood.putExtra("RESULT_FOOD", String.valueOf(food.FoodCalculator()));
         intentFood.putExtra("RESULT_HOUSE_FOOD", String.valueOf(sumCarbonFootprint));
         intentFood.putExtra("NEXT_STAGE", 2);
-        intentFood.putExtra("BACK_LINES", backlines);
         startActivity(intentFood);
         finish();
     }
@@ -258,9 +236,8 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         intentClothes.putExtra("RESULT_FOOD", resultadoFoodDouble);
         intentClothes.putExtra("RESULT_HOUSE_FOOD_CLOTHES", String.valueOf(sumCarbonFootprint));
         intentClothes.putExtra("NEXT_STAGE", 3);
-        intentClothes.putExtra("BACK_LINES", backlines);
         startActivity(intentClothes);
-        //finish();
+        finish();
     }
 
     private void CaptionTransport() {
@@ -316,9 +293,8 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
             intentTransport.putExtra("RESULT_TRANSPORT", resultadoTransportDouble);
             intentTransport.putExtra("RESULT_HOUSE_FOOD_CLOTHES_TRANSPORT", sumSecciones);
             intentTransport.putExtra("NEXT_STAGE", 4);
-            intentTransport.putExtra("BACK_LINES", backlines);
             startActivity(intentTransport);
-            //finish();
+            finish();
             return;
         }
 
@@ -335,7 +311,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         intentTransport.putExtra("RESULT_TRANSPORT", String.valueOf(Math.round((transporte.TransportCalculatorCar() + transporte.TransportCalculatorMoto()) * 10d) / 10d));
         intentTransport.putExtra("RESULT_HOUSE_FOOD_CLOTHES_TRANSPORT", String.valueOf(sumCarbonFootprint));
         intentTransport.putExtra("NEXT_STAGE", 4);
-        intentTransport.putExtra("BACK_LINES", backlines);
         startActivity(intentTransport);
         finish();
 
@@ -375,7 +350,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         intentOtherTransport.putExtra("RESULT_FOOD", resultadoFoodDouble);
         intentOtherTransport.putExtra("RESULT_CLOTHES", resultadoClothesDouble);
         intentOtherTransport.putExtra("RESULT_TRANSPORT", resultadoTransportDouble);
-        intentOtherTransport.putExtra("BACK_LINES", backlines);
         startActivity(intentOtherTransport);
         finish();
     }
@@ -425,7 +399,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         intentTechnology.putExtra("RESULT_TRANSPORT", resultadoTransportDouble);
         intentTechnology.putExtra("RESULT_TRANSPORT_OTHER", resultadoOtherTransportDouble);
         intentTechnology.putExtra("RESULT_ALL", String.valueOf(sumCarbonFootprint));
-        intentTechnology.putExtra("BACK_LINES", backlines);
         startActivity(intentTechnology);
         finish();
 
