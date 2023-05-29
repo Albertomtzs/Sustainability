@@ -105,7 +105,7 @@ public class ChartBuilder {
         legend.setTypeface((Typeface.create("@font/poppins_semibold", Typeface.BOLD)));
         legend.setFormSize(11f); // Establecer el tamaño de la leyenda
         legend.setTextSize(14f);
-        legend.setXOffset(-9f);
+        legend.setXOffset(-7f);
 
         barDataSet.setValueTextColor(Color.WHITE);
         barDataSet.setValueTextSize(16f);
@@ -645,49 +645,89 @@ public class ChartBuilder {
 
         switch (time) {
             case "año":
-                if (total.length() == 3) {
+                try {
 
-                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 5, 0);
-                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 5, 0);
-                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 13, s.length(), 0);
-                    s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 13, 0);
+                    if (total.length() == 3) {
 
-                } else {
-                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
-                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
-                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 14, s.length(), 0);
-                    s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 14, 0);
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 5, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 5, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 13, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 13, 0);
+
+                    } else {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 14, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 14, 0);
+                    }
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
                 }
                 break;
             case "mensual":
+                try {
 
-                if (total.length() == 4) {
-                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
-                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
-                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 18, s.length(), 0);
-                    s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 18, 0);
+                    if (total.length() == 3) {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 5, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 5, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 17, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 17, 0);
+                    } else if (total.length() == 4) {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 18, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 18, 0);
 
-                } else {
-                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 7, 0);
-                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 7, 0);
-                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 19, s.length(), 0);
-                    s.setSpan(new StyleSpan(Typeface.NORMAL), 7, 19, 0);
+                    } else if (total.length() == 5) {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 7, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 7, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 19, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 7, 19, 0);
+                    } else {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 8, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 8, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 20, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 8, 20, 0);
+                    }
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
                 }
                 break;
 
             case "semanal":
+                try {
 
-                if (total.length() == 3) {
-                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 7, 0);
-                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 7, 0);
-                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 18, s.length(), 0);
-                    s.setSpan(new StyleSpan(Typeface.NORMAL), 7, 18, 0);
+                    if (total.length() == 3) {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 7, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 7, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 18, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 7, 18, 0);
 
-                } else {
-                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 9, 0);
-                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 9, 0);
-                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 20, s.length(), 0);
-                    s.setSpan(new StyleSpan(Typeface.NORMAL), 9, 20, 0);
+                    } else if (total.length() == 4) {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 8, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 8, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 19, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 8, 19, 0);
+                    } else if (total.length() >= 4) {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 8, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 8, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 20, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 8, 20, 0);
+
+                    } else {
+                        s.setSpan(new RelativeSizeSpan(2.7f), 0, 9, 0);
+                        s.setSpan(new StyleSpan(Typeface.BOLD), 0, 9, 0);
+                        s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 21, s.length(), 0);
+                        s.setSpan(new StyleSpan(Typeface.NORMAL), 9, 21, 0);
+                    }
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
                 }
                 break;
         }

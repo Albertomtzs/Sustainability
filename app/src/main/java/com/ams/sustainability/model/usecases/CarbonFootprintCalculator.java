@@ -401,8 +401,11 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
     public String getRadioGroupSelectedText(RadioGroup radioGroup) {
         int radioButtonIDCar = radioGroup.getCheckedRadioButtonId();
         View radioButtonCar = radioGroup.findViewById(radioButtonIDCar);
-        int idxCar = radioGroup.indexOfChild(radioButtonCar);
-        RadioButton rCar = (RadioButton) radioGroup.getChildAt(idxCar);
-        return rCar.getText().toString();
+
+        if (radioButtonCar != null && radioButtonCar instanceof RadioButton) {
+            RadioButton rCar = (RadioButton) radioButtonCar;
+            return rCar.getText().toString();
+        }
+        return "";
     }
 }

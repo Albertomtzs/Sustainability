@@ -75,7 +75,7 @@ public class FragmentEntries extends Fragment {
                                 dialog.dismiss();
                                 linearLayoutRecords.removeAllViews();
 
-                                readRecords(view);
+                                //readRecords(view);
 
                             }
                         })
@@ -148,6 +148,7 @@ public class FragmentEntries extends Fragment {
 
                     linearLayoutRecords.addView(delete);
 
+                    try {
                     delete.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -186,8 +187,10 @@ public class FragmentEntries extends Fragment {
                             });
                         }
                     });
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
                 }
-            }
+            }}
 
             @Override
             public void handleFault(BackendlessFault fault) {
@@ -210,20 +213,6 @@ public class FragmentEntries extends Fragment {
         }
         return dateString;
     }
-
-    /*private void refreshFragments(){
-        // Lógica para eliminar el registro
-
-        // Obtén una referencia a la instancia de NavigationFragment
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity instanceof NavigationFragment) {
-            NavigationFragment navigationFragment = (NavigationFragment) activity;
-            navigationFragment.refreshFragmentsAfterDelete();
-        }
-    }*/
-
-
-
 
 }
 

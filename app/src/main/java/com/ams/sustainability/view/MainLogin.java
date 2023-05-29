@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +49,8 @@ public class MainLogin extends Activity {
     // backendless
     private TextView registerLink, restoreLink;
     private EditText identityField, passwordField;
-    private Button login, loginGooglePlusButton;
+    private Button login;
+    private ImageButton loginGooglePlusButton;
 
     // google
     private final int RC_SIGN_IN = 112233; // arbitrary number
@@ -103,7 +105,7 @@ public class MainLogin extends Activity {
         login = (Button) findViewById(R.id.btnLogin);
 
         // google
-        loginGooglePlusButton = (Button) findViewById(R.id.button_googlePlusLogin);
+        loginGooglePlusButton = (ImageButton) findViewById(R.id.button_googlePlusLogin);
 
     }
 

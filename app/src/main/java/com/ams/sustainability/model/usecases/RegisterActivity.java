@@ -3,10 +3,11 @@ package com.ams.sustainability.model.usecases;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ams.sustainability.R;
+import com.ams.sustainability.data.common.DefaultCallback;
+import com.ams.sustainability.data.common.Defaults;
 import com.ams.sustainability.view.MainLogin;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
@@ -26,9 +29,7 @@ public class RegisterActivity extends Activity {
     private EditText nameField, emailField, passwordField;
     private Button registerButton;
     private String name, email, password;
-
     private BackendlessUser user;
-    public static int SPLASH_TIMER = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +73,7 @@ public class RegisterActivity extends Activity {
     }
 
     private void onRegisterButtonClicked() {
+
         String nameText = nameField.getText().toString().trim();
         String emailText = emailField.getText().toString().trim();
         String passwordText = passwordField.getText().toString().trim();
@@ -109,33 +111,41 @@ public class RegisterActivity extends Activity {
             user.setProperty("name", name);
         }
 
+
         Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
+            ProgressDialog progressDialog = ProgressDialog.show(RegisterActivity.this, "", "Cargando...", true);
+
             @Override
             public void handleResponse(BackendlessUser response) {
 
                 Resources resources = getResources();
                 String message = String.format(resources.getString(R.string.registration_success_message), resources.getString(R.string.app_name));
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                builder.setMessage(message).setTitle(R.string.registration_success);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
-                new Handler().postDelayed(new Runnable() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.MyAlertDialogTheme);
+                builder.setMessage(message).setTitle(R.string.registration_success).setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
                     @Override
-                    public void run() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        progressDialog.dismiss();
                         Intent intent = new Intent(RegisterActivity.this, MainLogin.class);
                         startActivity(intent);
                         finish();
                     }
-                }, SPLASH_TIMER);
+                });
+                AlertDialog dialog = builder.create();
+                progressDialog.dismiss();
+                dialog.show();
 
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                builder.setMessage("El usuario introducido ya existe. Utilice otro usuario.").setTitle(R.string.registration_error);
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.MyAlertDialogTheme);
+                builder.setMessage("El usuario introducido ya existe. Utilice otro usuario.").setTitle(R.string.registration_error).setCancelable(false).setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        progressDialog.dismiss();
+                        dialog.dismiss();
+                    }
+                });
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
