@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Results;
+import com.ams.sustainability.model.graph.entities.Results;
 import com.ams.sustainability.model.repository.tips;
 import com.ams.sustainability.ui.adapters.AdapterRecyclerViewTips;
 import com.backendless.Backendless;
@@ -39,7 +39,7 @@ public class FragmentTips extends Fragment {
 
         tips tips = new tips();
 
-        RecyclerView recyclerView = view.findViewById(R.id.ListadoLibros);
+        RecyclerView recyclerView = view.findViewById(R.id.listTips);
 
         currentUser = Backendless.UserService.CurrentUser();
 

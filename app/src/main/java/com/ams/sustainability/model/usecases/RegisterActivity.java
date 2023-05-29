@@ -21,18 +21,14 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 
 public class RegisterActivity extends Activity {
-    private final static java.text.SimpleDateFormat SIMPLE_DATE_FORMAT = new java.text.SimpleDateFormat("yyyy/MM/dd");
 
     private TextView screenLogin;
     private EditText nameField, emailField, passwordField;
-
     private Button registerButton;
-
     private String name, email, password;
 
     private BackendlessUser user;
-
-    public static int SPLASH_TIMER = 4000;
+    public static int SPLASH_TIMER = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +95,7 @@ public class RegisterActivity extends Activity {
         } else
             name = nameText;
 
-        BackendlessUser user = new BackendlessUser();
+        user = new BackendlessUser();
 
         if (email != null) {
             user.setEmail(email);
@@ -139,7 +135,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void handleFault(BackendlessFault fault) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                builder.setMessage(fault.getMessage()).setTitle(R.string.registration_error);
+                builder.setMessage("El usuario introducido ya existe. Utilice otro usuario.").setTitle(R.string.registration_error);
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }

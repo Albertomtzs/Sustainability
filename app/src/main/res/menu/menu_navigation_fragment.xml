@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/home" android:title="Home" android:icon="@drawable/ic_home_black_24dp" />
-    <item android:id="@+id/historial" android:title="Historial" android:icon="@drawable/baseline_chart_24"/>
-    <item android:id="@+id/entries" android:title="Registros" android:icon="@drawable/baseline_show_chart_24"/>
-    <item android:id="@+id/tips" android:title="Tips" android:icon="@drawable/baseline_tips_and_updates_24"/>
-    <item android:id="@+id/account" android:title="Perfil" android:icon="@drawable/ic_account_black_24dp"/>
+    <item android:id="@+id/home" android:title="Home" android:icon="@drawable/ic_home_24dp" />
+    <item android:id="@+id/historial" android:title="Historial" android:icon="@drawable/ic_chart_24"/>
+    <item android:id="@+id/entries" android:title="Registros" android:icon="@drawable/ic_show_chart_24"/>
+    <item android:id="@+id/tips" android:title="Tips" android:icon="@drawable/ic_tips_and_updates_24"/>
+    <item android:id="@+id/account" android:title="Perfil" android:icon="@drawable/ic_account_24dp"/>
 
 </menu>

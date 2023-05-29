@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ams.sustainability.view.GetStartedCalculator;
 import com.ams.sustainability.R;
 import com.ams.sustainability.model.repository.Clothes;
 import com.ams.sustainability.model.repository.Food;
@@ -81,7 +80,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
                 layout.addView(getLayoutInflater().inflate(R.layout.preguntas_tecnologia, null));
                 break;
         }
-
     }
 
     private void setResultInputText(String extraKey) {
@@ -93,29 +91,20 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         switch (stage) {
             case 0:
-
                 CaptionHouse();
-                finish();
                 break;
-
             case 1:
-
                 CaptionFood();
                 break;
-
             case 2:
-
                 CaptionClothes();
                 break;
-
             case 3:
                 CaptionTransport();
                 break;
-
             case 4:
                 CaptionOtherTransport();
                 break;
-
             case 5:
                 CaptionTechnology();
                 break;
@@ -128,18 +117,15 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         EditText etNumPersonas = findViewById(R.id.etNumPersonas);
 
         if (radioGroupHouse.getCheckedRadioButtonId() == -1) {
-
-            toast("Debe seleccionar si la electricidad de su vivienda es de fuentes renovables");
+            Toast.makeText(this, "Debe seleccionar si la electricidad de su vivienda es de fuentes renovables", Toast.LENGTH_SHORT).show();
             return;
-
         } else if (etNumPersonas.getText().toString().isEmpty()) {
-
-            toast("Debe indicar cuántas personas viven en su domicilio");
+            Toast.makeText(this, "Debe indicar cuántas personas viven en su domicilio", Toast.LENGTH_SHORT).show();
             return;
         }
 
         int numPersonas = getTextFromEditTextInt(R.id.etNumPersonas);
-        double electricidad = getTextFromEditTextDouble(R.id.etElectricidad);
+        double electricidad = (float) getTextFromEditTextDouble(R.id.etElectricidad);
         double gasNatural = getTextFromEditTextDouble(R.id.etGasNatural);
         double gasoil = getTextFromEditTextDouble(R.id.etGasoil);
         double butano = getTextFromEditTextDouble(R.id.etGasButano);
@@ -150,7 +136,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         House house = new House(getRadioGroupSelectedText(radioGroupHouse), numPersonas, electricidad, gasNatural, gasoil, butano, propano, carbon, pellets);
 
         resultInput.setText(String.valueOf(house.HouseCalculator()).replace(".", ","));
-        System.out.println("*******Prueba resultado vivienda: " + house.HouseCalculator());
 
         Intent intentHouse = new Intent(this, CarbonFootprintCalculator.class);
 
@@ -190,9 +175,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         sumCarbonFootprint = Math.round((Double.parseDouble(resultadoHouseDouble) + food.FoodCalculator()) * 10d) / 10d;
         resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
-        System.out.println("Prueba resultado: " + food.FoodCalculator());
-        System.out.println("Prueba resultado suma secciones Vivienda y alimentacion: " + sumCarbonFootprint);
-
         Intent intentFood = new Intent(this, CarbonFootprintCalculator.class);
         intentFood.putExtra("RESULT_HOUSE", resultadoHouseDouble);
         intentFood.putExtra("RESULT_FOOD", String.valueOf(food.FoodCalculator()));
@@ -228,8 +210,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + clothes.ClothesCalculator()) * 10d) / 10d;
         resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
-        System.out.println("********Prueba resultado: " + clothes.ClothesCalculator());
-        System.out.println("********Prueba resultado suma secciones Vivienda, alimentacion y ropa: " + sumCarbonFootprint);
         Intent intentClothes = new Intent(this, CarbonFootprintCalculator.class);
         intentClothes.putExtra("RESULT_CLOTHES", String.valueOf(clothes.ClothesCalculator()));
         intentClothes.putExtra("RESULT_HOUSE", resultadoHouseDouble);
@@ -300,10 +280,7 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + transporte.TransportCalculatorCar() + transporte.TransportCalculatorMoto()) * 10d) / 10d;
 
-        System.out.println("********Prueba resultado: " + Math.round((transporte.TransportCalculatorCar() + transporte.TransportCalculatorMoto()) * 10d) / 10d);
         resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
-
-        System.out.println("********Prueba resultado suma secciones Vivienda, alimentacion y ropa: " + sumCarbonFootprint);
 
         intentTransport.putExtra("RESULT_HOUSE", resultadoHouseDouble);
         intentTransport.putExtra("RESULT_FOOD", resultadoFoodDouble);
@@ -340,7 +317,6 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
 
         sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + otherTransport.OtherTransportCalculator()) * 10d) / 10d;
         resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
-        System.out.println("*********************Prueba resultado OTROS TRANSPORTES: " + otherTransport.OtherTransportCalculator());
 
         Intent intentOtherTransport = new Intent(this, CarbonFootprintCalculator.class);
         intentOtherTransport.putExtra("RESULT_TRANSPORT_OTHER", String.valueOf(otherTransport.OtherTransportCalculator()));
@@ -384,12 +360,9 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         Technology technology = new Technology(udsPC, yearPC, udsLaptop, yearLaptop, udsTablet, yearTablet, udsSmartphone, yearSmartphone, udsRouter, yearRouter);
 
         sumSecciones = (sumSecciones == null) ? "0.0" : sumSecciones;
-        resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
         sumCarbonFootprint = Math.round((Double.parseDouble(sumSecciones) + technology.TechnologyCalculator()) * 10d) / 10d;
-
-        System.out.println("*********************Prueba resultado: " + technology.TechnologyCalculator());
-        System.out.println("*********************Prueba resultado final: " + String.valueOf(sumCarbonFootprint));
+        resultInput.setText(String.valueOf(sumCarbonFootprint).replace(".", ","));
 
         Intent intentTechnology = new Intent(this, ResultsView.class);
         intentTechnology.putExtra("RESULT_TECHNOLOGY", String.valueOf(technology.TechnologyCalculator()));
@@ -432,5 +405,4 @@ public class CarbonFootprintCalculator extends AppCompatActivity {
         RadioButton rCar = (RadioButton) radioGroup.getChildAt(idxCar);
         return rCar.getText().toString();
     }
-
 }

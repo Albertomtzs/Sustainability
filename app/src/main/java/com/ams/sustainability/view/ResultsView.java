@@ -16,6 +16,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ResultsView extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class ResultsView extends AppCompatActivity {
         initializeViews();
         retrieveIntentData();
         insertEmissionData();
+        updateTop("Emisiones anuales de CO2:");
         updateLabel(String.valueOf(emissionResult), " t");
         setupCharts();
     }
@@ -85,8 +87,8 @@ public class ResultsView extends AppCompatActivity {
         screenHeight = displayMetrics.heightPixels;
         screenWidth = displayMetrics.widthPixels;
 
-        ChartBuilder.buildBarChart(barChart, this, screenWidth, screenHeight, emissionTable);
-        ChartBuilder.buildPieChart(pieChart, this, screenWidth, screenHeight, emissionTable, String.valueOf(emissionResult));
+        ChartBuilder.buildBarChart(barChart, this, screenWidth, screenHeight, emissionTable, "t");
+        ChartBuilder.buildPieChart(pieChart, this, screenWidth, screenHeight, emissionTable, String.valueOf(emissionResult), "t", "año");
     }
 
     public void onBacktoHome(View view) {
@@ -112,11 +114,11 @@ public class ResultsView extends AppCompatActivity {
         goalText.setText("Tu objetivo semanal sostenible de emisiones de CO2 debería ser:");
         goalFig.setText("40,4 kg");
 
-        //updateCharts(convertToMontlyWeekly(52));
+        updateCharts(convertToMontlyWeekly(52), "kg", "semanal", String.valueOf(weeklyEmission));
     }
 
     public void monthlyResults(View v) {
-        double monthlyEmission = Math.round((emissionResult / 12) * 10d) / 10d;
+        double monthlyEmission = Math.round((emissionResult / 12) * 100.d) / 100.d;
         updateTop("Emisiones mensuales de CO2:");
         updateLabel(String.valueOf(monthlyEmission), " t");
         avgText.setText("El promedio de emisiones mensuales de CO2 en España son:");
@@ -124,7 +126,7 @@ public class ResultsView extends AppCompatActivity {
         goalText.setText("Tu objetivo mensual sostenible de emisiones de CO2 debería ser:");
         goalFig.setText("0,18 t");
 
-        //updateCharts(convertToMontlyWeekly(12));
+        updateCharts(convertToMontlyWeekly(12), "t", "mensual", String.valueOf(monthlyEmission));
     }
 
     public void annualResults(View v) {
@@ -135,12 +137,36 @@ public class ResultsView extends AppCompatActivity {
         goalText.setText("Tu objetivo anual sostenible de emisiones de CO2 debería ser:");
         goalFig.setText("2,1 t");
 
-        //updateCharts(emissionTable);
+        updateCharts(emissionTable, "t", "año", String.valueOf(emissionResult));
     }
 
-    private void updateCharts(LinkedHashMap<String, Float> data) {
-        ChartBuilder.buildBarChart(barChart, this, screenWidth, screenHeight, data);
-        ChartBuilder.buildPieChart(pieChart, this, screenWidth, screenHeight, data, String.valueOf(emissionResult));
+    private void updateCharts(LinkedHashMap<String, Float> data, String unit, String time, String emissionResult) {
+        ChartBuilder.buildBarChart(barChart, this, screenWidth, screenHeight, data, unit);
+        ChartBuilder.buildPieChart(pieChart, this, screenWidth, screenHeight, data, emissionResult, unit, time);
+    }
+
+    private LinkedHashMap<String, Float> convertToMontlyWeekly(int totalWeeks) {
+        LinkedHashMap<String, Float> convertedData = new LinkedHashMap<>();
+        for (Map.Entry<String, Float> entry : emissionTable.entrySet()) {
+            String category = entry.getKey();
+            float yearlyValue = entry.getValue();
+            float convertedValue;
+
+            if (totalWeeks == 52) {
+
+                convertedValue = (yearlyValue / 52) * 1000;
+
+            } else if (totalWeeks == 12) {
+
+                convertedValue = (Math.round((yearlyValue / 12) * 100.0f) / 100.0f);
+
+            } else {
+                return null;
+            }
+
+            convertedData.put(category, convertedValue);
+        }
+        return convertedData;
     }
 
 

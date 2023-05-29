@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.common.ResultadosListener;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Results;
+import com.ams.sustainability.model.graph.entities.Results;
 import com.ams.sustainability.model.graph.ChartBuilder;
 import com.ams.sustainability.model.usecases.CarbonFootprintCalculator;
 import com.github.mikephil.charting.charts.BarChart;
@@ -76,7 +76,7 @@ public class FragmentHome extends Fragment implements ResultadosListener {
             emissiontable.put("Vivienda", hogar);
             emissiontable.put("Comida", alimentacion);
             emissiontable.put("Transporte", transporte);
-            emissiontable.put("ropa", ropa);
+            emissiontable.put("Ropa", ropa);
             emissiontable.put("Tecnología", tecnologia);
 
 
@@ -85,8 +85,8 @@ public class FragmentHome extends Fragment implements ResultadosListener {
             int screenheight = displayMetrics.heightPixels;
             int screenwidth = displayMetrics.widthPixels;
 
-            ChartBuilder.buildBarChart(barChart, getContext(), screenwidth, screenheight, emissiontable);
-            ChartBuilder.buildPieChart(pieChart, getContext(), screenwidth, screenheight, emissiontable, huellaTotal);
+            ChartBuilder.buildBarChart(barChart, getContext(), screenwidth, screenheight, emissiontable,"t");
+            ChartBuilder.buildPieChart(pieChart, getContext(), screenwidth, screenheight, emissiontable, huellaTotal, "t","año");
             ChartBuilder.BuildRadarChart(radarChart, screenwidth, screenheight, emissiontable);
 
         } catch (Exception e) {

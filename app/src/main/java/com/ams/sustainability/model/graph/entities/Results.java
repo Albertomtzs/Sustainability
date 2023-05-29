@@ -1,5 +1,5 @@
 
-package com.ams.sustainability.model.entities;
+package com.ams.sustainability.model.graph.entities;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;

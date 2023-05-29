@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.common.HistoryResults;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Results;
+import com.ams.sustainability.model.graph.entities.Results;
 import com.ams.sustainability.model.graph.ChartBuilder;
 import com.backendless.exceptions.BackendlessFault;
 import com.github.mikephil.charting.charts.BarChart;
@@ -59,7 +59,6 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
 
         try {
 
-
             LinkedHashMap<String, Float> emissiontable = new LinkedHashMap<>();
             ArrayList<BarEntry> barEntries = new ArrayList<>();
             ArrayList<String> labels = new ArrayList<>();
@@ -77,9 +76,6 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
                 double ropa = resultados.get(i).getClothes();
                 double transporte = resultados.get(i).getTransport();
                 double tecnologia = resultados.get(i).getTechonology();
-
-                Log.e("****MainActivity", "Fecha entrada: " + inputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
-                Log.e("****MainActivity", "Fecha salida: " + outputDate + " Valores: " + hogar + ", " + alimentacion + ", " + ropa + ", " + transporte + ", " + tecnologia);
 
                 BarEntry entry = new BarEntry(i, new float[]{(float) hogar, (float) alimentacion, (float) ropa, (float) transporte, (float) tecnologia});
                 barEntries.add(entry);
@@ -104,7 +100,7 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
             }
 
             ChartBuilder.buildStackedBarChart(barChart, getContext(), screenWidth, screenHeight, entries, barEntries);
-            ChartBuilder.buildLineChart(lineChart, getContext(), screenWidth, screenHeight, entries);
+            ChartBuilder.buildLineChart(lineChart, getContext(), screenWidth, screenHeight, entries,"t");
         } catch (Exception e) {
             e.printStackTrace();
             if (getContext() != null) {
@@ -132,6 +128,7 @@ public class FragmentHistorial extends Fragment implements HistoryResults {
     public void onError(BackendlessFault fault) {
 
     }
+
 }
 
 

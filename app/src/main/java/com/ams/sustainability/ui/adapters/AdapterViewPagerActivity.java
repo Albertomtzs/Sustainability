@@ -13,7 +13,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.ams.sustainability.R;
 
-public class ViewPagerAdapter extends PagerAdapter {
+public class AdapterViewPagerActivity extends PagerAdapter {
 
     Context context;
     int sliderAllImages[] = {
@@ -35,7 +35,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             R.string.screen4desc,
     };
 
-    public ViewPagerAdapter(Context context) {
+    public AdapterViewPagerActivity(Context context) {
         this.context = context;
     }
 

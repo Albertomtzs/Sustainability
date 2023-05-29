@@ -1,16 +1,17 @@
 package com.ams.sustainability.data.repository;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.security.keystore.BackendBusyException;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.ams.sustainability.data.common.Defaults;
 import com.ams.sustainability.data.common.HistoryResults;
 import com.ams.sustainability.data.common.ResultadosListener;
-import com.ams.sustainability.model.entities.Results;
+import com.ams.sustainability.model.graph.entities.Results;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
@@ -53,8 +54,9 @@ public class BackendLessDAO {
             results.setClothes(ropa);
             results.setTechonology(tecnologia);
             results.setTransport(transporte);
-            if(currentUser != null){
-            results.setOwnerId(currentUser.getObjectId());}
+            if (currentUser != null) {
+                results.setOwnerId(currentUser.getObjectId());
+            }
 
             results.saveAsync(new AsyncCallback<Results>() {
                 @Override
@@ -75,7 +77,7 @@ public class BackendLessDAO {
                 }
 
             });
-        }catch (BackendlessException e){
+        } catch (BackendlessException e) {
             Log.e(TAG, "Error al insertar registro: " + e.getMessage());
         }
 
@@ -112,7 +114,7 @@ public class BackendLessDAO {
         });
     }
 
-    public void findLastRecord() {
+    /*public void findLastRecord() {
         DataQueryBuilder queryBuilder = DataQueryBuilder.create();
         queryBuilder.setPageSize(100);
         Backendless.Data.of(Results.class).find(queryBuilder, new AsyncCallback<List<Results>>() {
@@ -142,7 +144,7 @@ public class BackendLessDAO {
             }
         });
 
-    }
+    }*/
 
     public void getHistoryResults(HistoryResults listener) {
         currentUser = Backendless.UserService.CurrentUser();
@@ -268,7 +270,7 @@ public class BackendLessDAO {
                     emissiontable.put("Vivienda", hogar);
                     emissiontable.put("Comida", ropa);
                     emissiontable.put("Transporte", alimentacion);
-                    emissiontable.put("ropa", ropa);
+                    emissiontable.put("Ropa", ropa);
                     emissiontable.put("Tecnología", tecnologia);
 
                     addRecordBackendless(hogar, alimentacion, transporte, ropa, tecnologia);
@@ -297,7 +299,7 @@ public class BackendLessDAO {
         emissiontable.put("Vivienda", hogarf);
         emissiontable.put("Comida", comidaf);
         emissiontable.put("Transporte", transportef);
-        emissiontable.put("ropa", ropaf);
+        emissiontable.put("Ropa", ropaf);
         emissiontable.put("Tecnología", tecnologiaf);
 
     }

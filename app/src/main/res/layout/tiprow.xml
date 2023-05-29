@@ -25,15 +25,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tipText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/imageTips"
+                android:layout_width="40dp"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="While the AC is on, shut the windows to save energy."
+                android:src="@drawable/ic_home_24dp" />
+
+            <TextView
+                android:id="@+id/tipText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Hogar."
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 tools:ignore="MissingConstraints" />

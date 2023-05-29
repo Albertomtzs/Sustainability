@@ -33,14 +33,10 @@ public class FragmentAccount extends Fragment {
         BackendlessUser currentUser = Backendless.UserService.CurrentUser();
 
         if (currentUser != null) {
-            String userId = currentUser.getObjectId();
-            String email = currentUser.getEmail();
             user.setText((String) currentUser.getProperty("name"));
-            Log.e("****MainActivity", "*********User ID: " + userId);
-            Log.e("****MainActivity", "*********Email: " + email);
 
         } else {
-            Log.e("****MainActivity", "*****No user is currently logged in.");
+            Log.e("****MainActivity", "Ningún usuario logueado.");
         }
 
         bkndlsLogoutButton = view.findViewById(R.id.button_bkndlsBackendlessLogout);

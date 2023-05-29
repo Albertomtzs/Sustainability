@@ -51,7 +51,7 @@ import java.util.Map;
 
 public class ChartBuilder {
 
-    public static void buildBarChart(@NonNull BarChart barChart, Context context, int screenWidth, int screenHeight, @NonNull LinkedHashMap<String, Float> data) {
+    public static void buildBarChart(@NonNull BarChart barChart, Context context, int screenWidth, int screenHeight, @NonNull LinkedHashMap<String, Float> data, String unit) {
 
         ArrayList<BarEntry> carbonFootprint = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class ChartBuilder {
                 ContextCompat.getColor(context, android.R.color.holo_purple),
                 ContextCompat.getColor(context, android.R.color.holo_blue_light),
                 ContextCompat.getColor(context, android.R.color.holo_orange_light),
-                ContextCompat.getColor(context, R.color.grey_100)};
+                ContextCompat.getColor(context, android.R.color.holo_green_light)};
         barDataSet.setColors(colors);
 
         // Crear leyenda para cada color
@@ -90,17 +90,22 @@ public class ChartBuilder {
         barDataSet.setValueFormatter(new DefaultValueFormatter(1) {
             @Override
             public String getFormattedValue(float value) {
-                return super.getFormattedValue(value).replace(".", ",") + " t";
+                return super.getFormattedValue(value).replace(".", ",") + " " + unit;
             }
         });
 
         Legend legend = barChart.getLegend();
         legend.setCustom(entries);
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        legend.setTypeface((Typeface.create("@font/poppins_semibold", Typeface.BOLD))); // Cambiar la fuente
-        legend.setFormSize(18f); // Establecer el tamaño de la leyenda
+        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        legend.setDrawInside(false);
+        legend.setFormToTextSpace(4f);
+        legend.setXEntrySpace(10f);
+        legend.setTypeface((Typeface.create("@font/poppins_semibold", Typeface.BOLD)));
+        legend.setFormSize(11f); // Establecer el tamaño de la leyenda
         legend.setTextSize(14f);
-        legend.setXOffset(-1f);
+        legend.setXOffset(-9f);
 
         barDataSet.setValueTextColor(Color.WHITE);
         barDataSet.setValueTextSize(16f);
@@ -133,9 +138,6 @@ public class ChartBuilder {
         barChart.getLegend().setTextColor((ContextCompat.getColor(context, R.color.white)));
         barChart.setExtraOffsets(20.f, 20.f, 20.f, 20.f);
 
-        YAxis leftAxis = barChart.getAxisLeft();
-        leftAxis.setValueFormatter(new IntegerValueFormatter());
-
         barChart.setDragDecelerationFrictionCoef(0.95f);
         barChart.getLegend().setFormSize(11f); // Establecer el tamaño de la leyenda
 
@@ -148,7 +150,7 @@ public class ChartBuilder {
         barChart.setLayoutParams(params);
     }
 
-    public static void buildPieChart(@NonNull PieChart pieChart, Context context, int screenWidth, int screenHeight, @NonNull LinkedHashMap<String, Float> data, String goal) {
+    public static void buildPieChart(@NonNull PieChart pieChart, Context context, int screenWidth, int screenHeight, @NonNull LinkedHashMap<String, Float> data, String goal, String unit, String time) {
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
@@ -168,7 +170,7 @@ public class ChartBuilder {
         dataSet.setValueFormatter(new DefaultValueFormatter(1) {
             @Override
             public String getFormattedValue(float value) {
-                return super.getFormattedValue(value).replace(".", ",") + " t";
+                return super.getFormattedValue(value).replace(".", ",") + " " + unit;
             }
         });
 
@@ -190,7 +192,7 @@ public class ChartBuilder {
         pieChart.setHoleRadius(50f);
         pieChart.setTransparentCircleRadius(55f);
         pieChart.setHoleColor(Color.TRANSPARENT);
-        pieChart.setCenterText(generateCenterText(goal));
+        pieChart.setCenterText(generateCenterText(goal, unit, time));
 
         pieChart.animateY(5500, Easing.EaseInOutQuad);
         pieChart.setRotationAngle(0);
@@ -216,7 +218,7 @@ public class ChartBuilder {
 
     }
 
-    public static void buildLineChart(@NonNull LineChart lineChart, Context context, int screenWidth, int screenHeight, @NonNull ArrayList<DateValueEntry> entries) {
+    public static void buildLineChart(@NonNull LineChart lineChart, Context context, int screenWidth, int screenHeight, @NonNull ArrayList<DateValueEntry> entries, String unit) {
 
         ArrayList<Entry> chartEntries = new ArrayList<>();
         for (int i = 0; i < entries.size(); i++) {
@@ -232,7 +234,7 @@ public class ChartBuilder {
 
             @Override
             public String getFormattedValue(float value) {
-                return value + " t";
+                return value + " " + unit;
             }
         });
 
@@ -291,12 +293,9 @@ public class ChartBuilder {
         leftAxis.setTextColor(ContextCompat.getColor(context, R.color.white));
         leftAxis.setAxisLineColor(Color.WHITE);
         leftAxis.setGridColor(Color.WHITE);
-        //leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawLabels(true);
         leftAxis.setDrawAxisLine(false);
         leftAxis.setDrawGridLines(false);
-
-        //leftAxis.setAxisMaximum(Math.max(trendlineNacional.getLimit(), trendlineEuropea.getLimit()) * 1.1f);
 
         lineChart.getLegend().setEnabled(false);
 
@@ -400,7 +399,7 @@ public class ChartBuilder {
         lastRecordValues.add(new RadarEntry(emissionTable.get("Vivienda")));
         lastRecordValues.add(new RadarEntry(emissionTable.get("Comida")));
         lastRecordValues.add(new RadarEntry(emissionTable.get("Transporte")));
-        lastRecordValues.add(new RadarEntry(emissionTable.get("ropa")));
+        lastRecordValues.add(new RadarEntry(emissionTable.get("Ropa")));
         lastRecordValues.add(new RadarEntry(emissionTable.get("Tecnología")));
 
         List<RadarEntry> spainAverageValues = new ArrayList<>();
@@ -451,8 +450,8 @@ public class ChartBuilder {
         //legend.setYOffset(15f);
 
         MarketViewLineRadar mv = new MarketViewLineRadar(radarChart.getContext(), R.layout.marker_view);
-        mv.setChartView(radarChart); // For bounds control
-        radarChart.setMarker(mv); // Set the marker to the chart
+        mv.setChartView(radarChart);
+        radarChart.setMarker(mv);
 
         // Actualiza el gráfico con los nuevos datos
         radarChart.setData(radarData);
@@ -496,8 +495,8 @@ public class ChartBuilder {
         barData.setBarWidth(0.4f);
 
         MarketViewStacked mv = new MarketViewStacked(barChart.getContext(), R.layout.marker_view);
-        mv.setChartView(barChart); // For bounds control
-        barChart.setMarker(mv); // Set the marker to the chart
+        mv.setChartView(barChart);
+        barChart.setMarker(mv);
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setValueFormatter(new ValueFormatter() {
@@ -580,7 +579,6 @@ public class ChartBuilder {
         leftAxis.setDrawLabels(true);
         leftAxis.setDrawAxisLine(false);
         leftAxis.setDrawGridLines(false);
-        leftAxis.setValueFormatter(new IntegerValueFormatter());
 
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
@@ -642,21 +640,56 @@ public class ChartBuilder {
     }
 
     @NonNull
-    private static SpannableString generateCenterText(String total) {
-        SpannableString s = new SpannableString(total.replace(".", ",") + " t" + "\nCO2/año");
+    private static SpannableString generateCenterText(String total, String unit, String time) {
+        SpannableString s = new SpannableString(total.replace(".", ",") + " " + unit + "\nCO2/" + time);
 
-        if (total.length() == 3) {
+        switch (time) {
+            case "año":
+                if (total.length() == 3) {
 
-            s.setSpan(new RelativeSizeSpan(2.7f), 0, 5, 0);
-            s.setSpan(new StyleSpan(Typeface.BOLD), 0, 5, 0);
-            s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 13, s.length(), 0);
-            s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 13, 0);
+                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 5, 0);
+                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 5, 0);
+                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 13, s.length(), 0);
+                    s.setSpan(new StyleSpan(Typeface.NORMAL), 5, 13, 0);
 
-        } else {
-            s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
-            s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
-            s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 14, s.length(), 0);
-            s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 14, 0);
+                } else {
+                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
+                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
+                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 14, s.length(), 0);
+                    s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 14, 0);
+                }
+                break;
+            case "mensual":
+
+                if (total.length() == 4) {
+                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 6, 0);
+                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, 0);
+                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 18, s.length(), 0);
+                    s.setSpan(new StyleSpan(Typeface.NORMAL), 6, 18, 0);
+
+                } else {
+                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 7, 0);
+                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 7, 0);
+                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 19, s.length(), 0);
+                    s.setSpan(new StyleSpan(Typeface.NORMAL), 7, 19, 0);
+                }
+                break;
+
+            case "semanal":
+
+                if (total.length() == 3) {
+                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 7, 0);
+                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 7, 0);
+                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 18, s.length(), 0);
+                    s.setSpan(new StyleSpan(Typeface.NORMAL), 7, 18, 0);
+
+                } else {
+                    s.setSpan(new RelativeSizeSpan(2.7f), 0, 9, 0);
+                    s.setSpan(new StyleSpan(Typeface.BOLD), 0, 9, 0);
+                    s.setSpan(new ForegroundColorSpan(ColorTemplate.rgb("#FFFFFF")), s.length() - 20, s.length(), 0);
+                    s.setSpan(new StyleSpan(Typeface.NORMAL), 9, 20, 0);
+                }
+                break;
         }
 
         return s;

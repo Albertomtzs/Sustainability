@@ -17,7 +17,7 @@ import com.backendless.Backendless;
 
 public class RestorePasswordActivity extends Activity {
 
-    public static int SPLASH_TIMER = 2000;
+    public static int SPLASH_TIMER = 5000;
     private Button btnRestorePassword;
     private EditText loginField;
 

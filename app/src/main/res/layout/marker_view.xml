@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="65dp"
     android:layout_height="50dp"
-    android:background="@drawable/baseline_label_24"
+    android:background="@drawable/ic_label_24"
     tools:ignore="Overdraw">
 
     <TextView

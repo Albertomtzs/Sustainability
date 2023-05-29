@@ -1,370 +1,479 @@
 package com.ams.sustainability.model.repository;
 
+import com.ams.sustainability.R;
+
 import java.util.ArrayList;
 
 public class tips {
 
-    public ArrayList<String> getTipsTransport() {
+    public ArrayList<TipsItem> getTipsTransport() {
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        ArrayList<String> myData = new ArrayList<>();
+        // Lista de recursos de íconos asociados a cada tip
+        int[] iconResources = {
+                R.drawable.ic_transportation_24,
+                R.drawable.ic_transportation_24,
+                R.drawable.ic_transportation_24,
+                R.drawable.ic_transportation_24,
+                R.drawable.ic_transportation_24,
+                R.drawable.ic_transportation_24,
+                R.drawable.ic_transportation_24
+        };
 
+        String[] tips = {
+                "Utiliza el transporte público, la bicicleta, o ve caminando en los trayectos que te lo permitan. El metro tiene menos emisiones por km que el autobús.",
+                "Si tienes que coger el coche, intenta compartir tu viaje con otras personas y no usarlo siempre de forma individual.",
+                "Mantén tu vehículo en buen estado y revisa la presión de los neumáticos. Así optimizarás el consumo de combustible.",
+                "Al cambiar de vehículo, escoge el más eficiente. Considera las nuevas alternativas de motos o coches híbridos y eléctricos.",
+                "Una conducción eficiente reduce el consumo de combustible y las emisiones de CO2.",
+                "Si puedes escoger entre avión o tren para viajes largos y en similares condiciones, ten en cuenta que viajar en tren supone menos emisiones.",
+                "Evita viajes de larga distancia en tus vacaciones. Los viajes en avión a zonas exóticas llevan consigo emisiones considerables."
+        };
 
-        myData.add("Para pequeños desplazamientos dentro de la ciudad considere la posibilidad de ir a pie, en bicicleta o en transporte público.");
-        myData.add("Ser inteligente en cuanto a cuándo y cómo conducir. Una conducción eficiente reduce el consumo de combustible y las emisiones de CO2.");
-        myData.add("Tratar de usar el tren en tus próximas vacaciones o en trayectos de media distancia.");
-        myData.add("Apostar por la tecnología híbrida o eléctrica.");
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsHome() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        myData.add("20 ºC en invierno y 25 ºC en verano es más que suficiente para conseguir una temperatura agradable en casa. Un grado más o uno menos hace que el consumo de energía aumente un 8 %.");
-        myData.add("El 80 % del consumo energético de la lavadora se destina a calentar el agua. Lavar en frío es mucho más eficiente.");
-        myData.add("Limitar el uso de la secadora y planchar todas las prendas de una vez.");
-        myData.add("En el congelador, cuantas menos bolsas de plástico mejor. Si necesitas guardar alimentos, utiliza tuppers de cristal para no gastar electricidad de más.");
-        myData.add("Desenchufar los aparatos electrónicos y no dejar el teléfono enchufado cuando la batería ya esté cargada.");
-        myData.add("Optar por productos eficientes desde el punto de vista energético que lleven la etiqueta «A».");
-        myData.add("para lámparas de uso frecuente, opta por LEDS.");
-        myData.add("Reducir el volumen de basura generada, ya sea a través del reciclado o de la compra sustentable, permite reducir emisiones.");
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsClothes() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        myData.add("Comprar ropa fabricada de forma responsable, por ejemplo fabricada con material reciclado o con etiqueta ecológica.");
-        myData.add("Usar la ropa 9 meses más podría reducir la huella de carbono entre un 20 y 30%.");
-        myData.add("Tratar de intercambiarla, tomarla en préstamo, alquilarla o comprarla de segunda mano.");
-        myData.add("Comprar menos moda, pero de más calidad porque dura más tiempo.");
-        myData.add("Compra en tiendas físicas, pero acude en transporte público.");
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsFood() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        myData.add("Consumir productos locales y de temporada.");
-        myData.add("Limitar el consumo de carne, especialmente de carne de vacuno.");
-        myData.add("Consumir pescado obtenido mediante pesca sostenible.");
-        myData.add("Utilizar bolsas de compra reutilizables y evitar los productos con un embalaje de plástico excesivo.");
-        myData.add("Asegurarse de comprar solo lo que se necesita, para evitar el desperdicio de alimentos.");
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsTechnology() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        myData.add("No te compres el último modelo y reduce las recargas.");
-        myData.add("Elimina los usos superfluos.");
-        myData.add("Alargar la vida de tu smartphone y pc.");
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsAll() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsFood()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsClothes()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
+        // Asociar cada tip con su ícono correspondiente y agregarlo a la lista
+        for (int i = 0; i < tips.length; i++) {
+            TipsItem item = new TipsItem(tips[i], iconResources[i]);
+            myData.add(item);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsHCFT() {
+    public ArrayList<TipsItem> getTipsHome() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
+        int[] iconResources = {
+                R.drawable.ic_home_24dp,
+                R.drawable.ic_home_24dp,
+                R.drawable.ic_home_24dp,
+                R.drawable.ic_home_24dp,
+                R.drawable.ic_home_24dp,
+                R.drawable.ic_home_24dp,
+                R.drawable.ic_home_24dp,
+                R.drawable.ic_home_24dp
+        };
 
-        for (String tip : getTipsFood()) {
-            myData.add(tip);
-        }
+        String[] tips = {
+                "Optimiza el aislamiento energético de tu casa para ahorrar en climatización. Se recomienda fijar el termostato en 21ºC en invierno y 24ºC en verano.",
+                "Desconecta los aparatos que no estés utilizando. No los dejes en Stand-by.",
+                "Elimina el exceso de bolsas de plástico, embalajes y hielo en el congelador, para reducir la potencia que el frigorífico necesita para enfriar.",
+                "A la hora de cocinar, tapa las ollas y usa recipientes que te permitan ahorrar energía.",
+                "Lava la ropa en frío siempre que sea posible.",
+                "Contrata suministros de energía que garanticen la procedencia de fuentes renovables.",
+                "Si tienes que cambiar de electrodomésticos, elige aquellos más eficientes energéticamente (A++).",
+                "Cambia las viejas bombillas incandescentes por otras de bajo consumo, LED, etc."
+        };
 
-        for (String tip : getTipsClothes()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
-        }
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsHCTTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsClothes()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
-            myData.add(tip);
+        // Asociar cada tip con su ícono correspondiente y agregarlo a la lista
+        for (int i = 0; i < tips.length; i++) {
+            TipsItem item = new TipsItem(tips[i], iconResources[i]);
+            myData.add(item);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsHFTTr() {
+    public ArrayList<TipsItem> getTipsClothes() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
+        int[] iconResources = {
+                R.drawable.ic_clothes_24,
+                R.drawable.ic_clothes_24,
+                R.drawable.ic_clothes_24,
+                R.drawable.ic_clothes_24,
+                R.drawable.ic_clothes_24,
+                R.drawable.ic_clothes_24,
+                R.drawable.ic_clothes_24,
+                R.drawable.ic_clothes_24
+        };
 
-        for (String tip : getTipsFood()) {
-            myData.add(tip);
-        }
+        String[] tips = {
 
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
-        }
+                "Busca prendas que procedan de una producción responsable, a ser posible con materias primas de bajo impacto, naturales y/o recicladas.",
+                "Usar la ropa 9 meses más podría reducir la huella de carbono entre un 20 y 30%.",
+                "Da preferencia a las empresas que valoren la transparencia y controlen la trazabilidad de sus productos, a fin de reducir su huella de carbono.",
+                "Considera la opción de alquilar ropa en aquellas prendas que sólo vayas a usar en pocas ocasiones. Reducirás tus gastos y tus emisiones.",
+                "Considera si realmente es necesario cambiar de ropa. Las menores emisiones siempre vienen del ahorro.",
+                "Compra en tiendas físicas, pero acude en transporte público.",
+                "No tires tu ropa cuando ya no te sirva. Puedes reciclarla a través de organizaciones que pueden darle un segundo uso."
 
-        for (String tip : getTipsTransport()) {
-            myData.add(tip);
-        }
+        };
 
-        return myData;
-    }
-
-    public ArrayList<String> getTipsCFTTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsClothes()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsFood()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
-            myData.add(tip);
+        // Asociar cada tip con su ícono correspondiente y agregarlo a la lista
+        for (int i = 0; i < tips.length; i++) {
+            TipsItem item = new TipsItem(tips[i], iconResources[i]);
+            myData.add(item);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsHFC() {
+    public ArrayList<TipsItem> getTipsFood() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsHome()) {
+        int[] iconResources = {
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24,
+                R.drawable.ic_food_24
+        };
+
+        String[] tips = {
+                "Escoge productos de proximidad y de temporada frente a otros que vengan de lejos, pues su transporte incrementa las emisiones.",
+                "Evita comprar productos excesivamente empaquetados y opta por otros que se vendan a granel.",
+                "Utiliza botellas de cristal o termos en lugar de botellines de plástico para el agua.",
+                "Utilizar bolsas de compra reutilizables y evitar los productos con un embalaje de plástico excesivo.",
+                "Asegurarse de comprar solo lo que se necesita, para evitar el desperdicio de alimentos.",
+                "Los líquidos envasados en tetra-brick tienen emisiones más bajas que cuando están envasados en plástico o cristal.",
+                "Reduce el consumo de dulces y bollería industrial. Sustitúyelos por fruta o postres caseros.",
+                "Evita los refrescos carbonatados y en su lugar toma agua o zumos naturales.",
+                "Cuando sea posible, consume pescado o marisco de cercanía. La pesca de arrastre y las piscifactorías intensivas suponen mayor huella de carbono",
+                "Reduce el consumo de productos lácteos. Intenta substituirlos por bebidas vegetales con propiedades similares y menor huella de carbono.",
+                "Reduce el consumo de carnes, principalmente carnes rojas como ternera o cordero. Con una mayor ingesta de verdura y fruta fresca estarás reduciendo tu huella de carbono y mejorando tu salud."
+        };
+
+        // Asociar cada tip con su ícono correspondiente y agregarlo a la lista
+        for (int i = 0; i < tips.length; i++) {
+            TipsItem item = new TipsItem(tips[i], iconResources[i]);
+            myData.add(item);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsTechnology() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        int[] iconResources = {
+                R.drawable.ic_techonology_24,
+                R.drawable.ic_techonology_24,
+                R.drawable.ic_techonology_24,
+                R.drawable.ic_techonology_24
+        };
+
+        String[] tips = {
+                "Haz un uso responsable de la tecnología: ten en cuenta que los servidores para el uso de internet, videojuegos y las aplicaciones de nuestros móviles, requieren gran cantidad de energía, con sus consiguientes emisiones de gases de efecto invernadero.",
+                "Alarga la vida de tu smartphone o pc.",
+                "Abandona la práctica de usar y tirar. Reutiliza y recicla todo lo que sea posible.",
+                "Infórmate sobre las nuevas alternativas para alquilar artículos o herramientas que normalmente no usas y tiene poco sentido comprar.",
+
+        };
+
+        // Asociar cada tip con su ícono correspondiente y agregarlo a la lista
+        for (int i = 0; i < tips.length; i++) {
+            TipsItem item = new TipsItem(tips[i], iconResources[i]);
+            myData.add(item);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsAll() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsHome()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsClothes()) {
+        for (TipsItem tip : getTipsFood()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsFood()) {
+        for (TipsItem tip : getTipsClothes()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTransport()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsHCT() {
+    public ArrayList<TipsItem> getTipsHCFT() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsHome()) {
+        for (TipsItem tip : getTipsHome()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsClothes()) {
+        for (TipsItem tip : getTipsFood()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTechnology()) {
+        for (TipsItem tip : getTipsClothes()) {
             myData.add(tip);
         }
 
-        return myData;
-    }
-
-    public ArrayList<String> getTipsHCTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsClothes()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsHFT() {
+    public ArrayList<TipsItem> getTipsHCTTr() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsHome()) {
+        for (TipsItem tip : getTipsHome()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsFood()) {
+        for (TipsItem tip : getTipsClothes()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTechnology()) {
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
-        return myData;
-    }
-
-    public ArrayList<String> getTipsHFTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsFood()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTransport()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsCFT() {
+    public ArrayList<TipsItem> getTipsHFTTr() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsClothes()) {
+        for (TipsItem tip : getTipsHome()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsFood()) {
+        for (TipsItem tip : getTipsFood()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTechnology()) {
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
-        return myData;
-    }
-
-    public ArrayList<String> getTipsCFTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsClothes()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsFood()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTransport()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsTFTr() {
+    public ArrayList<TipsItem> getTipsCFTTr() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsFood()) {
+        for (TipsItem tip : getTipsClothes()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTechnology()) {
+        for (TipsItem tip : getTipsFood()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
-        return myData;
-    }
-
-    public ArrayList<String> getTipsHF() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsFood()) {
+        for (TipsItem tip : getTipsTransport()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsHC() {
+    public ArrayList<TipsItem> getTipsHFC() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsHome()) {
+        for (TipsItem tip : getTipsHome()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsClothes()) {
+        for (TipsItem tip : getTipsClothes()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsHCT() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsHome()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsClothes()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTechnology()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsHCTr() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsHome()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsClothes()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTransport()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsHFT() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsHome()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTechnology()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsHFTr() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsHome()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTransport()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsCFT() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsClothes()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTechnology()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsCFTr() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsClothes()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTransport()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsTFTr() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTechnology()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTransport()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsHF() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsHome()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsHC() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsHome()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsClothes()) {
             myData.add(tip);
         }
 
@@ -372,124 +481,140 @@ public class tips {
         return myData;
     }
 
-    public ArrayList<String> getTipsHT() {
+    public ArrayList<TipsItem> getTipsHT() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsHome()) {
+        for (TipsItem tip : getTipsHome()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
-        }
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsHTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsHome()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsCF() {
+    public ArrayList<TipsItem> getTipsHTr() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsClothes()) {
+        ArrayList<TipsItem> tipsHome = getTipsHome();
+        ArrayList<TipsItem> tipsTransport = getTipsTransport();
+
+        myData.addAll(tipsHome);
+        myData.addAll(tipsTransport);
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsCF() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsClothes()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsFood()) {
+        for (TipsItem tip : getTipsFood()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsCT() {
+    public ArrayList<TipsItem> getTipsCT() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsClothes()) {
+        for (TipsItem tip : getTipsClothes()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
-        }
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsCTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsClothes()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsFT() {
+    public ArrayList<TipsItem> getTipsCTr() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsFood()) {
+        for (TipsItem tip : getTipsClothes()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTechnology()) {
-            myData.add(tip);
-        }
-
-        return myData;
-    }
-
-    public ArrayList<String> getTipsFTr() {
-
-        ArrayList<String> myData = new ArrayList<>();
-
-        for (String tip : getTipsFood()) {
-            myData.add(tip);
-        }
-
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTransport()) {
             myData.add(tip);
         }
 
         return myData;
     }
 
-    public ArrayList<String> getTipsTTr() {
+    public ArrayList<TipsItem> getTipsFT() {
 
-        ArrayList<String> myData = new ArrayList<>();
+        ArrayList<TipsItem> myData = new ArrayList<>();
 
-        for (String tip : getTipsTechnology()) {
+        for (TipsItem tip : getTipsFood()) {
             myData.add(tip);
         }
 
-        for (String tip : getTipsTransport()) {
+        for (TipsItem tip : getTipsTechnology()) {
             myData.add(tip);
         }
 
         return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsFTr() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsFood()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTransport()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public ArrayList<TipsItem> getTipsTTr() {
+
+        ArrayList<TipsItem> myData = new ArrayList<>();
+
+        for (TipsItem tip : getTipsTechnology()) {
+            myData.add(tip);
+        }
+
+        for (TipsItem tip : getTipsTransport()) {
+            myData.add(tip);
+        }
+
+        return myData;
+    }
+
+    public class TipsItem {
+        private String tip;
+        private int iconResource;
+
+        public TipsItem(String tip, int iconResource) {
+            this.tip = tip;
+            this.iconResource = iconResource;
+        }
+
+        public String getTip() {
+            return tip;
+        }
+
+        public int getIconResource() {
+            return iconResource;
+        }
     }
 
 }

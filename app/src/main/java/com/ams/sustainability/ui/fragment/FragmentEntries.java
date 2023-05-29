@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ams.sustainability.R;
 import com.ams.sustainability.data.repository.BackendLessDAO;
-import com.ams.sustainability.model.entities.Results;
+import com.ams.sustainability.model.graph.entities.Results;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
@@ -38,6 +38,7 @@ import java.util.Map;
 
 public class FragmentEntries extends Fragment {
 
+    private FragmentHistorial fragmentHistorial;
     private BackendLessDAO resultadosDAO;
     private BackendlessUser currentUser;
     LinearLayout linearLayoutRecords;
@@ -72,6 +73,8 @@ public class FragmentEntries extends Fragment {
                                 resultadosDAO.remove();
                                 Toast.makeText(getContext(), "Fueron borrados todos los registros", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
+                                linearLayoutRecords.removeAllViews();
+
                                 readRecords(view);
 
                             }
@@ -96,7 +99,7 @@ public class FragmentEntries extends Fragment {
         DataQueryBuilder queryBuilder = DataQueryBuilder.create();
         queryBuilder.setWhereClause("ownerId = '" + currentUser.getObjectId() + "'");
         queryBuilder.setPageSize(100);
-        queryBuilder.setSortBy("created ASC");
+        queryBuilder.setSortBy("created DESC");
 
 
         Backendless.Data.of(Results.class).find(queryBuilder, new AsyncCallback<List<Results>>() {
@@ -108,16 +111,14 @@ public class FragmentEntries extends Fragment {
                     String inputDate = String.valueOf(response.get(i).getCreated());
                     String outputDate = convertStringFormat(inputDate);
                     double huella = response.get(i).getCarbon_footprint();
-                    double transporte = response.get(i).getTransport();
                     String id = response.get(i).getObjectId();
 
-                    Log.e("****MainActivity", "Fecha entrada: " + inputDate + " Valores: " + transporte);
-                    Log.e("****MainActivity", "Fecha salida: " + outputDate + " Valores: " + transporte);
+                    Log.e("****MainActivity", "Fecha entrada: " + inputDate + " Valores: " + huella);
+                    Log.e("****MainActivity", "Fecha salida: " + outputDate + " Valores: " + huella);
 
                     Map<String, Object> itemData = new LinkedHashMap<>();
                     itemData.put("date", outputDate);
                     itemData.put("value", huella);
-                    itemData.put("transporte", transporte);
                     itemData.put("id", id);
                     data.add(itemData);
 
@@ -160,9 +161,12 @@ public class FragmentEntries extends Fragment {
                                             @Override
                                             public void handleResponse(Long response) {
                                                 Toast.makeText(getContext(), "Registro borrado", Toast.LENGTH_LONG).show();
-
                                                 Log.i("******Backendless", "Registro eliminado con éxito");
+
+                                                linearLayoutRecords.removeAllViews();
+
                                                 readRecords(view);
+
                                             }
 
                                             @Override
@@ -206,6 +210,21 @@ public class FragmentEntries extends Fragment {
         }
         return dateString;
     }
+
+    /*private void refreshFragments(){
+        // Lógica para eliminar el registro
+
+        // Obtén una referencia a la instancia de NavigationFragment
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity instanceof NavigationFragment) {
+            NavigationFragment navigationFragment = (NavigationFragment) activity;
+            navigationFragment.refreshFragmentsAfterDelete();
+        }
+    }*/
+
+
+
+
 }
 
 

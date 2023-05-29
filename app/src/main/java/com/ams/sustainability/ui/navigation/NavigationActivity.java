@@ -14,7 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.ams.sustainability.R;
 import com.ams.sustainability.view.GetStartedCarbonFootprint;
-import com.ams.sustainability.ui.adapters.ViewPagerAdapter;
+import com.ams.sustainability.ui.adapters.AdapterViewPagerActivity;
 import com.ams.sustainability.view.MainLogin;
 
 public class NavigationActivity extends AppCompatActivity {
@@ -24,7 +24,7 @@ public class NavigationActivity extends AppCompatActivity {
     LinearLayout dotIndicator;
     Button btnBack, btnNext, btnSkip;
     TextView[] dots;
-    ViewPagerAdapter viewPagerAdapter;
+    AdapterViewPagerActivity adapterViewPagerActivity;
 
 
     ViewPager.OnPageChangeListener viewPagerListener = new ViewPager.OnPageChangeListener() {
@@ -113,8 +113,8 @@ public class NavigationActivity extends AppCompatActivity {
 
         slideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         dotIndicator = (LinearLayout) findViewById(R.id.dotIndicator);
-        viewPagerAdapter = new ViewPagerAdapter(this);
-        slideViewPager.setAdapter(viewPagerAdapter);
+        adapterViewPagerActivity = new AdapterViewPagerActivity(this);
+        slideViewPager.setAdapter(adapterViewPagerActivity);
         setDotIndicator(0);
         slideViewPager.addOnPageChangeListener(viewPagerListener);
 

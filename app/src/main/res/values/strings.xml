@@ -15,15 +15,6 @@
 
     <!-- __________ Login Screen __________ -->
 
-    <string name="btn_LoginBackendless">Log in</string>
-    <string name="btn_LogoutBackendless">Logout from Backendless</string>
-    <string name="btn_LoginFacebook">Login in Facebook</string>
-    <string name="btn_LoginGooglePlus">Login in GooglePlus</string>
-    <string name="btn_LoginTwitter">Login in Twitter</string>
-
-    <string name="textView_BackendlessUserInfo">Backendless User info.</string>
-    <string name="editText_BackendlessUserInfo">You should login as Backendless user first.</string>
-
     <string name="register_text">Register</string>
     <string name="restore_link">Restore</string>
     <string name="login_prompt">Login:</string>
@@ -31,21 +22,13 @@
     <string name="password_recovery_page_name">Recuperación de contraseña</string>
     <string name="remember_login_text">Recuérdame</string>
 
-    <string name="ownerId_field_prompt">OwnerId:</string>
-    <string name="email_field_prompt">Email:</string>
-    <string name="objectId_field_prompt">ObjectId:</string>
-    <string name="created_field_prompt">Created:</string>
-    <string name="password_field_prompt">Password:</string>
-    <string name="updated_field_prompt">Updated:</string>
-    <string name="name_field_prompt">Name:</string>
-    <string name="file_field_prompt">File:</string>
     <string name="registration_success">¡Registrado correctamente!</string>
     <string name="registration_error">¡Error de registro!</string>
 
     <string name="restore_password_page_name">Restauración de contraseña</string>
     <string name="password_recovered_message">Enviamos un correo electrónico a su dirección de correo electrónico con un enlace a una página de cambio de contraseña.</string>
     <string name="registration_page_name">Inscripción</string>
-    <string name="registration_success_message">¡Gracias por registrarte en %1$s!.</string>
+    <string name="registration_success_message">¡Gracias por registrarte en %1$s! En breve recibirá un email para completar el registro.</string>
 
     <string name="bienvenido">¡Bienvenido!</string>
     <string name="inicio_post_login">Calcula tu huella</string>
@@ -70,7 +53,7 @@
 
     <string name="allQuestion">Por favor, complete todas las preguntas antes de avanzar.</string>
     <string name="vivienda">Vivienda</string>
-    <string name="pregunta_generica_vivienda">Indica el consumo anual de las siguientes energias:</string>
+    <string name="pregunta_generica_vivienda">Indica el consumo anual de las siguientes energías:</string>
     <string name="pregunta_vivienda1">La electricidad de tu casa, ¿es solo de fuentes renovables?</string>
     <string name="pregunta_vivienda2">Indica cuántas personas viven en tu domicilio.</string>
     <string name="yes">Sí</string>
@@ -119,6 +102,7 @@
     <string name="pregunta_ropa6">Calcetines</string>
     <string name="pregunta_ropa7">Chaquetas</string>
     <string name="pregunta_ropa8">Abrigos</string>
+    
     <string name="pregunta_ropa9">Jerseys</string>
     <string name="pregunta_ropa10">Zapatos</string>
     <string name="pregunta_ropa11">Zapatillas deportivas</string>
@@ -127,7 +111,7 @@
     <!-- Preguntas relacionadas con la sección transporte -->
 
     <string name="transporte">Transporte</string>
-    <string name="pregunta_generica_transporte1">¿Tienes automóvil en propiedad?</string>
+    <string name="pregunta_generica_transporte1">¿Tienes automóvil en propiedad o utilizas alguno?</string>
     <string name="repuestas_rb_transporte1">Sí</string>
     <string name="repuestas_rb_transporte2">No</string>
     <string name="pregunta_generica_transporte2">¿Qué tipo de automóvil utilizas?</string>
@@ -138,13 +122,13 @@
     <string name="repuestas_rb_transporte8">Monovolumen Familiar</string>
     <string name="repuestas_rb_transporte9">SUV pequeño</string>
     <string name="repuestas_rb_transporte10">SUV grande</string>
-    <string name="pregunta_generica_transporte3">¿Qué tipo combustible utiliza?</string>
+    <string name="pregunta_generica_transporte3">¿Qué tipo de combustible utiliza?</string>
     <string name="repuestas_rb_transporte11">Gasolina</string>
     <string name="repuestas_rb_transporte12">Gasoil</string>
     <string name="repuestas_rb_transporte13">Gas natural</string>
     <string name="repuestas_rb_transporte14">Eléctrico</string>
     <string name="pregunta_generica_transporte4">Indica el consumo medio:</string>
-    <string name="pregunta_generica_transporte5">¿Tienes una motocicleta en propiedad?</string>
+    <string name="pregunta_generica_transporte5">¿Tienes una motocicleta en propiedad o utilizas alguna?</string>
     <string name="repuestas_rb_transporte15">Sí</string>
     <string name="repuestas_rb_transporte16">No</string>
     <string name="pregunta_generica_transporte6">Indica la cilindrada:</string>
@@ -152,11 +136,11 @@
     <string name="repuestas_rb_transporte18">125 – 500cc</string>
     <string name="repuestas_rb_transporte19">> 500cc</string>
     <string name="repuestas_rb_transporte20">Eléctrica (5KW)</string>
-    <string name="pregunta_generica_transporte7">¿Qué tipo combustible utiliza?</string>
+    <string name="pregunta_generica_transporte7">¿Qué tipo de combustible utiliza?</string>
     <string name="repuestas_rb_transporte21">Gasolina</string>
     <string name="repuestas_rb_transporte22">Eléctrico</string>
     <string name="pregunta_generica_transporte8">Indica el consumo medio</string>
-    <string name="pregunta_generica_transporte10">Indica los kilometros que realizas anualmente:</string>
+    <string name="pregunta_generica_transporte10">Indica los kilómetros que realizas anualmente:</string>
 
 
     <string name="otros_transportes">Otros transportes</string>
@@ -198,5 +182,9 @@
     <string name="tips">Consejos</string>
 
     <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="registrate">  Regístrate</string>
+    <string name="no_tienes_cuenta">¿Aún no tienes cuenta?  </string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="olvidaste_password">¿Olvidaste tu contraseña?</string>
 
 </resources>

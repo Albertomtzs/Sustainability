@@ -30,6 +30,7 @@
             android:background="@drawable/input"
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="16dp"
+            android:textCursorDrawable="@drawable/text_cursor"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
@@ -56,6 +57,7 @@
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            android:textCursorDrawable="@drawable/text_cursor"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
@@ -91,7 +93,7 @@
             android:layout_marginRight="25dp"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="end"
-            android:text="¿Olvidaste tu contraseña?"
+            android:text="@string/olvidaste_password"
             android:textColor="@color/celeste" />
     </LinearLayout>
 
@@ -106,7 +108,7 @@
             android:background="@drawable/btn_bg"
             android:elevation="5dp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Inciar sesión"
+            android:text="@string/iniciar_sesion"
             android:textColor="#fff"
             android:textSize="16sp" />
 
@@ -144,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Registrate"
+                android:text="@string/registrate"
                 android:textColor="@color/celeste"
                 android:textSize="16sp" />
 

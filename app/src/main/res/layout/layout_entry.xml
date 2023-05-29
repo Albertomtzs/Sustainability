@@ -62,7 +62,7 @@
             app:hoveredFocusedTranslationZ="0dp"
             app:maxImageSize="40dp"
             app:pressedTranslationZ="0dp"
-            app:srcCompat="@drawable/baseline_delete_24" />
+            app:srcCompat="@drawable/ic_delete_24" />
     </LinearLayout>
 
 </LinearLayout>
